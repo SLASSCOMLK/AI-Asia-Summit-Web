@@ -12,6 +12,7 @@ export default function AboutSection() {
   return (
     <section className="about-section container" id="about">
       <div className="about-grid">
+
         {/* Left Column: Text & Context */}
         <div className="about-content">
           <div className="about-badge">
@@ -28,7 +29,6 @@ export default function AboutSection() {
             The <strong>SLASSCOM AI Asia Summit</strong> is Sri Lanka's premier platform for advancing the AI ecosystem, bringing together industry leaders, innovators, policymakers, researchers, startups, and technology professionals from across Asia and beyond. Established in 2018, the summit has become the country's flagship AI event, fostering collaboration, knowledge sharing, and innovation that accelerates AI adoption across industries.
           </p>
 
-          {/* Quick Metrics */}
           <div className="about-metrics-grid">
             <div className="metric-box">
               <span className="metric-num">2018</span>
@@ -49,29 +49,23 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Right Column: Solar System 3D Elliptical Orbital Showcase (No middle logo, bigger photos) */}
-        <div className="solar-system-container">
-          {/* Glowing Elliptical Solar Orbit Rings */}
-          <div className="solar-orbit-ellipse" />
-          <div className="solar-orbit-ellipse-inner" />
+        {/* Right Column: Solar System Elliptical Orbit */}
+        <div className="solar-scene">
+          {/* Orbit ring ellipses (decorative) */}
+          <div className="orbit-ring orbit-ring-1" />
+          <div className="orbit-ring orbit-ring-2" />
 
-          {/* 4 Large Planetary Orbiting Photo Cards */}
-          <div className="solar-orbit-track">
-            {images.map((img, idx) => (
-              <div 
-                key={idx} 
-                className={`solar-planet-card planet-${idx + 1}`}
-              >
-                <div className="planet-card-frame">
-                  <img src={img.src} alt={img.alt} />
-                  <div className="planet-card-overlay">
-                    <span>{img.tag}</span>
-                  </div>
-                </div>
+          {/* The 4 photos orbit as planets — each on its own delayed animation */}
+          {images.map((img, idx) => (
+            <div key={idx} className={`orbit-planet orbit-planet-${idx + 1}`}>
+              <div className="planet-img-wrap">
+                <img src={img.src} alt={img.alt} />
+                <div className="planet-label">{img.tag}</div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );
