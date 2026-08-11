@@ -1,18 +1,10 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, MapPin } from 'lucide-react';
 
 export default function AboutSection() {
-  const images = [
-    { src: '/about-1.jpg', alt: 'Summit Speakers Stage', tag: 'Expert Keynotes' },
-    { src: '/about-2.jpg', alt: 'Global AI Leaders Panel', tag: 'Global Visionaries' },
-    { src: '/about-3.jpg', alt: 'AI Robotics Tank Showcase', tag: 'Robotics & Hardware' },
-    { src: '/about-4.jpg', alt: 'SLASSCOM Panel Discussion', tag: 'Industry Collaboration' }
-  ];
-
   return (
     <section className="about-section container" id="about">
       <div className="about-grid">
-
         {/* Left Column: Text & Context */}
         <div className="about-content">
           <div className="about-badge">
@@ -49,23 +41,27 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Right Column: Solar System Elliptical Orbit */}
-        <div className="solar-scene">
-          {/* Orbit ring ellipses (decorative) */}
-          <div className="orbit-ring orbit-ring-1" />
-          <div className="orbit-ring orbit-ring-2" />
-
-          {/* The 4 photos orbit as planets — each on its own delayed animation */}
-          {images.map((img, idx) => (
-            <div key={idx} className={`orbit-planet orbit-planet-${idx + 1}`}>
-              <div className="planet-img-wrap">
-                <img src={img.src} alt={img.alt} />
-                <div className="planet-label">{img.tag}</div>
-              </div>
+        {/* Right Column: Animated Sri Lanka Map Video Showcase */}
+        <div className="about-video-container">
+          <div className="about-video-wrapper">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="about-map-video"
+            >
+              <source src="/sri-lanka-map.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            
+            {/* Overlay Glass Badge */}
+            <div className="map-location-badge">
+              <MapPin size={14} style={{ color: '#E8B84B' }} />
+              <span>COLOMBO, SRI LANKA • SUMMIT HUB</span>
             </div>
-          ))}
+          </div>
         </div>
-
       </div>
     </section>
   );
