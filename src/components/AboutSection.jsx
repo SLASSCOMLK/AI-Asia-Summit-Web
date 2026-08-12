@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, MapPin } from 'lucide-react';
+import { Layers, MapPin, CheckCircle, Target, Award, Rocket, Globe } from 'lucide-react';
 
 export default function AboutSection() {
   return (
@@ -8,18 +8,33 @@ export default function AboutSection() {
         {/* Left Column: Text & Context */}
         <div className="about-content">
           <div className="about-badge">
-            <Sparkles size={14} style={{ color: '#E8B84B' }} />
-            <span>ABOUT SLASSCOM AI ASIA SUMMIT</span>
+            <Layers size={14} style={{ color: '#E8B84B' }} />
+            <span>BEYOND A CONFERENCE • A MOVEMENT</span>
           </div>
 
           <h2 className="about-title">
-            Sri Lanka's Premier Platform for <br />
-            <span className="about-title-highlight">AI Ecosystem & Innovation</span>
+            Sri Lanka's Premier Engine for <br />
+            <span className="about-title-highlight">AI Transformation</span>
           </h2>
 
           <p className="about-description">
-            The <strong>SLASSCOM AI Asia Summit</strong> is Sri Lanka's premier platform for advancing the AI ecosystem, bringing together industry leaders, innovators, policymakers, researchers, startups, and technology professionals from across Asia and beyond. Established in 2018, the summit has become the country's flagship AI event, fostering collaboration, knowledge sharing, and innovation that accelerates AI adoption across industries.
+            The <strong>SLASSCOM AI Asia Summit</strong> is Sri Lanka's premier platform for advancing the AI ecosystem, bringing together thought leaders, innovators, policymakers, researchers, startups, and technology professionals from across Asia and beyond. Established in 2018, the summit fosters collaboration, knowledge sharing, and enterprise innovation to accelerate AI adoption across key industries.
           </p>
+
+          <div className="about-pillars-list">
+            <div className="about-pillar-item">
+              <CheckCircle size={18} style={{ color: '#00A3E0', flexShrink: 0 }} />
+              <span>Fostering high-value collaboration to solve complex industry challenges</span>
+            </div>
+            <div className="about-pillar-item">
+              <CheckCircle size={18} style={{ color: '#00A3E0', flexShrink: 0 }} />
+              <span>Facilitating strategic partnerships that unlock new economic growth</span>
+            </div>
+            <div className="about-pillar-item">
+              <CheckCircle size={18} style={{ color: '#00A3E0', flexShrink: 0 }} />
+              <span>Driving AI adoption to enhance national competitiveness and global linkages</span>
+            </div>
+          </div>
 
           <div className="about-metrics-grid">
             <div className="metric-box">
@@ -55,7 +70,7 @@ export default function AboutSection() {
               Your browser does not support the video tag.
             </video>
             
-            {/* Overlay Glass Badge */}
+            {/* Overlay Glass Badge (Zero Emojis) */}
             <div className="map-location-badge">
               <MapPin size={14} style={{ color: '#E8B84B' }} />
               <span>COLOMBO, SRI LANKA • SUMMIT HUB</span>
