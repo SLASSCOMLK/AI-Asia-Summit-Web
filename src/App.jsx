@@ -12,14 +12,21 @@ import {
   Send,
   FileText,
   Download,
-  Building2
+  Building2,
+  Phone
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import TransparentLogo from './components/TransparentLogo';
 import CustomCursor from './components/CustomCursor';
 import AboutSection from './components/AboutSection';
+import EventHighlightsSection from './components/EventHighlightsSection';
 import FocusAreasSection from './components/FocusAreasSection';
 import AiRobotVisual from './components/AiRobotVisual';
+import YouTubeBackground from './components/YouTubeBackground';
+import { LinkedInIcon, XIcon, FacebookIcon, InstagramIcon, YouTubeIcon } from './components/SocialIcons';
+
+// Temporarily hidden — re-enable by flipping this back to true when ready to launch partnerships
+const SHOW_PARTNER_SECTION = false;
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -104,6 +111,14 @@ export default function App() {
 
   const formatDigit = (num) => String(num).padStart(2, '0');
 
+  const socialLinks = [
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/slasscom/', Icon: LinkedInIcon },
+    { name: 'X (Twitter)', href: '#', Icon: XIcon },
+    { name: 'Facebook', href: '#', Icon: FacebookIcon },
+    { name: 'Instagram', href: '#', Icon: InstagramIcon },
+    { name: 'YouTube', href: '#', Icon: YouTubeIcon }
+  ];
+
   const marqueeItems = [
     "AI ASIA SUMMIT 2026",
     "THEME: AI THE MULTIPLIER EFFECT",
@@ -125,10 +140,10 @@ export default function App() {
           <div className="container">
             <div className="navbar-inner">
               <a href="#" className="navbar-logo-link">
-                <TransparentLogo 
-                  src="/logo.png" 
-                  alt="SLASSCOM AI ASIA SUMMIT 2026" 
-                  className="navbar-transparent-logo" 
+                <img
+                  src="/logo-white.png"
+                  alt="SLASSCOM AI ASIA SUMMIT 2026"
+                  className="navbar-transparent-logo"
                 />
               </a>
 
@@ -140,11 +155,12 @@ export default function App() {
                 <li><a href="#contact" className="nav-link">Contact</a></li>
               </ul>
 
+              {SHOW_PARTNER_SECTION && (
               <div className="nav-controls-group">
-                <a 
-                  href="/sponsorship-proposal.pdf" 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href="/sponsorship-proposal.pdf"
+                  target="_blank"
+                  rel="noreferrer"
                   className="btn-outline-pdf"
                 >
                   <FileText size={14} />
@@ -157,92 +173,103 @@ export default function App() {
                   PARTNER WITH US
                 </button>
               </div>
+              )}
             </div>
           </div>
         </header>
 
         {/* Executive Hero Section */}
         <main className="hero-section container">
-          {/* Official Transparent Logo */}
-          <div className="hero-logo-transparent-wrapper">
-            <TransparentLogo 
-              src="/logo.png" 
-              alt="AI ASIA SUMMIT 2026 SLASSCOM Logo" 
-            />
-          </div>
+          {/* HD YouTube Video Background — scoped to hero section only */}
+          <YouTubeBackground isVideoActive={true} isMuted={true} />
 
-          {/* Headline Typography */}
-          <h1 className="hero-title-text">
-            AI ASIA SUMMIT
-            <span className="hero-year-highlight">2026</span>
-          </h1>
-
-          <div className="hero-theme-badge">
-            <span>THEME: AI THE MULTIPLIER EFFECT</span>
-          </div>
-
-          {/* Interactive 3D AI Robot Face / Visual Showcase */}
-          <AiRobotVisual />
-
-          {/* Event Date & Location Pills */}
-          <div className="event-pills-row">
-            <div className="event-pill">
-              <span className="event-pill-icon"><Calendar size={16} /></span>
-              <span>November 2026</span>
-            </div>
-            <div className="event-pill">
-              <span className="event-pill-icon"><MapPin size={16} /></span>
-              <span>Colombo, Sri Lanka</span>
-            </div>
-            <div className="event-pill">
-              <span className="event-pill-icon"><Building2 size={16} /></span>
-              <span>SLASSCOM Ecosystem</span>
-            </div>
-          </div>
-
-          {/* Action CTAs */}
-          <div className="hero-cta-group">
-            <button className="btn-primary-purple" onClick={() => {
-              document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
-            }}>
-              PARTNER WITH US
-            </button>
-
-            <a 
-              href="/sponsorship-proposal.pdf" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="btn-outline-glass"
-              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
-            >
-              <Download size={16} />
-              <span>VIEW SPONSORSHIP PROPOSAL (PDF)</span>
-            </a>
-          </div>
-
-          {/* FROSTED GLASSMORPHISM COUNTDOWN TIMER */}
-          <div className="glass-countdown-container">
-            <div className="glass-countdown-header">
-              <Clock size={16} style={{ color: '#E8B84B' }} />
-              <span>EVENT COUNTDOWN • UTC+5:30 COLOMBO TIME</span>
+          <div className="hero-content">
+            {/* Official White Logo */}
+            <div className="hero-logo-transparent-wrapper">
+              <img
+                src="/logo-white.png"
+                alt="AI ASIA SUMMIT 2026 SLASSCOM Logo"
+              />
             </div>
 
-            <div className="glass-timer-grid">
-              <div className="glass-timer-card">
-                <span className="glass-timer-value">{formatDigit(timeLeft.days)}</span>
-                <span className="glass-timer-label">Days</span>
+            {/* Headline Typography */}
+            <h1 className="hero-title-text hero-title-animated">
+              {"LAUNCHING SOON".split("").map((char, i) => (
+                <span key={i} className="hero-letter" style={{ '--i': i }}>
+                  {char === " " ? " " : char}
+                </span>
+              ))}
+            </h1>
+
+            <div className="hero-theme-badge">
+              <span>THEME: AI THE MULTIPLIER EFFECT</span>
+            </div>
+
+            {/* Interactive 3D AI Robot Face / Visual Showcase */}
+            <AiRobotVisual />
+
+            {/* Event Date & Location Pills */}
+            <div className="event-pills-row">
+              <div className="event-pill">
+                <span className="event-pill-icon"><Calendar size={16} /></span>
+                <span>November 2026</span>
               </div>
-              <div className="glass-timer-card">
-                <span className="glass-timer-value">{formatDigit(timeLeft.hours)}</span>
-                <span className="glass-timer-label">Hours</span>
+              <div className="event-pill">
+                <span className="event-pill-icon"><MapPin size={16} /></span>
+                <span>Colombo, Sri Lanka</span>
               </div>
-              <div className="glass-timer-card">
-                <span className="glass-timer-value">{formatDigit(timeLeft.minutes)}</span>
-                <span className="glass-timer-label">Minutes</span>
+              <div className="event-pill">
+                <span className="event-pill-icon"><Building2 size={16} /></span>
+                <span>SLASSCOM Ecosystem</span>
               </div>
-              <div className="glass-timer-card">
-                <span className="glass-timer-value">{formatDigit(timeLeft.seconds)}</span>
-                <span className="glass-timer-label">Seconds</span>
+            </div>
+
+            {/* Action CTAs */}
+            {SHOW_PARTNER_SECTION && (
+            <div className="hero-cta-group">
+              <button className="btn-primary-purple" onClick={() => {
+                document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}>
+                PARTNER WITH US
+              </button>
+
+              <a
+                href="/sponsorship-proposal.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-outline-glass"
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
+              >
+                <Download size={16} />
+                <span>VIEW SPONSORSHIP PROPOSAL (PDF)</span>
+              </a>
+            </div>
+            )}
+
+            {/* FROSTED GLASSMORPHISM COUNTDOWN TIMER */}
+            <div className="glass-countdown-container">
+              <div className="glass-countdown-header">
+                <Clock size={16} style={{ color: '#E8B84B' }} />
+                <span>EVENT COUNTDOWN • UTC+5:30 COLOMBO TIME</span>
+              </div>
+
+              <div className="glass-timer-grid">
+                <div className="glass-timer-card">
+                  <span className="glass-timer-value">{formatDigit(timeLeft.days)}</span>
+                  <span className="glass-timer-label">Days</span>
+                </div>
+                <div className="glass-timer-card">
+                  <span className="glass-timer-value">{formatDigit(timeLeft.hours)}</span>
+                  <span className="glass-timer-label">Hours</span>
+                </div>
+                <div className="glass-timer-card">
+                  <span className="glass-timer-value">{formatDigit(timeLeft.minutes)}</span>
+                  <span className="glass-timer-label">Minutes</span>
+                </div>
+                <div className="glass-timer-card">
+                  <span className="glass-timer-value">{formatDigit(timeLeft.seconds)}</span>
+                  <span className="glass-timer-label">Seconds</span>
+                </div>
               </div>
             </div>
           </div>
@@ -251,10 +278,14 @@ export default function App() {
         {/* ABOUT SECTION */}
         <AboutSection />
 
+        {/* 2025 EVENT HIGHLIGHTS — SCROLL-DRIVEN IMAGE GALLERY */}
+        <EventHighlightsSection />
+
         {/* 2026 THEMATIC FOCUS AREAS */}
         <FocusAreasSection />
 
         {/* PARTNER WITH US SECTION */}
+        {SHOW_PARTNER_SECTION && (
         <section className="container">
           <div className="notify-glass-box" id="partner-section">
             <div className="partner-header-tag">
@@ -369,6 +400,7 @@ export default function App() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Marquee Strip */}
         <div className="marquee-bar" aria-hidden="true">
@@ -385,21 +417,104 @@ export default function App() {
         {/* Footer */}
         <footer className="footer-bar" id="contact">
           <div className="container">
-            <div className="footer-content">
+            <div className="footer-grid">
+              {/* Brand Column */}
+              <div className="footer-col footer-col-brand">
+                <TransparentLogo
+                  src="/logo.png"
+                  alt="AI ASIA SUMMIT 2026 SLASSCOM Logo"
+                  className="footer-logo"
+                />
+                <p className="footer-tagline">
+                  Asia's flagship artificial intelligence conference, uniting leaders,
+                  innovators, and enterprises to explore AI as the multiplier effect
+                  for the region's future.
+                </p>
+                <div className="footer-social-row">
+                  {socialLinks.map(({ name, href, Icon }) => (
+                    <a
+                      key={name}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="footer-social-icon"
+                      aria-label={name}
+                      title={name}
+                    >
+                      <Icon />
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick Links Column */}
+              <div className="footer-col">
+                <h4 className="footer-col-title">Quick Links</h4>
+                <ul className="footer-links-list">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#focus-areas">Thematic Pillars</a></li>
+                  <li><a href="#partner-section">Partnership</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  {SHOW_PARTNER_SECTION && (
+                  <li>
+                    <a href="/sponsorship-proposal.pdf" target="_blank" rel="noreferrer">
+                      Sponsorship Proposal <ExternalLink size={12} style={{ display: 'inline', marginLeft: 4, verticalAlign: 'middle' }} />
+                    </a>
+                  </li>
+                  )}
+                </ul>
+              </div>
+
+              {/* Contact Info Column */}
+              <div className="footer-col">
+                <h4 className="footer-col-title">Contact Us</h4>
+                <ul className="footer-contact-list">
+                  <li>
+                    <span className="footer-contact-icon"><MapPin size={16} /></span>
+                    <span>
+                      SLASSCOM Corporate Office<br />
+                      C/O Elegance, No. 31, Queens Road,<br />
+                      Colombo 00300, Sri Lanka
+                    </span>
+                  </li>
+                  <li>
+                    <span className="footer-contact-icon"><Phone size={16} /></span>
+                    <a href="tel:+94775277266">+94 77 527 7266</a>
+                  </li>
+                  <li>
+                    <span className="footer-contact-icon"><Mail size={16} /></span>
+                    <a href="mailto:corpoffice@slasscom.lk">corpoffice@slasscom.lk</a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Organiser Column */}
+              <div className="footer-col">
+                <h4 className="footer-col-title">Organised By</h4>
+                <a href="https://slasscom.lk" target="_blank" rel="noreferrer" className="footer-org-link">
+                  <Building2 size={16} />
+                  <span>SLASSCOM Official Website</span>
+                  <ExternalLink size={12} />
+                </a>
+                <button className="footer-back-to-top" onClick={() => {
+                  document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}>
+                  <Handshake size={16} />
+                  <span>Become a Partner</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="footer-divider" />
+
+            <div className="footer-bottom-bar">
               <div>
-                © 2026 AI Asia Summit. Organised by <strong style={{ color: '#E8B84B' }}>SLASSCOM</strong>
+                © 2026 AI Asia Summit. Organised by <strong style={{ color: '#E8B84B' }}>SLASSCOM</strong>. All rights reserved.
               </div>
-              <div className="footer-nav">
-                <a href="https://slasscom.lk" target="_blank" rel="noreferrer">
-                  SLASSCOM Official <ExternalLink size={12} style={{ display: 'inline', marginLeft: 4 }} />
-                </a>
-                <a href="https://www.linkedin.com/company/slasscom/" target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-                <a href="mailto:corpoffice@slasscom.lk">
-                  corpoffice@slasscom.lk
-                </a>
-              </div>
+              <button className="footer-scroll-top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top">
+                <ArrowRight size={16} style={{ transform: 'rotate(-90deg)' }} />
+              </button>
             </div>
           </div>
         </footer>
