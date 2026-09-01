@@ -212,7 +212,7 @@ body {
 
 .hero-logo-transparent-wrapper {
   margin: 0 auto 1.25rem;
-  max-width: 680px;
+  max-width: 1020px;
   width: 100%;
   padding: 0.5rem;
   display: flex;
@@ -221,7 +221,7 @@ body {
 }
 
 .hero-logo-transparent-wrapper img {
-  max-height: 170px;
+  max-height: 430px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 25px rgba(0, 163, 224, 0.45));

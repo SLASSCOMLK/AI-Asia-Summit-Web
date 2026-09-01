@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Calendar, 
-  MapPin, 
-  Share2, 
+import {
+  Calendar,
+  MapPin,
+  Share2,
   ArrowRight,
   ExternalLink,
   Clock,
@@ -87,7 +87,7 @@ export default function App() {
     // Direct mailto trigger targeting corpoffice@slasscom.lk
     const mailSubject = encodeURIComponent(`AI Asia Summit 2026 Partnership Inquiry [${partnerType}]`);
     const mailBody = encodeURIComponent(`Hello SLASSCOM Team,\n\nI am interested in partnering with AI Asia Summit 2026.\n\nName / Organization: ${name || 'N/A'}\nWork Email: ${email}\nPartnership Category: ${partnerType}\n\nPlease share the detailed sponsorship proposal and partnership packages.\n\nBest regards,\n${name || email}`);
-    
+
     setTimeout(() => {
       window.location.href = `mailto:corpoffice@slasscom.lk?subject=${mailSubject}&body=${mailBody}`;
     }, 600);
@@ -121,7 +121,7 @@ export default function App() {
 
   const marqueeItems = [
     "AI ASIA SUMMIT 2026",
-    "THEME: AI THE MULTIPLIER EFFECT",
+    "AI THE MULTIPLIER EFFECT",
     "NOVEMBER 2026",
     "COLOMBO, SRI LANKA",
     "PARTNER WITH US: CORPOFFICE@SLASSCOM.LK",
@@ -156,23 +156,23 @@ export default function App() {
               </ul>
 
               {SHOW_PARTNER_SECTION && (
-              <div className="nav-controls-group">
-                <a
-                  href="/sponsorship-proposal.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-outline-pdf"
-                >
-                  <FileText size={14} />
-                  <span>Sponsorship Proposal</span>
-                </a>
+                <div className="nav-controls-group">
+                  <a
+                    href="/sponsorship-proposal.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-outline-pdf"
+                  >
+                    <FileText size={14} />
+                    <span>Sponsorship Proposal</span>
+                  </a>
 
-                <button className="btn-buy-ticket" onClick={() => {
-                  document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  PARTNER WITH US
-                </button>
-              </div>
+                  <button className="btn-buy-ticket" onClick={() => {
+                    document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
+                  }}>
+                    PARTNER WITH US
+                  </button>
+                </div>
               )}
             </div>
           </div>
@@ -202,11 +202,8 @@ export default function App() {
             </h1>
 
             <div className="hero-theme-badge">
-              <span>THEME: AI THE MULTIPLIER EFFECT</span>
+              <span> AI THE MULTIPLIER EFFECT</span>
             </div>
-
-            {/* Interactive 3D AI Robot Face / Visual Showcase */}
-            <AiRobotVisual />
 
             {/* Event Date & Location Pills */}
             <div className="event-pills-row">
@@ -218,32 +215,28 @@ export default function App() {
                 <span className="event-pill-icon"><MapPin size={16} /></span>
                 <span>Colombo, Sri Lanka</span>
               </div>
-              <div className="event-pill">
-                <span className="event-pill-icon"><Building2 size={16} /></span>
-                <span>SLASSCOM Ecosystem</span>
-              </div>
             </div>
 
             {/* Action CTAs */}
             {SHOW_PARTNER_SECTION && (
-            <div className="hero-cta-group">
-              <button className="btn-primary-purple" onClick={() => {
-                document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
-              }}>
-                PARTNER WITH US
-              </button>
+              <div className="hero-cta-group">
+                <button className="btn-primary-purple" onClick={() => {
+                  document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}>
+                  PARTNER WITH US
+                </button>
 
-              <a
-                href="/sponsorship-proposal.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="btn-outline-glass"
-                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
-              >
-                <Download size={16} />
-                <span>VIEW SPONSORSHIP PROPOSAL (PDF)</span>
-              </a>
-            </div>
+                <a
+                  href="/sponsorship-proposal.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-outline-glass"
+                  style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
+                >
+                  <Download size={16} />
+                  <span>VIEW SPONSORSHIP PROPOSAL (PDF)</span>
+                </a>
+              </div>
             )}
 
             {/* FROSTED GLASSMORPHISM COUNTDOWN TIMER */}
@@ -286,120 +279,120 @@ export default function App() {
 
         {/* PARTNER WITH US SECTION */}
         {SHOW_PARTNER_SECTION && (
-        <section className="container">
-          <div className="notify-glass-box" id="partner-section">
-            <div className="partner-header-tag">
-              <Handshake size={16} style={{ color: '#E8B84B' }} />
-              <span>PARTNERSHIP OPPORTUNITIES</span>
-            </div>
-
-            <h2 className="partner-section-title">
-              Become a Sponsor, Speaker or Event Partner
-            </h2>
-
-            {!submitted ? (
-              <form className="partner-form-card" onSubmit={handlePartnerSubmit}>
-                {/* Category Selector */}
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <label className="form-field-label">
-                    Sponsorship / Partnership Category
-                  </label>
-                  <select 
-                    value={partnerType} 
-                    onChange={(e) => setPartnerType(e.target.value)}
-                    className="form-select-field"
-                  >
-                    <option value="Strategic Sponsor">Strategic Sponsor (LKR 5.0 Mn + Taxes)</option>
-                    <option value="Platinum Sponsor">Platinum Sponsor (LKR 2.5 Mn + Taxes)</option>
-                    <option value="Gold Sponsor">Gold Sponsor (LKR 1.5 Mn + Taxes)</option>
-                    <option value="Silver Sponsor">Silver Sponsor (LKR 1.0 Mn + Taxes)</option>
-                    <option value="Keynote / Session Speaker">Keynote / Session Speaker</option>
-                    <option value="Academic & Research Partner">Academic & Research Partner</option>
-                    <option value="Executive Delegate Pass">Executive Delegate / Enterprise Passes</option>
-                  </select>
-                </div>
-
-                <div className="form-fields-grid">
-                  <div>
-                    <label className="form-field-label">
-                      Your Name / Organization *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Jane Doe / GlobalTech Inc."
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="form-input-field"
-                    />
-                  </div>
-                  <div>
-                    <label className="form-field-label">
-                      Work Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="name@company.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="form-input-field"
-                    />
-                  </div>
-                </div>
-
-                <div className="partner-buttons-row">
-                  <button type="submit" className="btn-gold-action">
-                    <span>Submit Partnership Inquiry</span>
-                    <Send size={16} />
-                  </button>
-
-                  <a 
-                    href="/sponsorship-proposal.pdf" 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="btn-pdf-proposal"
-                  >
-                    <FileText size={16} />
-                    <span>View Sponsorship Deck (PDF)</span>
-                  </a>
-                </div>
-
-                <div className="dispatch-note">
-                  Inquiries directly dispatched to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>
-                </div>
-              </form>
-            ) : (
-              <div className="glass-success-card">
-                <CheckCircle2 size={40} style={{ color: '#E8B84B', margin: '0 auto 0.75rem' }} />
-                <h3 className="success-title">Partnership Request Dispatched!</h3>
-                <p style={{ color: '#94A3B8', fontSize: '0.92rem', lineHeight: '1.6', maxWidth: '520px', margin: '0 auto' }}>
-                  Thank you <strong style={{ color: '#FFFFFF' }}>{name || email}</strong>. Your <strong style={{ color: '#00A3E0' }}>{partnerType}</strong> proposal request has been dispatched directly to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>. The SLASSCOM leadership team will contact you shortly.
-                </p>
+          <section className="container">
+            <div className="notify-glass-box" id="partner-section">
+              <div className="partner-header-tag">
+                <Handshake size={16} style={{ color: '#E8B84B' }} />
+                <span>PARTNERSHIP OPPORTUNITIES</span>
               </div>
-            )}
 
-            {/* Quick Secondary Utilities */}
-            <div className="secondary-glass-actions">
-              <button className="btn-glass-sm" onClick={handleAddToCalendar}>
-                <Calendar size={14} style={{ color: '#E8B84B' }} />
-                <span>Add to Calendar</span>
-              </button>
-              <button className="btn-glass-sm" onClick={handleShare}>
-                <Share2 size={14} style={{ color: '#00A3E0' }} />
-                <span>{copied ? "Link Copied!" : "Share Summit"}</span>
-              </button>
-              <a 
-                href="mailto:corpoffice@slasscom.lk" 
-                className="btn-glass-sm" 
-                style={{ textDecoration: 'none' }}
-              >
-                <Mail size={14} style={{ color: '#E8B84B' }} />
-                <span>corpoffice@slasscom.lk</span>
-              </a>
+              <h2 className="partner-section-title">
+                Become a Sponsor, Speaker or Event Partner
+              </h2>
+
+              {!submitted ? (
+                <form className="partner-form-card" onSubmit={handlePartnerSubmit}>
+                  {/* Category Selector */}
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label className="form-field-label">
+                      Sponsorship / Partnership Category
+                    </label>
+                    <select
+                      value={partnerType}
+                      onChange={(e) => setPartnerType(e.target.value)}
+                      className="form-select-field"
+                    >
+                      <option value="Strategic Sponsor">Strategic Sponsor (LKR 5.0 Mn + Taxes)</option>
+                      <option value="Platinum Sponsor">Platinum Sponsor (LKR 2.5 Mn + Taxes)</option>
+                      <option value="Gold Sponsor">Gold Sponsor (LKR 1.5 Mn + Taxes)</option>
+                      <option value="Silver Sponsor">Silver Sponsor (LKR 1.0 Mn + Taxes)</option>
+                      <option value="Keynote / Session Speaker">Keynote / Session Speaker</option>
+                      <option value="Academic & Research Partner">Academic & Research Partner</option>
+                      <option value="Executive Delegate Pass">Executive Delegate / Enterprise Passes</option>
+                    </select>
+                  </div>
+
+                  <div className="form-fields-grid">
+                    <div>
+                      <label className="form-field-label">
+                        Your Name / Organization *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Jane Doe / GlobalTech Inc."
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="form-input-field"
+                      />
+                    </div>
+                    <div>
+                      <label className="form-field-label">
+                        Work Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="name@company.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="form-input-field"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="partner-buttons-row">
+                    <button type="submit" className="btn-gold-action">
+                      <span>Submit Partnership Inquiry</span>
+                      <Send size={16} />
+                    </button>
+
+                    <a
+                      href="/sponsorship-proposal.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-pdf-proposal"
+                    >
+                      <FileText size={16} />
+                      <span>View Sponsorship Deck (PDF)</span>
+                    </a>
+                  </div>
+
+                  <div className="dispatch-note">
+                    Inquiries directly dispatched to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>
+                  </div>
+                </form>
+              ) : (
+                <div className="glass-success-card">
+                  <CheckCircle2 size={40} style={{ color: '#E8B84B', margin: '0 auto 0.75rem' }} />
+                  <h3 className="success-title">Partnership Request Dispatched!</h3>
+                  <p style={{ color: '#94A3B8', fontSize: '0.92rem', lineHeight: '1.6', maxWidth: '520px', margin: '0 auto' }}>
+                    Thank you <strong style={{ color: '#FFFFFF' }}>{name || email}</strong>. Your <strong style={{ color: '#00A3E0' }}>{partnerType}</strong> proposal request has been dispatched directly to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>. The SLASSCOM leadership team will contact you shortly.
+                  </p>
+                </div>
+              )}
+
+              {/* Quick Secondary Utilities */}
+              <div className="secondary-glass-actions">
+                <button className="btn-glass-sm" onClick={handleAddToCalendar}>
+                  <Calendar size={14} style={{ color: '#E8B84B' }} />
+                  <span>Add to Calendar</span>
+                </button>
+                <button className="btn-glass-sm" onClick={handleShare}>
+                  <Share2 size={14} style={{ color: '#00A3E0' }} />
+                  <span>{copied ? "Link Copied!" : "Share Summit"}</span>
+                </button>
+                <a
+                  href="mailto:corpoffice@slasscom.lk"
+                  className="btn-glass-sm"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Mail size={14} style={{ color: '#E8B84B' }} />
+                  <span>corpoffice@slasscom.lk</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
         )}
 
         {/* Marquee Strip */}
@@ -457,11 +450,11 @@ export default function App() {
                   <li><a href="#partner-section">Partnership</a></li>
                   <li><a href="#contact">Contact</a></li>
                   {SHOW_PARTNER_SECTION && (
-                  <li>
-                    <a href="/sponsorship-proposal.pdf" target="_blank" rel="noreferrer">
-                      Sponsorship Proposal <ExternalLink size={12} style={{ display: 'inline', marginLeft: 4, verticalAlign: 'middle' }} />
-                    </a>
-                  </li>
+                    <li>
+                      <a href="/sponsorship-proposal.pdf" target="_blank" rel="noreferrer">
+                        Sponsorship Proposal <ExternalLink size={12} style={{ display: 'inline', marginLeft: 4, verticalAlign: 'middle' }} />
+                      </a>
+                    </li>
                   )}
                 </ul>
               </div>
