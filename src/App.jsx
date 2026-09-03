@@ -5,7 +5,6 @@ import {
   Share2,
   ArrowRight,
   ExternalLink,
-  Clock,
   Mail,
   Handshake,
   CheckCircle2,
@@ -18,15 +17,22 @@ import {
 import confetti from 'canvas-confetti';
 import TransparentLogo from './components/TransparentLogo';
 import CustomCursor from './components/CustomCursor';
+import LoadingScreen from './components/LoadingScreen';
+import EventCountdown from './components/EventCountdown';
 import AboutSection from './components/AboutSection';
 import EventHighlightsSection from './components/EventHighlightsSection';
 import FocusAreasSection from './components/FocusAreasSection';
 import AiRobotVisual from './components/AiRobotVisual';
-import YouTubeBackground from './components/YouTubeBackground';
+import KineticGridBackground from './components/KineticGridBackground';
+import ScrollFloat from './components/ScrollFloat';
+import LogoOrb from './components/LogoOrb';
 import { LinkedInIcon, XIcon, FacebookIcon, InstagramIcon, YouTubeIcon } from './components/SocialIcons';
 
 // Temporarily hidden — re-enable by flipping this back to true when ready to launch partnerships
 const SHOW_PARTNER_SECTION = false;
+
+const MIN_LOADING_TIME = 4000;
+const LOADING_FADE_DURATION = 600;
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -34,6 +40,39 @@ export default function App() {
   const [partnerType, setPartnerType] = useState('Strategic Sponsor');
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+
+  // Loading Screen: stays visible for at least MIN_LOADING_TIME, and until the
+  // page has actually finished loading — whichever takes longer.
+  useEffect(() => {
+    const startTime = Date.now();
+
+    const finishLoading = () => {
+      const elapsed = Date.now() - startTime;
+      const remaining = Math.max(MIN_LOADING_TIME - elapsed, 0);
+
+      setTimeout(() => {
+        setIsFadingOut(true);
+        setTimeout(() => setIsLoading(false), LOADING_FADE_DURATION);
+      }, remaining);
+    };
+
+    if (document.readyState === 'complete') {
+      finishLoading();
+      return undefined;
+    }
+
+    window.addEventListener('load', finishLoading, { once: true });
+    return () => window.removeEventListener('load', finishLoading);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isLoading ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isLoading]);
 
   // Target Date: November 12, 2026, 08:30 AM Colombo Time (UTC+5:30 => 03:00 AM UTC)
   const targetDate = new Date(Date.UTC(2026, 10, 12, 3, 0, 0)).getTime();
@@ -131,6 +170,9 @@ export default function App() {
 
   return (
     <>
+      {/* Loading Screen — shown for a minimum of 4s while the site loads */}
+      {isLoading && <LoadingScreen fadeOut={isFadingOut} />}
+
       {/* Precision Custom Pointer Cursor */}
       <CustomCursor />
 
@@ -138,54 +180,59 @@ export default function App() {
         {/* Top Executive Navbar Header */}
         <header className="navbar">
           <div className="container">
-            <div className="navbar-inner">
-              <a href="#" className="navbar-logo-link">
-                <img
-                  src="/logo-white.png"
-                  alt="SLASSCOM AI ASIA SUMMIT 2026"
-                  className="navbar-transparent-logo"
-                />
-              </a>
+            <div className="navbar-glass">
+              <div className="navbar-inner">
+                <a href="#" className="navbar-logo-link">
+                  <img
+                    src="/logo-white.png"
+                    alt="SLASSCOM AI ASIA SUMMIT 2026"
+                    className="navbar-transparent-logo"
+                  />
+                </a>
 
-              <ul className="nav-links">
-                <li><a href="#" className="nav-link active">Home</a></li>
-                <li><a href="#about" className="nav-link">About</a></li>
-                <li><a href="#focus-areas" className="nav-link">Thematic Pillars</a></li>
-                <li><a href="#partner-section" className="nav-link">Partnership</a></li>
-                <li><a href="#contact" className="nav-link">Contact</a></li>
-              </ul>
+                <ul className="nav-links">
+                  <li><a href="#" className="nav-link active">Home</a></li>
+                  <li><a href="#about" className="nav-link">About</a></li>
+                  <li><a href="#focus-areas" className="nav-link">Thematic Pillars</a></li>
+                  <li><a href="#partner-section" className="nav-link">Partnership</a></li>
+                  <li><a href="#contact" className="nav-link">Contact</a></li>
+                </ul>
 
-              {SHOW_PARTNER_SECTION && (
-                <div className="nav-controls-group">
-                  <a
-                    href="/sponsorship-proposal.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-outline-pdf"
-                  >
-                    <FileText size={14} />
-                    <span>Sponsorship Proposal</span>
-                  </a>
+                {SHOW_PARTNER_SECTION && (
+                  <div className="nav-controls-group">
+                    <a
+                      href="/sponsorship-proposal.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-outline-pdf"
+                    >
+                      <FileText size={14} />
+                      <span>Sponsorship Proposal</span>
+                    </a>
 
-                  <button className="btn-buy-ticket" onClick={() => {
-                    document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
-                  }}>
-                    PARTNER WITH US
-                  </button>
-                </div>
-              )}
+                    <button className="btn-buy-ticket" onClick={() => {
+                      document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
+                    }}>
+                      PARTNER WITH US
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </header>
 
         {/* Executive Hero Section */}
         <main className="hero-section container">
-          {/* HD YouTube Video Background — scoped to hero section only */}
-          <YouTubeBackground isVideoActive={true} isMuted={true} />
+          {/* Interactive Kinetic Grid Background — scoped to hero section only */}
+          <KineticGridBackground />
 
           <div className="hero-content">
             {/* Official White Logo */}
             <div className="hero-logo-transparent-wrapper">
+              <div className="hero-logo-orb" aria-hidden="true">
+                <LogoOrb hue={0} />
+              </div>
               <img
                 src="/logo-white.png"
                 alt="AI ASIA SUMMIT 2026 SLASSCOM Logo"
@@ -193,27 +240,19 @@ export default function App() {
             </div>
 
             {/* Headline Typography */}
-            <h1 className="hero-title-text hero-title-animated">
-              {"LAUNCHING SOON".split("").map((char, i) => (
-                <span key={i} className="hero-letter" style={{ '--i': i }}>
-                  {char === " " ? " " : char}
-                </span>
-              ))}
+            <h1 className="hero-title-text">
+              AI THE <span className="hero-gradient-text">MULTIPLIER</span> EFFECT
             </h1>
 
-            <div className="hero-theme-badge">
-              <span> AI THE MULTIPLIER EFFECT</span>
-            </div>
+
 
             {/* Event Date & Location Pills */}
             <div className="event-pills-row">
               <div className="event-pill">
-                <span className="event-pill-icon"><Calendar size={16} /></span>
-                <span>November 2026</span>
+                <span>12th November 2026</span>
               </div>
               <div className="event-pill">
-                <span className="event-pill-icon"><MapPin size={16} /></span>
-                <span>Colombo, Sri Lanka</span>
+                <span>Cinnamon Grand, Colombo</span>
               </div>
             </div>
 
@@ -240,42 +279,18 @@ export default function App() {
             )}
 
             {/* FROSTED GLASSMORPHISM COUNTDOWN TIMER */}
-            <div className="glass-countdown-container">
-              <div className="glass-countdown-header">
-                <Clock size={16} style={{ color: '#E8B84B' }} />
-                <span>EVENT COUNTDOWN • UTC+5:30 COLOMBO TIME</span>
-              </div>
-
-              <div className="glass-timer-grid">
-                <div className="glass-timer-card">
-                  <span className="glass-timer-value">{formatDigit(timeLeft.days)}</span>
-                  <span className="glass-timer-label">Days</span>
-                </div>
-                <div className="glass-timer-card">
-                  <span className="glass-timer-value">{formatDigit(timeLeft.hours)}</span>
-                  <span className="glass-timer-label">Hours</span>
-                </div>
-                <div className="glass-timer-card">
-                  <span className="glass-timer-value">{formatDigit(timeLeft.minutes)}</span>
-                  <span className="glass-timer-label">Minutes</span>
-                </div>
-                <div className="glass-timer-card">
-                  <span className="glass-timer-value">{formatDigit(timeLeft.seconds)}</span>
-                  <span className="glass-timer-label">Seconds</span>
-                </div>
-              </div>
-            </div>
+            <EventCountdown timeLeft={timeLeft} formatDigit={formatDigit} />
           </div>
         </main>
 
         {/* ABOUT SECTION */}
         <AboutSection />
 
-        {/* 2025 EVENT HIGHLIGHTS — SCROLL-DRIVEN IMAGE GALLERY */}
-        <EventHighlightsSection />
-
         {/* 2026 THEMATIC FOCUS AREAS */}
         <FocusAreasSection />
+
+        {/* 2025 EVENT HIGHLIGHTS — SCROLL-DRIVEN IMAGE GALLERY */}
+        <EventHighlightsSection />
 
         {/* PARTNER WITH US SECTION */}
         {SHOW_PARTNER_SECTION && (
@@ -286,9 +301,9 @@ export default function App() {
                 <span>PARTNERSHIP OPPORTUNITIES</span>
               </div>
 
-              <h2 className="partner-section-title">
+              <ScrollFloat containerClassName="partner-section-title">
                 Become a Sponsor, Speaker or Event Partner
-              </h2>
+              </ScrollFloat>
 
               {!submitted ? (
                 <form className="partner-form-card" onSubmit={handlePartnerSubmit}>
@@ -471,10 +486,7 @@ export default function App() {
                       Colombo 00300, Sri Lanka
                     </span>
                   </li>
-                  <li>
-                    <span className="footer-contact-icon"><Phone size={16} /></span>
-                    <a href="tel:+94775277266">+94 77 527 7266</a>
-                  </li>
+
                   <li>
                     <span className="footer-contact-icon"><Mail size={16} /></span>
                     <a href="mailto:corpoffice@slasscom.lk">corpoffice@slasscom.lk</a>
