@@ -1,7 +1,31 @@
-import React from 'react';
-import { Layers, MapPin, CheckCircle, Target, Award, Rocket, Globe } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Layers, CheckCircle, Target, Award, Rocket, Globe } from 'lucide-react';
+
+const YOUTUBE_VIDEO_ID = '6fsM7-KnKWg';
+const YOUTUBE_START_SECONDS = 12;
 
 export default function AboutSection() {
+  const videoWrapperRef = useRef(null);
+  const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
+
+  useEffect(() => {
+    const node = videoWrapperRef.current;
+    if (!node) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStartedPlaying(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="about-section container" id="about">
       <div className="about-grid">
@@ -14,7 +38,8 @@ export default function AboutSection() {
 
           <h2 className="about-title">
             Sri Lanka's Premier Engine for <br />
-            <span className="about-title-highlight">AI Transformation</span>
+            <span className="about-title-highlight">AI </span>
+            <span className="hero-gradient-text">Transformation</span>
           </h2>
 
           <p className="about-description">
@@ -56,25 +81,20 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Right Column: Animated Sri Lanka Map Video Showcase */}
+        {/* Right Column: Summit Highlight Video */}
         <div className="about-video-container">
-          <div className="about-video-wrapper">
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="about-map-video"
-            >
-              <source src="/sri-lanka-map.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            
-            {/* Overlay Glass Badge (Zero Emojis) */}
-            <div className="map-location-badge">
-              <MapPin size={14} style={{ color: '#E8B84B' }} />
-              <span>COLOMBO, SRI LANKA • SUMMIT HUB</span>
-            </div>
+          <div className="about-video-wrapper" ref={videoWrapperRef}>
+            {hasStartedPlaying && (
+              <iframe
+                className="about-map-video"
+                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?start=${YOUTUBE_START_SECONDS}&autoplay=1&mute=1`}
+                title="AI Asia Summit 2026 Highlight Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            )}
           </div>
         </div>
       </div>
