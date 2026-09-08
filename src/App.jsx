@@ -12,7 +12,9 @@ import {
   FileText,
   Download,
   Building2,
-  Phone
+  Phone,
+  Menu,
+  X
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import TransparentLogo from './components/TransparentLogo';
@@ -42,6 +44,14 @@ export default function App() {
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   // Loading Screen: stays visible for at least MIN_LOADING_TIME, and until the
   // page has actually finished loading — whichever takes longer.
@@ -217,7 +227,26 @@ export default function App() {
                     </button>
                   </div>
                 )}
+
+                <button
+                  className="nav-menu-toggle"
+                  onClick={() => setMobileMenuOpen((prev) => !prev)}
+                  aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                  aria-expanded={mobileMenuOpen}
+                >
+                  {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
               </div>
+            </div>
+
+            <div className={`nav-mobile-panel${mobileMenuOpen ? ' is-open' : ''}`}>
+              <ul className="nav-mobile-links">
+                <li><a href="#" className="nav-link active" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
+                <li><a href="#about" className="nav-link" onClick={() => setMobileMenuOpen(false)}>About</a></li>
+                <li><a href="#focus-areas" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Thematic Pillars</a></li>
+                <li><a href="#partner-section" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Partnership</a></li>
+                <li><a href="#contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
+              </ul>
             </div>
           </div>
         </header>

@@ -3,9 +3,25 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function CircularGallery({ items, radius = 320, autoRotateSpeed = 0.05 }) {
   const [rotation, setRotation] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [effectiveRadius, setEffectiveRadius] = useState(radius);
   const containerRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
   const rafRef = useRef(null);
+
+  useEffect(() => {
+    const computeRadius = () => {
+      const w = window.innerWidth;
+      if (w <= 480) return 140;
+      if (w <= 640) return 175;
+      if (w <= 900) return 240;
+      return radius;
+    };
+
+    const updateRadius = () => setEffectiveRadius(computeRadius());
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, [radius]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,7 +86,7 @@ export default function CircularGallery({ items, radius = 320, autoRotateSpeed =
               key={item.src}
               className="circular-gallery-item"
               style={{
-                transform: `rotateY(${itemAngle}deg) translateZ(${radius}px)`,
+                transform: `rotateY(${itemAngle}deg) translateZ(${effectiveRadius}px)`,
                 opacity
               }}
             >
