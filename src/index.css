@@ -1699,3 +1699,335 @@ body {
     transform: scale(1);
   }
 }
+
+/* ==========================================================================
+   HEADER REGISTRATION BUTTON
+   ========================================================================== */
+
+.btn-register-header {
+  background: linear-gradient(135deg, #2E63FF 0%, #7C3AED 100%);
+  color: #FFFFFF;
+  font-family: var(--font-nav);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 18px rgba(46, 99, 255, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-register-header:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  box-shadow: 0 8px 26px rgba(124, 58, 237, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   TICKET PRICING SECTION & SQUISHY CARDS
+   ========================================================================== */
+
+.pricing-section {
+  padding: 5rem 0 6rem;
+  position: relative;
+  z-index: 10;
+}
+
+.squishy-pricing-wrapper {
+  width: 100%;
+  margin: 0 auto 3rem;
+}
+
+.squishy-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .squishy-pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 720px) {
+  .squishy-pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+  }
+}
+
+.squishy-card {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.85rem 5.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+  backdrop-filter: blur(20px);
+}
+
+.squishy-card:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Card Themes */
+.squishy-bg-member {
+  background: linear-gradient(160deg, #0d1b3e 0%, #17387e 50%, #2054b8 100%);
+  border-color: rgba(46, 99, 255, 0.35);
+}
+
+.squishy-bg-member:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(46, 99, 255, 0.35);
+  border-color: #2E63FF;
+}
+
+.squishy-bg-nonmember {
+  background: linear-gradient(160deg, #1e1035 0%, #3e1b6f 50%, #632bb0 100%);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.squishy-bg-nonmember:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(124, 58, 237, 0.4);
+  border-color: #A855F7;
+}
+
+.squishy-bg-enterprise {
+  background: linear-gradient(160deg, #1a1608 0%, #3d2f0d 50%, #684f14 100%);
+  border-color: rgba(232, 184, 75, 0.35);
+}
+
+.squishy-bg-enterprise:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(232, 184, 75, 0.35);
+  border-color: #E8B84B;
+}
+
+.squishy-card-featured {
+  border-width: 2px;
+  border-color: rgba(168, 85, 247, 0.7);
+}
+
+.squishy-card-content {
+  position: relative;
+  z-index: 10;
+  color: #FFFFFF;
+}
+
+.squishy-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.squishy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-nav);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.squishy-sparkle-icon {
+  color: var(--color-gold);
+}
+
+.squishy-stock-pill {
+  font-family: var(--font-nav);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+.squishy-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.squishy-price-box {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.squishy-price-digits {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.squishy-currency {
+  font-size: 1.25rem;
+  font-weight: 700;
+  opacity: 0.85;
+  margin-right: 2px;
+}
+
+.squishy-amount {
+  font-variant-numeric: tabular-nums;
+}
+
+.squishy-period {
+  font-family: var(--font-nav);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+}
+
+.squishy-validity-tag {
+  display: inline-block;
+  font-family: var(--font-nav);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  background: rgba(6, 8, 20, 0.4);
+  border: 1px solid rgba(232, 184, 75, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.squishy-description {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 1.25rem;
+}
+
+.squishy-meta-row {
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-nav);
+}
+
+.squishy-tax-note {
+  font-style: italic;
+}
+
+/* Card Button */
+.squishy-btn-container {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.85rem;
+  right: 1.85rem;
+  z-index: 20;
+}
+
+.squishy-cta-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 2px solid #FFFFFF;
+  background: #FFFFFF;
+  color: #060814;
+  font-family: var(--font-nav);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.squishy-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  backdrop-filter: blur(10px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Background SVG */
+.squishy-svg-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+/* Trust Strip */
+.pricing-trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 1.75rem 2rem;
+  background: rgba(11, 21, 48, 0.4);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-nav);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.trust-item span {
+  color: #FFFFFF;
+}

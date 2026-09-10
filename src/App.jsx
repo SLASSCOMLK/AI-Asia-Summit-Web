@@ -23,6 +23,7 @@ import AboutSection from './components/AboutSection';
 import EventHighlightsSection from './components/EventHighlightsSection';
 import FocusAreasSection from './components/FocusAreasSection';
 import AiRobotVisual from './components/AiRobotVisual';
+import TicketPricingSection from './components/TicketPricingSection';
 import KineticGridBackground from './components/KineticGridBackground';
 import ScrollFloat from './components/ScrollFloat';
 import LogoOrb from './components/LogoOrb';
@@ -30,6 +31,7 @@ import { LinkedInIcon, XIcon, FacebookIcon, InstagramIcon, YouTubeIcon } from '.
 
 // Temporarily hidden — re-enable by flipping this back to true when ready to launch partnerships
 const SHOW_PARTNER_SECTION = false;
+const REGISTRATION_URL = 'https://slasscom.glueup.com/event/ai-asia-summit-2026-193153/';
 
 const MIN_LOADING_TIME = 4000;
 const LOADING_FADE_DURATION = 600;
@@ -194,12 +196,14 @@ export default function App() {
                   <li><a href="#" className="nav-link active">Home</a></li>
                   <li><a href="#about" className="nav-link">About</a></li>
                   <li><a href="#focus-areas" className="nav-link">Thematic Pillars</a></li>
-                  <li><a href="#partner-section" className="nav-link">Partnership</a></li>
+                  <li><a href="#highlights" className="nav-link">Event Archive</a></li>
+                  <li><a href="#tickets" className="nav-link">Tickets</a></li>
+                  {SHOW_PARTNER_SECTION && <li><a href="#partner-section" className="nav-link">Partnership</a></li>}
                   <li><a href="#contact" className="nav-link">Contact</a></li>
                 </ul>
 
-                {SHOW_PARTNER_SECTION && (
-                  <div className="nav-controls-group">
+                <div className="nav-controls-group">
+                  {SHOW_PARTNER_SECTION && (
                     <a
                       href="/sponsorship-proposal.pdf"
                       target="_blank"
@@ -209,14 +213,18 @@ export default function App() {
                       <FileText size={14} />
                       <span>Sponsorship Proposal</span>
                     </a>
+                  )}
 
-                    <button className="btn-buy-ticket" onClick={() => {
-                      document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
-                    }}>
-                      PARTNER WITH US
-                    </button>
-                  </div>
-                )}
+                  <a
+                    href={REGISTRATION_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-register-header"
+                  >
+                    <span>REGISTER NOW</span>
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -244,8 +252,6 @@ export default function App() {
               AI THE <span className="hero-gradient-text">MULTIPLIER</span> EFFECT
             </h1>
 
-
-
             {/* Event Date & Location Pills */}
             <div className="event-pills-row">
               <div className="event-pill">
@@ -256,27 +262,28 @@ export default function App() {
               </div>
             </div>
 
-            {/* Action CTAs */}
-            {SHOW_PARTNER_SECTION && (
-              <div className="hero-cta-group">
-                <button className="btn-primary-purple" onClick={() => {
-                  document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  PARTNER WITH US
-                </button>
+            {/* Hero Action CTAs */}
+            <div className="hero-cta-group">
+              <a
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary-purple"
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
+              >
+                <span>GET TICKETS</span>
+                <ExternalLink size={15} />
+              </a>
 
-                <a
-                  href="/sponsorship-proposal.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-outline-glass"
-                  style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
-                >
-                  <Download size={16} />
-                  <span>VIEW SPONSORSHIP PROPOSAL (PDF)</span>
-                </a>
-              </div>
-            )}
+              <a
+                href="#tickets"
+                className="btn-outline-glass"
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
+              >
+                <ArrowRight size={15} />
+                <span>EXPLORE PASSES</span>
+              </a>
+            </div>
 
             {/* FROSTED GLASSMORPHISM COUNTDOWN TIMER */}
             <EventCountdown timeLeft={timeLeft} formatDigit={formatDigit} />
@@ -291,6 +298,9 @@ export default function App() {
 
         {/* 2025 EVENT HIGHLIGHTS — SCROLL-DRIVEN IMAGE GALLERY */}
         <EventHighlightsSection />
+
+        {/* TICKET PRICING SECTION — SQUISHY PRICING CARDS */}
+        <TicketPricingSection />
 
         {/* PARTNER WITH US SECTION */}
         {SHOW_PARTNER_SECTION && (
@@ -462,7 +472,9 @@ export default function App() {
                   <li><a href="#">Home</a></li>
                   <li><a href="#about">About</a></li>
                   <li><a href="#focus-areas">Thematic Pillars</a></li>
-                  <li><a href="#partner-section">Partnership</a></li>
+                  <li><a href="#highlights">Event Archive</a></li>
+                  <li><a href="#tickets">Tickets & Passes</a></li>
+                  {SHOW_PARTNER_SECTION && <li><a href="#partner-section">Partnership</a></li>}
                   <li><a href="#contact">Contact</a></li>
                   {SHOW_PARTNER_SECTION && (
                     <li>
