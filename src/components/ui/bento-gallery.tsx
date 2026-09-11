@@ -1,13 +1,7 @@
 "use client"
 
 import React, { useRef, useState, useEffect } from "react"
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion"
-import { cn } from "@/lib/utils"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 
 type ImageItem = {
@@ -55,33 +49,75 @@ const ImageModal = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
       onClick={onClose}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(6, 8, 20, 0.9)',
+        backdropFilter: 'blur(16px)',
+        padding: '1.5rem'
+      }}
     >
       <motion.div
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
-        className="relative w-full max-w-4xl p-4"
         onClick={(e) => e.stopPropagation()}
+        style={{
+          position: 'relative',
+          maxWidth: '900px',
+          width: '100%',
+          backgroundColor: '#0B1530',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: '20px',
+          padding: '1.5rem',
+          boxShadow: '0 30px 80px rgba(0, 0, 0, 0.8)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
       >
         <img
           src={item.url}
           alt={item.title}
-          className="h-auto max-h-[90vh] w-full rounded-lg object-contain"
+          style={{
+            width: '100%',
+            maxHeight: '70vh',
+            objectFit: 'contain',
+            borderRadius: '12px',
+            marginBottom: '1rem'
+          }}
         />
-        <div className="mt-3 text-center">
-          <h3 className="text-xl font-bold text-white">{item.title}</h3>
-          {item.desc && <p className="mt-1 text-sm text-gray-300">{item.desc}</p>}
+        <div style={{ textAlign: 'center' }}>
+          <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.35rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>{item.title}</h3>
+          {item.desc && <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: '#94A3B8' }}>{item.desc}</p>}
         </div>
+        <button
+          onClick={onClose}
+          aria-label="Close image view"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.25)',
+            color: '#FFFFFF',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer'
+          }}
+        >
+          <X size={20} />
+        </button>
       </motion.div>
-      <button
-        onClick={onClose}
-        className="absolute right-6 top-6 rounded-full bg-black/60 p-2 text-white/80 transition-colors hover:bg-black/90 hover:text-white"
-        aria-label="Close image view"
-      >
-        <X size={24} />
-      </button>
     </motion.div>
   )
 }
@@ -120,69 +156,110 @@ const InteractiveImageBentoGallery: React.FC<
   return (
     <section
       ref={targetRef}
-      className="relative w-full overflow-hidden py-12 sm:py-16"
+      style={{ position: 'relative', width: '100%', padding: '1.5rem 0' }}
     >
-      <motion.div
-        style={{ opacity, y }}
-        className="container mx-auto px-4 text-center"
-      >
-        {title && (
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            {title}
-          </h2>
-        )}
-        {description && (
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            {description}
-          </p>
-        )}
-      </motion.div>
+      {(title || description) && (
+        <motion.div
+          style={{ opacity, y }}
+          className="container mx-auto px-4 text-center"
+        >
+          {title && (
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              {title}
+            </h2>
+          )}
+          {description && (
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              {description}
+            </p>
+          )}
+        </motion.div>
+      )}
 
       <div
         ref={containerRef}
-        className="relative mt-8 w-full cursor-grab active:cursor-grabbing"
+        style={{
+          position: 'relative',
+          marginTop: '1.5rem',
+          width: '100%',
+          overflowX: 'auto',
+          cursor: 'grab',
+          paddingBottom: '1rem'
+        }}
       >
         <motion.div
-          className="w-max"
+          style={{ width: 'max-content' }}
           drag="x"
           dragConstraints={{ left: dragConstraint, right: 0 }}
           dragElastic={0.05}
         >
           <motion.div
             ref={gridRef}
-            className="grid auto-cols-[minmax(16rem,1fr)] grid-flow-col gap-4 px-4 md:px-8"
+            style={{
+              display: 'flex',
+              gap: '1.25rem',
+              padding: '0 1rem'
+            }}
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {imageItems.map((item) => (
-              <motion.div
-                key={item.id}
-                variants={itemVariants}
-                className={cn(
-                  "group relative flex h-full min-h-[16rem] w-full min-w-[16rem] cursor-pointer items-end overflow-hidden rounded-xl border border-white/10 bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                  item.span,
-                )}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                onClick={() => setSelectedItem(item)}
-                onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
-                tabIndex={0}
-                aria-label={`View ${item.title}`}
-              >
-                <img
-                  src={item.url}
-                  alt={item.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                  <p className="mt-1 text-sm text-white/80">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+            {imageItems.map((item) => {
+              const isFeatured = item.span && item.span.includes('col-span-2');
+              return (
+                <motion.div
+                  key={item.id}
+                  variants={itemVariants}
+                  style={{
+                    position: 'relative',
+                    flexShrink: 0,
+                    width: isFeatured ? '480px' : '300px',
+                    height: '360px',
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    border: '1px solid rgba(255, 255, 255, 0.18)',
+                    backgroundColor: '#0B1530',
+                    boxShadow: '0 12px 35px rgba(0, 0, 0, 0.45)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    padding: '1.35rem'
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  onClick={() => setSelectedItem(item)}
+                  onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
+                  tabIndex={0}
+                  aria-label={`View ${item.title}`}
+                >
+                  <img
+                    src={item.url}
+                    alt={item.title}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 0.5s ease'
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to top, rgba(6, 8, 20, 0.95) 0%, rgba(6, 8, 20, 0.4) 60%, transparent 100%)',
+                      pointerEvents: 'none'
+                    }}
+                  />
+                  <div style={{ position: 'relative', zIndex: 10, color: '#FFFFFF' }}>
+                    <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.2rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>{item.title}</h3>
+                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.85)', lineHeight: '1.4' }}>{item.desc}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </motion.div>
       </div>
