@@ -1,7 +1,8 @@
 import React from 'react';
 import { Camera } from 'lucide-react';
 import ScrollFloat from './ScrollFloat';
-import CircularGallery from './CircularGallery';
+import InteractiveImageBentoGallery from './ui/bento-gallery';
+
 import archiveImg1 from '../assets/images/Copy of EAF01214 (2).jpg';
 import archiveImg2 from '../assets/images/Copy of NVD_254892.jpg';
 import archiveImg3 from '../assets/images/Copy of EAF00943 (1).jpg';
@@ -9,34 +10,50 @@ import archiveImg4 from '../assets/images/Copy of EAF01379.jpg';
 import archiveImg5 from '../assets/images/Copy of EAF01671.jpg';
 import archiveImg6 from '../assets/images/Copy of NVD_254839.jpg';
 
-const highlights = [
+const imageItems = [
   {
-    title: 'Opening Keynote: AI Asia Summit 2025 Takes the Stage',
-    src: archiveImg1
+    id: 1,
+    title: "Opening Keynote",
+    desc: "AI Asia Summit 2025 Takes the Stage — Setting the tone for Asia's premier AI gathering.",
+    url: archiveImg1,
+    span: "md:col-span-2 md:row-span-2",
   },
   {
-    title: 'Panel: Responsible AI & Ethical AI',
-    src: archiveImg2
+    id: 2,
+    title: "Responsible AI Panel",
+    desc: "Ethical AI, governance & human-centric frameworks discussed by industry leaders.",
+    url: archiveImg2,
+    span: "md:row-span-1",
   },
   {
-    title: 'Summit Partners & Ecosystem Showcase',
-    src: archiveImg3
+    id: 3,
+    title: "Ecosystem Showcase",
+    desc: "Summit partners demonstrating breakthrough enterprise AI tools & tech solutions.",
+    url: archiveImg3,
+    span: "md:row-span-1",
   },
   {
-    title: 'A Packed House: Delegates from Across Asia',
-    src: archiveImg4
+    id: 4,
+    title: "Packed Delegate House",
+    desc: "Over 3,500+ attendees connecting across technology, health, and policy sectors.",
+    url: archiveImg4,
+    span: "md:row-span-2",
   },
   {
-    title: 'Spotlight Session: Google for Health',
-    src: archiveImg5
+    id: 5,
+    title: "Google for Health Spotlight",
+    desc: "Keynote presentation on AI-driven diagnostics & healthcare transformation.",
+    url: archiveImg5,
+    span: "md:row-span-1",
   },
   {
-    title: 'Robotics in Action: Live AI Showcase',
-    src: archiveImg6
-  }
+    id: 6,
+    title: "Robotics & Live AI Action",
+    desc: "Interactive live robotics showcase and generative AI demonstrations.",
+    url: archiveImg6,
+    span: "md:col-span-2 md:row-span-1",
+  },
 ];
-
-const galleryItems = highlights.map((item) => ({ src: item.src, alt: item.title }));
 
 export default function EventHighlightsSection() {
   return (
@@ -50,12 +67,12 @@ export default function EventHighlightsSection() {
           Relive AI Asia Summit 2025
         </ScrollFloat>
         <p className="focus-subtitle">
-          A look back at the panels, showcases, and conversations that shaped last year's summit —
-          setting the stage for an even bigger 2026.
+          A look back at the keynotes, panels, showcases, and conversations that shaped last year's summit —
+          drag to explore, click any photo to expand.
         </p>
       </div>
 
-      <CircularGallery items={galleryItems} />
+      <InteractiveImageBentoGallery imageItems={imageItems} />
     </section>
   );
 }
