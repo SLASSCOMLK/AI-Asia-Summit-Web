@@ -1,25 +1,6 @@
 import React, { useRef, useState, useEffect } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { type: "spring", stiffness: 100, damping: 15 },
-  },
-}
 
 const ImageModal = ({ item, onClose }) => {
   return (
@@ -35,8 +16,8 @@ const ImageModal = ({ item, onClose }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(6, 8, 20, 0.9)',
-        backdropFilter: 'blur(16px)',
+        backgroundColor: 'rgba(6, 8, 20, 0.92)',
+        backdropFilter: 'blur(18px)',
         padding: '1.5rem'
       }}
     >
@@ -47,13 +28,13 @@ const ImageModal = ({ item, onClose }) => {
         onClick={(e) => e.stopPropagation()}
         style={{
           position: 'relative',
-          maxWidth: '900px',
+          maxWidth: '960px',
           width: '100%',
           backgroundColor: '#0B1530',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
           borderRadius: '20px',
-          padding: '1.5rem',
-          boxShadow: '0 30px 80px rgba(0, 0, 0, 0.8)',
+          padding: '1.25rem',
+          boxShadow: '0 30px 80px rgba(0, 0, 0, 0.85)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center'
@@ -64,16 +45,11 @@ const ImageModal = ({ item, onClose }) => {
           alt={item.title}
           style={{
             width: '100%',
-            maxHeight: '70vh',
+            maxHeight: '78vh',
             objectFit: 'contain',
             borderRadius: '12px',
-            marginBottom: '1rem'
           }}
         />
-        <div style={{ textAlign: 'center' }}>
-          <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.35rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>{item.title}</h3>
-          {item.desc && <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', color: '#94A3B8' }}>{item.desc}</p>}
-        </div>
         <button
           onClick={onClose}
           aria-label="Close image view"
@@ -90,7 +66,8 @@ const ImageModal = ({ item, onClose }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            transition: 'all 0.2s ease'
           }}
         >
           <X size={20} />
@@ -100,144 +77,123 @@ const ImageModal = ({ item, onClose }) => {
   )
 }
 
-const InteractiveImageBentoGallery = ({ imageItems, title, description }) => {
+const InteractiveImageBentoGallery = ({ imageItems }) => {
   const [selectedItem, setSelectedItem] = useState(null)
-  const [dragConstraint, setDragConstraint] = useState(0)
-  const containerRef = useRef(null)
-  const gridRef = useRef(null)
-  const targetRef = useRef(null)
+  const trackRef = useRef(null)
+  const animFrameRef = useRef(null)
+  const scrollXRef = useRef(0)
+  const isPausedRef = useRef(false)
+  const SPEED = 0.6 // px per frame — gentle auto-scroll speed
+
+  // Duplicate items for seamless infinite scroll
+  const doubled = [...imageItems, ...imageItems]
 
   useEffect(() => {
-    const calculateConstraints = () => {
-      if (gridRef.current && containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth
-        const gridWidth = gridRef.current.scrollWidth
-        const newConstraint = Math.min(0, containerWidth - gridWidth - 32)
-        setDragConstraint(newConstraint)
+    const track = trackRef.current
+    if (!track) return
+
+    const animate = () => {
+      if (!isPausedRef.current && track) {
+        scrollXRef.current += SPEED
+        // Reset once half scrolled (seamless loop)
+        const halfWidth = track.scrollWidth / 2
+        if (scrollXRef.current >= halfWidth) {
+          scrollXRef.current = 0
+        }
+        track.style.transform = `translateX(-${scrollXRef.current}px)`
       }
+      animFrameRef.current = requestAnimationFrame(animate)
     }
 
-    calculateConstraints()
-    window.addEventListener("resize", calculateConstraints)
-    return () => window.removeEventListener("resize", calculateConstraints)
-  }, [imageItems])
+    animFrameRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animFrameRef.current)
+  }, [])
 
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  })
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.2], [30, 0])
+  const handleMouseEnter = () => { isPausedRef.current = true }
+  const handleMouseLeave = () => { isPausedRef.current = false }
 
   return (
-    <section
-      ref={targetRef}
-      style={{ position: 'relative', width: '100%', padding: '1.5rem 0' }}
-    >
-      {(title || description) && (
-        <motion.div
-          style={{ opacity, y }}
-          className="container mx-auto px-4 text-center"
-        >
-          {title && (
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {title}
-            </h2>
-          )}
-          {description && (
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              {description}
-            </p>
-          )}
-        </motion.div>
-      )}
+    <section style={{ position: 'relative', width: '100%', padding: '1.5rem 0', overflow: 'hidden' }}>
+      {/* Fade edges */}
+      <div style={{
+        position: 'absolute',
+        left: 0, top: 0, bottom: 0,
+        width: '80px',
+        background: 'linear-gradient(to right, #060814, transparent)',
+        zIndex: 10,
+        pointerEvents: 'none'
+      }} />
+      <div style={{
+        position: 'absolute',
+        right: 0, top: 0, bottom: 0,
+        width: '80px',
+        background: 'linear-gradient(to left, #060814, transparent)',
+        zIndex: 10,
+        pointerEvents: 'none'
+      }} />
 
       <div
-        ref={containerRef}
-        style={{
-          position: 'relative',
-          marginTop: '1.5rem',
-          width: '100%',
-          overflowX: 'auto',
-          cursor: 'grab',
-          paddingBottom: '1rem'
-        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{ width: '100%', overflow: 'hidden', cursor: 'pointer' }}
       >
-        <motion.div
-          style={{ width: 'max-content' }}
-          drag="x"
-          dragConstraints={{ left: dragConstraint, right: 0 }}
-          dragElastic={0.05}
+        <div
+          ref={trackRef}
+          style={{
+            display: 'flex',
+            gap: '1.25rem',
+            padding: '0.5rem 1rem',
+            width: 'max-content',
+            willChange: 'transform'
+          }}
         >
-          <motion.div
-            ref={gridRef}
-            style={{
-              display: 'flex',
-              gap: '1.25rem',
-              padding: '0 1rem'
-            }}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {imageItems.map((item) => {
-              const isFeatured = item.span && item.span.includes('col-span-2');
-              return (
-                <motion.div
-                  key={item.id}
-                  variants={itemVariants}
+          {doubled.map((item, index) => {
+            const isFeatured = item.span && item.span.includes('col-span-2')
+            return (
+              <motion.div
+                key={`${item.id}-${index}`}
+                whileHover={{ scale: 1.03, boxShadow: '0 20px 50px rgba(0,0,0,0.7), 0 0 24px rgba(46,99,255,0.3)' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                onClick={() => setSelectedItem(item)}
+                tabIndex={0}
+                aria-label={`View image ${item.title}`}
+                onKeyDown={(e) => e.key === 'Enter' && setSelectedItem(item)}
+                style={{
+                  position: 'relative',
+                  flexShrink: 0,
+                  width: isFeatured ? '480px' : '300px',
+                  height: '340px',
+                  borderRadius: '18px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  backgroundColor: '#0B1530',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+                  cursor: 'pointer',
+                }}
+              >
+                <img
+                  src={item.url}
+                  alt={item.title}
                   style={{
-                    position: 'relative',
-                    flexShrink: 0,
-                    width: isFeatured ? '480px' : '300px',
-                    height: '360px',
-                    borderRadius: '20px',
-                    overflow: 'hidden',
-                    border: '1px solid rgba(255, 255, 255, 0.18)',
-                    backgroundColor: '#0B1530',
-                    boxShadow: '0 12px 35px rgba(0, 0, 0, 0.45)',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    padding: '1.35rem'
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block'
                   }}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  onClick={() => setSelectedItem(item)}
-                  onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
-                  tabIndex={0}
-                  aria-label={`View ${item.title}`}
-                >
-                  <img
-                    src={item.url}
-                    alt={item.title}
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.5s ease'
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(to top, rgba(6, 8, 20, 0.95) 0%, rgba(6, 8, 20, 0.4) 60%, transparent 100%)',
-                      pointerEvents: 'none'
-                    }}
-                  />
-                  <div style={{ position: 'relative', zIndex: 10, color: '#FFFFFF' }}>
-                    <h3 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '1.2rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '0.35rem' }}>{item.title}</h3>
-                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.85)', lineHeight: '1.4' }}>{item.desc}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </motion.div>
+                />
+                {/* Subtle hover glow overlay only */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(6, 8, 20, 0.35) 0%, transparent 60%)',
+                  pointerEvents: 'none'
+                }} />
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
 
       <AnimatePresence>
