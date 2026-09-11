@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ticket, ShieldCheck, Sparkles, Clock, ExternalLink, Users } from 'lucide-react';
+import { Ticket, ShieldCheck, Clock, Users } from 'lucide-react';
 import { SquishyPricing } from './ui/squishy-pricing';
 import ScrollFloat from './ScrollFloat';
 
@@ -9,13 +9,13 @@ export default function TicketPricingSection() {
       <div className="focus-header">
         <div className="focus-badge">
           <Ticket size={14} style={{ color: '#E8B84B' }} />
-          <span>EVENT PASSES & REGISTRATION</span>
+          <span>EVENT PASSES &amp; REGISTRATION</span>
         </div>
-        
+
         <ScrollFloat containerClassName="focus-main-title">
           Secure Your Passes
         </ScrollFloat>
-        
+
         <p className="focus-subtitle">
           Join Asia's premier AI gathering on 12th November 2026 at Cinnamon Grand, Colombo.
           Early Bird rates are live for a limited time.
@@ -37,7 +37,7 @@ export default function TicketPricingSection() {
         </div>
         <div className="trust-item">
           <Users size={18} style={{ color: '#2E63FF' }} />
-          <span>Full Access to Keynotes, Panels & Networking Lunch</span>
+          <span>Full Access to Keynotes, Panels &amp; Networking Lunch</span>
         </div>
       </div>
     </section>

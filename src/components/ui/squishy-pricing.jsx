@@ -10,13 +10,13 @@ export const SquishyPricing = () => {
       <div className="squishy-pricing-grid">
         <PricingCard
           label="Early Bird Offer -SLASSCOM Members"
-          price="24,933.33"
+          price="24,933"
           currency="Rs"
           period="Per Ticket"
           description="Exclusive Early Bird rate for verified SLASSCOM Member organizations. Must register with official corporate email."
           validity="Valid till 10th Oct 2026"
           taxNote="*VAT 18% applicable at check-out"
-          cta="Register (Members)"
+          cta="Register"
           link={REGISTRATION_LINK}
           background="squishy-bg-member"
           accentColor="#2E63FF"
@@ -26,13 +26,13 @@ export const SquishyPricing = () => {
 
         <PricingCard
           label="Early Bird Offer SLASSCOM Non-Members"
-          price="31,138.46"
+          price="31,138"
           currency="Rs"
           period="Per Ticket"
           description="Standard Early Bird full-day conference pass for non-members, international attendees, and AI professionals."
-          validity="Valid till 17th Oct 2026"
+          validity="Valid till 10th Oct 2026"
           taxNote="*VAT 18% applicable at check-out"
-          cta="Register (Non-Members)"
+          cta="Register"
           link={REGISTRATION_LINK}
           background="squishy-bg-nonmember"
           accentColor="#7C3AED"
@@ -42,12 +42,12 @@ export const SquishyPricing = () => {
 
         <PricingCard
           label="Bundle Offer 8 seats - SLASSCOM Members "
-          price="199,015.38"
+          price="199,015"
           currency="Rs"
           period="8 Passes"
           description="Exclusive Early Bird rate for verified SLASSCOM Member organizations. Must register with official corporate email."
           taxNote="*VAT 18% applicable at check-out"
-          cta="Inquire Delegation"
+          cta="Register"
           link="mailto:corpoffice@slasscom.lk?subject=AI%20Asia%20Summit%202026%20-%20Enterprise%20Delegation%20Inquiry"
           background="squishy-bg-enterprise"
           accentColor="#E8B84B"
