@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ticket, ShieldCheck, Clock, Users } from 'lucide-react';
+import { Ticket } from 'lucide-react';
 import { SquishyPricing } from './ui/squishy-pricing';
 import ScrollFloat from './ScrollFloat';
 
@@ -22,24 +22,7 @@ export default function TicketPricingSection() {
         </p>
       </div>
 
-      {/* Squishy Pricing Cards Grid */}
       <SquishyPricing />
-
-      {/* Trust & Policy Assurance Bar */}
-      <div className="pricing-trust-strip">
-        <div className="trust-item">
-          <ShieldCheck size={18} style={{ color: '#00A3E0' }} />
-          <span>Official SLASSCOM Event Registration via Glue Up</span>
-        </div>
-        <div className="trust-item">
-          <Clock size={18} style={{ color: '#E8B84B' }} />
-          <span>Early Bird Pricing valid till specified offer deadline</span>
-        </div>
-        <div className="trust-item">
-          <Users size={18} style={{ color: '#2E63FF' }} />
-          <span>Full Access to Keynotes, Panels &amp; Networking Lunch</span>
-        </div>
-      </div>
     </section>
   );
 }
