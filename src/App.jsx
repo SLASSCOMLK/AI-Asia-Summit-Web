@@ -538,14 +538,34 @@ export default function App() {
               {/* Organiser Column */}
               <div className="footer-col">
                 <h4 className="footer-col-title">Organised By</h4>
-                <a href="https://slasscom.lk" target="_blank" rel="noreferrer" className="footer-org-link">
-                  <Building2 size={16} />
-                  <span>SLASSCOM Official Website</span>
-                  <ExternalLink size={12} />
+                <a href="https://slasscom.lk" target="_blank" rel="noreferrer" className="footer-org-logo-link">
+                  <img
+                    src="/logo-white.png"
+                    alt="SLASSCOM"
+                    style={{ height: '48px', width: 'auto', opacity: 0.92, display: 'block', marginBottom: '1.5rem' }}
+                  />
                 </a>
+
+                <h4 className="footer-col-title" style={{ marginTop: '0.25rem' }}>Corporate Sponsor</h4>
+                <div className="footer-sponsor-logo-wrap">
+                  <img
+                    src="/nations-trust-bank.png"
+                    alt="Nations Trust Bank"
+                    style={{
+                      height: '52px',
+                      width: 'auto',
+                      objectFit: 'contain',
+                      background: '#ffffff',
+                      borderRadius: '8px',
+                      padding: '6px 12px',
+                      display: 'block'
+                    }}
+                  />
+                </div>
+
                 <button className="footer-back-to-top" onClick={() => {
                   document.getElementById('partner-section')?.scrollIntoView({ behavior: 'smooth' });
-                }}>
+                }} style={{ marginTop: '1.25rem' }}>
                   <Handshake size={16} />
                   <span>Become a Partner</span>
                 </button>
