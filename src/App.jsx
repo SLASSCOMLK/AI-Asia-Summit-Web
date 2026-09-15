@@ -26,6 +26,7 @@ import EventHighlightsSection from './components/EventHighlightsSection';
 import FocusAreasSection from './components/FocusAreasSection';
 import AiRobotVisual from './components/AiRobotVisual';
 import TicketPricingSection from './components/TicketPricingSection';
+import SponsorsSection from './components/SponsorsSection';
 import KineticGridBackground from './components/KineticGridBackground';
 import ScrollFloat from './components/ScrollFloat';
 import LogoOrb from './components/LogoOrb';
@@ -330,6 +331,9 @@ export default function App() {
 
         {/* TICKET PRICING SECTION — SQUISHY PRICING CARDS */}
         <TicketPricingSection />
+
+        {/* SPONSORS & PARTNERS SECTION */}
+        <SponsorsSection />
 
         {/* PARTNER WITH US SECTION */}
         {SHOW_PARTNER_SECTION && (

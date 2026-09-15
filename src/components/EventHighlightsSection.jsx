@@ -60,15 +60,14 @@ export default function EventHighlightsSection() {
     <section className="highlights-section container" id="highlights">
       <div className="focus-header">
         <div className="focus-badge">
-          <Camera size={14} style={{ color: '#E8B84B' }} />
+
           <span>EVENT ARCHIVE</span>
         </div>
         <ScrollFloat containerClassName="focus-main-title">
           Relive AI Asia Summit 2025
         </ScrollFloat>
         <p className="focus-subtitle">
-          A look back at the keynotes, panels, showcases, and conversations that shaped last year's summit —
-          drag to explore, click any photo to expand.
+          A look back at the keynotes, panels, showcases, and conversations that shaped last year's summit
         </p>
       </div>
 

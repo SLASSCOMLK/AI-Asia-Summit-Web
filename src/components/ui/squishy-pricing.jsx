@@ -10,7 +10,7 @@ export const SquishyPricing = () => {
       <div className="squishy-pricing-grid">
         <PricingCard
           label="Early Bird Offer -SLASSCOM Members"
-          price="24,933"
+          price="24,960"
           currency="Rs"
           period="Per Ticket"
           description="Exclusive Early Bird rate for verified SLASSCOM Member organizations. Must register with official corporate email."
@@ -26,7 +26,7 @@ export const SquishyPricing = () => {
 
         <PricingCard
           label="Early Bird Offer SLASSCOM Non-Members"
-          price="31,138"
+          price="31,200"
           currency="Rs"
           period="Per Ticket"
           description="Standard Early Bird full-day conference pass for non-members, international attendees, and AI professionals."
@@ -42,7 +42,7 @@ export const SquishyPricing = () => {
 
         <PricingCard
           label="Bundle Offer 8 seats - SLASSCOM Members "
-          price="199,015"
+          price="199,040"
           currency="Rs"
           period="8 Passes"
           description="Exclusive Early Bird rate for verified SLASSCOM Member organizations. Must register with official corporate email."
@@ -52,6 +52,34 @@ export const SquishyPricing = () => {
           background="squishy-bg-enterprise"
           accentColor="#E8B84B"
           BGComponent={BGComponent3}
+          featured={false}
+        />
+        <PricingCard
+          label="Bundle Offer 8 seats - SLASSCOM Non-Members"
+          price="248,880"
+          currency="Rs"
+          period="8 Passes"
+          description="Please register using the official company email address. This helps verify organizational affiliation and lets the team correctly identify registrants"
+          taxNote="*VAT 18% applicable at check-out"
+          cta="Register"
+          link="mailto:corpoffice@slasscom.lk?subject=..."
+          background="squishy-bg-bundle-nm"
+          accentColor="#00A3E0"
+          BGComponent={BGComponent2}
+          featured={false}
+        />
+        <PricingCard
+          label="SLASSCOM Members Individual"
+          price="27,680"
+          currency="Rs"
+          period="1 Pass"
+          description="Please register using the official company email address. This helps verify organizational affiliation and lets the team correctly identify registrants"
+          taxNote="*VAT 18% applicable at check-out"
+          cta="Register"
+          link="mailto:corpoffice@slasscom.lk?subject=..."
+          background="squishy-bg-bundle-nm"
+          accentColor="#00e007ff"
+          BGComponent={BGComponent2}
           featured={false}
         />
       </div>
