@@ -65,11 +65,16 @@ export default function SponsorsSection() {
           }} />
         </motion.div>
 
-        {/* Corporate Sponsor card — centered */}
+        {/* Two-column grid: Organised By | Corporate Sponsor */}
         <div style={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '2rem',
+          maxWidth: '860px',
+          margin: '0 auto'
         }}>
+
+          {/* ── Organised By ── */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -90,7 +95,70 @@ export default function SponsorsSection() {
               boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
               textAlign: 'center',
               maxWidth: '380px',
-              width: '100%'
+              width: '100%',
+              margin: '0 auto'
+            }}
+          >
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: 0
+            }}>
+              Organised By
+            </p>
+            <div style={{
+              width: '100%',
+              height: '1px',
+              background: 'rgba(232,184,75,0.25)'
+            }} />
+            <a
+              href="https://slasscom.lk"
+              target="_blank"
+              rel="noreferrer"
+              title="SLASSCOM"
+              style={{ display: 'inline-block', lineHeight: 0 }}
+            >
+              <img
+                src="/slasscom-logo.png"
+                alt="SLASSCOM — The Knowledge and Innovation Chamber"
+                style={{
+                  height: '72px',
+                  width: 'auto',
+                  opacity: 0.93,
+                  filter: 'brightness(1.05)',
+                  transition: 'opacity 0.2s ease',
+                  objectFit: 'contain'
+                }}
+              />
+            </a>
+          </motion.div>
+
+          {/* ── Corporate Sponsor ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={fadeUp}
+            custom={2}
+            style={{
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '20px',
+              padding: '2.25rem 2.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1.5rem',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
+              textAlign: 'center',
+              maxWidth: '380px',
+              width: '100%',
+              margin: '0 auto'
             }}
           >
             <p style={{
