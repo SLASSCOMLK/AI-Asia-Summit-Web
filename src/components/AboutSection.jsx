@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Layers, CheckCircle, Target, Award, Rocket, Globe } from 'lucide-react';
+import { Layers, CheckCircle } from 'lucide-react';
+import CountingNumber from './ui/counting-number';
 
 const YOUTUBE_VIDEO_ID = '6fsM7-KnKWg';
 const YOUTUBE_START_SECONDS = 12;
@@ -7,6 +8,9 @@ const YOUTUBE_START_SECONDS = 12;
 export default function AboutSection() {
   const videoWrapperRef = useRef(null);
   const [hasStartedPlaying, setHasStartedPlaying] = useState(false);
+
+  const metricsRef = useRef(null);
+  const [metricsVisible, setMetricsVisible] = useState(false);
 
   useEffect(() => {
     const node = videoWrapperRef.current;
@@ -20,6 +24,24 @@ export default function AboutSection() {
         }
       },
       { threshold: 0.4 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const node = metricsRef.current;
+    if (!node) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMetricsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
     );
 
     observer.observe(node);
@@ -48,30 +70,42 @@ export default function AboutSection() {
 
           <div className="about-pillars-list">
             <div className="about-pillar-item">
-              <CheckCircle size={18} style={{ color: '#00A3E0', flexShrink: 0 }} />
+              <CheckCircle size={18} style={{ color: '#E8B84B', flexShrink: 0 }} />
               <span>Fostering high-value collaboration to solve complex industry challenges</span>
             </div>
             <div className="about-pillar-item">
-              <CheckCircle size={18} style={{ color: '#00A3E0', flexShrink: 0 }} />
+              <CheckCircle size={18} style={{ color: '#E8B84B', flexShrink: 0 }} />
               <span>Facilitating strategic partnerships that unlock new economic growth</span>
             </div>
             <div className="about-pillar-item">
-              <CheckCircle size={18} style={{ color: '#00A3E0', flexShrink: 0 }} />
+              <CheckCircle size={18} style={{ color: '#E8B84B', flexShrink: 0 }} />
               <span>Driving AI adoption to enhance national competitiveness and global linkages</span>
             </div>
           </div>
 
-          <div className="about-metrics-grid">
+          <div className="about-metrics-grid" ref={metricsRef}>
             <div className="metric-box">
-              <span className="metric-num">2018</span>
+              <span className="metric-num">
+                {metricsVisible
+                  ? <CountingNumber from={2000} target={2018} transition={{ duration: 2, ease: 'easeOut' }} />
+                  : '2018'}
+              </span>
               <span className="metric-label">Established</span>
             </div>
             <div className="metric-box">
-              <span className="metric-num">3,500+</span>
+              <span className="metric-num">
+                {metricsVisible
+                  ? <><CountingNumber from={0} target={3500} transition={{ duration: 2.5, ease: 'easeOut' }} />+</>
+                  : '3,500+'}
+              </span>
               <span className="metric-label">Attendees</span>
             </div>
             <div className="metric-box">
-              <span className="metric-num">50+</span>
+              <span className="metric-num">
+                {metricsVisible
+                  ? <><CountingNumber from={0} target={50} transition={{ duration: 2, ease: 'easeOut' }} />+</>
+                  : '50+'}
+              </span>
               <span className="metric-label">Global Speakers</span>
             </div>
             <div className="metric-box">

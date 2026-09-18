@@ -59,7 +59,7 @@ export default function SponsorsSection() {
           <div style={{
             width: '48px',
             height: '3px',
-            background: 'linear-gradient(90deg, #E8B84B, #2E63FF)',
+            background: 'linear-gradient(90deg, #E8B84B, #D4B05A)',
             borderRadius: '2px',
             margin: '1rem auto 0'
           }} />

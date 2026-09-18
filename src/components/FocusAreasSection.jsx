@@ -25,13 +25,13 @@ export default function FocusAreasSection() {
       id: '01',
       title: 'AI in Engineering',
       desc: 'Deploying advanced machine intelligence across software engineering, automated systems, and enterprise infrastructure.',
-      color: '#2E63FF'
+      color: '#E8B84B'
     },
     {
       id: '02',
       title: 'Governance & Security of AI',
       desc: 'Establishing ethical AI frameworks, data privacy compliance, risk management, and cybersecurity protocols.',
-      color: '#00A3E0'
+      color: '#D4B05A'
     },
     {
       id: '03',
@@ -43,13 +43,13 @@ export default function FocusAreasSection() {
       id: '04',
       title: 'Human-Centric AI',
       desc: 'Designing intuitive, accessible, and transparent artificial intelligence that augments human capability.',
-      color: '#10B981'
+      color: '#C9A155'
     },
     {
       id: '05',
       title: 'AI for Economic & Societal Impact',
       desc: 'Accelerating cross-industry digital transformation to enhance regional competitiveness and national prosperity.',
-      color: '#EC4899'
+      color: '#B8860B'
     }
   ];
 

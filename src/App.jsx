@@ -295,17 +295,6 @@ export default function App() {
             {/* Hero Action CTAs */}
             <div className="hero-cta-group">
               <a
-                href={REGISTRATION_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary-purple"
-                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
-              >
-                <span>GET TICKETS</span>
-                <ExternalLink size={15} />
-              </a>
-
-              <a
                 href="#tickets"
                 className="btn-outline-glass"
                 style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
@@ -425,7 +414,7 @@ export default function App() {
                   <CheckCircle2 size={40} style={{ color: '#E8B84B', margin: '0 auto 0.75rem' }} />
                   <h3 className="success-title">Partnership Request Dispatched!</h3>
                   <p style={{ color: '#94A3B8', fontSize: '0.92rem', lineHeight: '1.6', maxWidth: '520px', margin: '0 auto' }}>
-                    Thank you <strong style={{ color: '#FFFFFF' }}>{name || email}</strong>. Your <strong style={{ color: '#00A3E0' }}>{partnerType}</strong> proposal request has been dispatched directly to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>. The SLASSCOM leadership team will contact you shortly.
+                    Thank you <strong style={{ color: '#FFFFFF' }}>{name || email}</strong>. Your <strong style={{ color: '#E8B84B' }}>{partnerType}</strong> proposal request has been dispatched directly to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>. The SLASSCOM leadership team will contact you shortly.
                   </p>
                 </div>
               )}
@@ -437,7 +426,7 @@ export default function App() {
                   <span>Add to Calendar</span>
                 </button>
                 <button className="btn-glass-sm" onClick={handleShare}>
-                  <Share2 size={14} style={{ color: '#00A3E0' }} />
+                  <Share2 size={14} style={{ color: '#E8B84B' }} />
                   <span>{copied ? "Link Copied!" : "Share Summit"}</span>
                 </button>
                 <a
@@ -476,6 +465,10 @@ export default function App() {
                   alt="AI ASIA SUMMIT 2026 SLASSCOM Logo"
                   className="footer-logo"
                 />
+                <div style={{ marginTop: '15px' }}>
+                  <p style={{ fontSize: '0.75rem', color: '#E8B84B', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>Organised By</p>
+                  <img src="/slasscom-logo.png" alt="SLASSCOM Logo" style={{ width: '120px', filter: 'brightness(1.5)' }} />
+                </div>
                 <p className="footer-tagline">
                   Asia's flagship artificial intelligence conference, uniting leaders,
                   innovators, and enterprises to explore AI as the multiplier effect

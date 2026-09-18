@@ -253,7 +253,6 @@ export default function KineticGridBackground() {
 
   return (
     <div
-      className="hero-video-bg"
       style={{
         position: 'fixed',
         top: 0,
