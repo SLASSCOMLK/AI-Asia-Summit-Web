@@ -130,7 +130,7 @@ export default function App() {
         particleCount: 100,
         spread: 90,
         origin: { y: 0.7 },
-        colors: ['#2E63FF', '#7C3AED', '#E8B84B', '#00A3E0', '#FFFFFF']
+        colors: ['#E8B84B', '#F5C842', '#D4B05A', '#C9A155', '#FFFFFF']
       });
     } catch (err) {
       // Fallback
@@ -279,7 +279,7 @@ export default function App() {
 
             {/* Headline Typography */}
             <h1 className="hero-title-text">
-              AI THE <span className="hero-gradient-text">MULTIPLIER</span> EFFECT
+              AI: THE <span className="hero-gradient-text">MULTIPLIER</span>
             </h1>
 
             {/* Event Date & Location Pills */}
