@@ -90,9 +90,9 @@ const frag = /* glsl */ `
     return vec4(colorIn.rgb / (a + 1e-5), a);
   }
 
-  const vec3 baseColor1 = vec3(0.611765, 0.262745, 0.996078);
-  const vec3 baseColor2 = vec3(0.298039, 0.760784, 0.913725);
-  const vec3 baseColor3 = vec3(0.062745, 0.078431, 0.600000);
+  const vec3 baseColor1 = vec3(0.910, 0.722, 0.294);
+  const vec3 baseColor2 = vec3(0.961, 0.784, 0.259);
+  const vec3 baseColor3 = vec3(0.722, 0.525, 0.161);
   const float innerRadius = 0.6;
   const float noiseScale = 0.65;
 
@@ -131,7 +131,7 @@ const frag = /* glsl */ `
 
     vec3 col = mix(color1, color2, cl);
     col = mix(color3, col, v0);
-    col = (col + v1) * v2 * v3;
+    col = (col + v1 * color1) * v2 * v3;
     col = clamp(col, 0.0, 1.0);
 
     return extractAlpha(col);

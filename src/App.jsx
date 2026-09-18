@@ -190,6 +190,9 @@ export default function App() {
       <CustomCursor />
 
       <div className="page-wrapper">
+        {/* Full-Page Interactive Kinetic Grid Background */}
+        <KineticGridBackground />
+
         {/* Top Executive Navbar Header */}
         <header className="navbar">
           <div className="container">
@@ -233,7 +236,6 @@ export default function App() {
                     className="btn-register-header"
                   >
                     <span>REGISTER NOW</span>
-                    <ExternalLink size={13} />
                   </a>
                 </div>
 
@@ -262,8 +264,6 @@ export default function App() {
 
         {/* Executive Hero Section */}
         <main className="hero-section container">
-          {/* Interactive Kinetic Grid Background — scoped to hero section only */}
-          <KineticGridBackground />
 
           <div className="hero-content">
             {/* Official White Logo */}

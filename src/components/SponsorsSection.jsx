@@ -166,7 +166,7 @@ export default function SponsorsSection() {
               fontWeight: 700,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#00A3E0',
+              color: '#E8B84B',
               margin: 0
             }}>
               Corporate Sponsor
@@ -174,7 +174,7 @@ export default function SponsorsSection() {
             <div style={{
               width: '100%',
               height: '1px',
-              background: 'rgba(0,163,224,0.25)'
+              background: 'rgba(232,184,75,0.25)'
             }} />
             <div style={{
               background: '#ffffff',
