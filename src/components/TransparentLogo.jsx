@@ -54,7 +54,7 @@ export default function TransparentLogo({ src = "/logo.png", alt = "AI ASIA SUMM
       style={{
         display: 'inline-block',
         objectFit: 'contain',
-        filter: 'drop-shadow(0 4px 16px rgba(0, 163, 224, 0.4))',
+        filter: 'drop-shadow(0 4px 16px rgba(232, 184, 75, 0.4))',
         ...style
       }} 
     />

@@ -8,16 +8,16 @@ const MAX_WARP = 24;
 const DOT_SPACING = 28;
 const LERP_SPEED = 0.08;
 
-const LINE_BASE = { r: 255, g: 255, b: 255, a: 0.13 };
+const LINE_BASE = { r: 232, g: 184, b: 75, a: 0.15 };
 const NODE_BASE_RADIUS = 1.8;
 const NODE_ACTIVE_RADIUS = 3.2;
 
 const THEME = {
-  bg: '#060814',
-  lineActive: { r: 0, g: 163, b: 224, a: 0.9 },
-  nodeActive: { r: 0, g: 163, b: 224, a: 1.0 },
-  glow: '0,163,224',
-  ripple: '100,180,255'
+  bg: '#000000',
+  lineActive: { r: 232, g: 184, b: 75, a: 0.95 },
+  nodeActive: { r: 245, g: 200, b: 66, a: 1.0 },
+  glow: '232,184,75',
+  ripple: '245,200,66'
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -252,22 +252,33 @@ export default function KineticGridBackground() {
   }, [animate]);
 
   return (
-    <div className="hero-video-bg">
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 0,
+        overflow: 'hidden',
+        pointerEvents: 'none'
+      }}
+    >
       <canvas ref={canvasRef} className="hero-kinetic-canvas" />
 
-      {/* Gradient Vignette Overlay — keeps hero content readable */}
+      {/* Pure Black Vignette Overlay — keeps site content readable across full page */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(ellipse at center, rgba(6, 9, 21, 0.35) 0%, rgba(6, 9, 21, 0.65) 70%, rgba(6, 9, 21, 0.92) 100%)'
+          background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0.9) 100%)'
         }}
       />
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, rgba(6, 9, 21, 0.15) 0%, rgba(6, 9, 21, 0.15) 45%, rgba(6, 9, 21, 0.88) 85%, #060815 100%)'
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.8) 85%, #000000 100%)'
         }}
       />
     </div>

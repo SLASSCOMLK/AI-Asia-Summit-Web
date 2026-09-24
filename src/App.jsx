@@ -17,7 +17,6 @@ import {
   X
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import TransparentLogo from './components/TransparentLogo';
 import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
 import EventCountdown from './components/EventCountdown';
@@ -31,6 +30,7 @@ import KineticGridBackground from './components/KineticGridBackground';
 import ScrollFloat from './components/ScrollFloat';
 import LogoOrb from './components/LogoOrb';
 import { LinkedInIcon, XIcon, FacebookIcon, InstagramIcon, YouTubeIcon } from './components/SocialIcons';
+import { Typewriter } from './components/ui/typewriter-text';
 
 // Temporarily hidden — re-enable by flipping this back to true when ready to launch partnerships
 const SHOW_PARTNER_SECTION = false;
@@ -130,7 +130,7 @@ export default function App() {
         particleCount: 100,
         spread: 90,
         origin: { y: 0.7 },
-        colors: ['#2E63FF', '#7C3AED', '#E8B84B', '#00A3E0', '#FFFFFF']
+        colors: ['#E8B84B', '#F5C842', '#D4B05A', '#C9A155', '#FFFFFF']
       });
     } catch (err) {
       // Fallback
@@ -190,6 +190,9 @@ export default function App() {
       <CustomCursor />
 
       <div className="page-wrapper">
+        {/* Full-Page Interactive Kinetic Grid Background */}
+        <KineticGridBackground />
+
         {/* Top Executive Navbar Header */}
         <header className="navbar">
           <div className="container">
@@ -233,7 +236,6 @@ export default function App() {
                     className="btn-register-header"
                   >
                     <span>REGISTER NOW</span>
-                    <ExternalLink size={13} />
                   </a>
                 </div>
 
@@ -262,8 +264,6 @@ export default function App() {
 
         {/* Executive Hero Section */}
         <main className="hero-section container">
-          {/* Interactive Kinetic Grid Background — scoped to hero section only */}
-          <KineticGridBackground />
 
           <div className="hero-content">
             {/* Official White Logo */}
@@ -277,9 +277,25 @@ export default function App() {
               />
             </div>
 
-            {/* Headline Typography */}
+            {/* Headline Typography — "AI: THE" static white, "MULTIPLIER" typed in gold with live typewriter effect */}
             <h1 className="hero-title-text">
-              AI THE <span className="hero-gradient-text">MULTIPLIER</span> EFFECT
+              <span style={{ color: '#FFFFFF' }}>AI: THE </span>
+              {!isLoading ? (
+                <Typewriter
+                  text="MULTIPLIER"
+                  speed={120}
+                  loop={true}
+                  cursor="|"
+                  delay={3000}
+                  deleteSpeed={60}
+                  startDelay={300}
+                  className="hero-gradient-text"
+                />
+              ) : (
+                <span className="hero-gradient-text">
+                  <span className="typewriter-cursor">|</span>
+                </span>
+              )}
             </h1>
 
             {/* Event Date & Location Pills */}
@@ -294,17 +310,6 @@ export default function App() {
 
             {/* Hero Action CTAs */}
             <div className="hero-cta-group">
-              <a
-                href={REGISTRATION_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary-purple"
-                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}
-              >
-                <span>GET TICKETS</span>
-                <ExternalLink size={15} />
-              </a>
-
               <a
                 href="#tickets"
                 className="btn-outline-glass"
@@ -425,7 +430,7 @@ export default function App() {
                   <CheckCircle2 size={40} style={{ color: '#E8B84B', margin: '0 auto 0.75rem' }} />
                   <h3 className="success-title">Partnership Request Dispatched!</h3>
                   <p style={{ color: '#94A3B8', fontSize: '0.92rem', lineHeight: '1.6', maxWidth: '520px', margin: '0 auto' }}>
-                    Thank you <strong style={{ color: '#FFFFFF' }}>{name || email}</strong>. Your <strong style={{ color: '#00A3E0' }}>{partnerType}</strong> proposal request has been dispatched directly to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>. The SLASSCOM leadership team will contact you shortly.
+                    Thank you <strong style={{ color: '#FFFFFF' }}>{name || email}</strong>. Your <strong style={{ color: '#E8B84B' }}>{partnerType}</strong> proposal request has been dispatched directly to <strong style={{ color: '#E8B84B' }}>corpoffice@slasscom.lk</strong>. The SLASSCOM leadership team will contact you shortly.
                   </p>
                 </div>
               )}
@@ -437,7 +442,7 @@ export default function App() {
                   <span>Add to Calendar</span>
                 </button>
                 <button className="btn-glass-sm" onClick={handleShare}>
-                  <Share2 size={14} style={{ color: '#00A3E0' }} />
+                  <Share2 size={14} style={{ color: '#E8B84B' }} />
                   <span>{copied ? "Link Copied!" : "Share Summit"}</span>
                 </button>
                 <a
@@ -471,12 +476,12 @@ export default function App() {
             <div className="footer-grid">
               {/* Brand Column */}
               <div className="footer-col footer-col-brand">
-                <TransparentLogo
-                  src="/logo.png"
+                <img
+                  src="/logo-white.png"
                   alt="AI ASIA SUMMIT 2026 SLASSCOM Logo"
                   className="footer-logo"
                 />
-                <p className="footer-tagline">
+                <p className="footer-tagline" style={{ marginTop: '0.75rem' }}>
                   Asia's flagship artificial intelligence conference, uniting leaders,
                   innovators, and enterprises to explore AI as the multiplier effect
                   for the region's future.
@@ -539,7 +544,60 @@ export default function App() {
                 </ul>
               </div>
 
-
+              {/* Prominent Organised By Column (Enlarged in free area) */}
+              <div className="footer-col footer-col-organiser">
+                <h4 className="footer-col-title" style={{ color: '#E8B84B', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#E8B84B' }} />
+                  Organised By
+                </h4>
+                <div className="footer-organised-card">
+                  <a
+                    href="https://slasscom.lk"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="SLASSCOM — The Knowledge and Innovation Chamber"
+                    style={{ display: 'block', marginBottom: '14px' }}
+                  >
+                    <img
+                      src="/slasscom-logo.png"
+                      alt="SLASSCOM — The Knowledge and Innovation Chamber"
+                      style={{
+                        width: '230px',
+                        maxWidth: '100%',
+                        height: 'auto',
+                        filter: 'brightness(1.6)',
+                        display: 'block',
+                        transition: 'transform 0.25s ease'
+                      }}
+                    />
+                  </a>
+                  <p style={{ fontSize: '0.84rem', color: '#94A3B8', lineHeight: '1.6', marginBottom: '16px' }}>
+                    The Knowledge and Innovation Chamber — Sri Lanka's apex national body driving the IT/BPM industry and AI ecosystem forward.
+                  </p>
+                  <a
+                    href="https://slasscom.lk"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-glass-sm"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      fontSize: '0.8rem',
+                      padding: '7px 16px',
+                      textDecoration: 'none',
+                      borderRadius: '9999px',
+                      background: 'rgba(232, 184, 75, 0.1)',
+                      border: '1px solid rgba(232, 184, 75, 0.3)',
+                      color: '#E8B84B',
+                      fontWeight: 600
+                    }}
+                  >
+                    <span>Visit slasscom.lk</span>
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
+              </div>
             </div>
 
             <div className="footer-divider" />

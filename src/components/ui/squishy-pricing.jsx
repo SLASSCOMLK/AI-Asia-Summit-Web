@@ -19,7 +19,7 @@ export const SquishyPricing = () => {
           cta="Register"
           link={REGISTRATION_LINK}
           background="squishy-bg-member"
-          accentColor="#2E63FF"
+          accentColor="#E8B84B"
           BGComponent={BGComponent1}
           featured={false}
         />
@@ -35,7 +35,7 @@ export const SquishyPricing = () => {
           cta="Register"
           link={REGISTRATION_LINK}
           background="squishy-bg-nonmember"
-          accentColor="#7C3AED"
+          accentColor="#D4B05A"
           BGComponent={BGComponent2}
           featured={true}
         />
@@ -64,7 +64,7 @@ export const SquishyPricing = () => {
           cta="Register"
           link="mailto:corpoffice@slasscom.lk?subject=..."
           background="squishy-bg-bundle-nm"
-          accentColor="#00A3E0"
+          accentColor="#F5C842"
           BGComponent={BGComponent2}
           featured={false}
         />
@@ -78,7 +78,20 @@ export const SquishyPricing = () => {
           cta="Register"
           link="mailto:corpoffice@slasscom.lk?subject=..."
           background="squishy-bg-bundle-nm"
-          accentColor="#00e007ff"
+          accentColor="#0016e0ff"
+          BGComponent={BGComponent2}
+          featured={false}
+        />
+        <PricingCard
+          label="Special Offer Pricing"
+          currency="Rs"
+          period="1 Pass"
+          description="Special offer Pricing for SLASSCOM Members Startups Eco System partners"
+          taxNote="To avail these offers, write to us at :Email hasanthi.kahandawala@slasscom.lk"
+          cta="Register"
+          link="mailto:corpoffice@slasscom.lk?subject=..."
+          background="squishy-bg-bundle-nm"
+          accentColor="#e05200ff"
           BGComponent={BGComponent2}
           featured={false}
         />
