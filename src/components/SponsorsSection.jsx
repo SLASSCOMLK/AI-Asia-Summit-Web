@@ -65,11 +65,9 @@ export default function SponsorsSection() {
           }} />
         </motion.div>
 
-        {/* Two-column grid: Organised By | Corporate Sponsor */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2rem',
+          display: 'flex',
+          justifyContent: 'center',
           maxWidth: '860px',
           margin: '0 auto'
         }}>
@@ -134,69 +132,6 @@ export default function SponsorsSection() {
                 }}
               />
             </a>
-          </motion.div>
-
-          {/* ── Corporate Sponsor ── */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
-            variants={fadeUp}
-            custom={2}
-            style={{
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '20px',
-              padding: '2.25rem 2.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1.5rem',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
-              textAlign: 'center',
-              maxWidth: '380px',
-              width: '100%',
-              margin: '0 auto'
-            }}
-          >
-            <p style={{
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: '#E8B84B',
-              margin: 0
-            }}>
-              Corporate Sponsor
-            </p>
-            <div style={{
-              width: '100%',
-              height: '1px',
-              background: 'rgba(232,184,75,0.25)'
-            }} />
-            <div style={{
-              background: '#ffffff',
-              borderRadius: '14px',
-              padding: '1rem 2rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-              minHeight: '80px'
-            }}>
-              <img
-                src="/nations-trust-bank.png"
-                alt="Nations Trust Bank"
-                style={{
-                  height: '56px',
-                  width: 'auto',
-                  objectFit: 'contain',
-                  display: 'block'
-                }}
-              />
-            </div>
           </motion.div>
         </div>
 

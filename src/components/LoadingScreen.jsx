@@ -8,7 +8,7 @@ export default function LoadingScreen({ fadeOut }) {
           src="/logo-white.png"
           alt="AI Asia Summit 2026"
           className="loading-logo"
-          style={{ height: '120px', width: 'auto', opacity: 0.97 }}
+          style={{ height: '300px', width: 'auto', opacity: 0.97 }}
         />
 
         <div className="honeycomb">
