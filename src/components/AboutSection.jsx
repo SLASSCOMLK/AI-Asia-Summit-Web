@@ -21,40 +21,40 @@ const T_SPEAKERS    = { duration: 2, ease: 'easeOut' };
 const MetricsGrid = React.memo(function MetricsGrid({ metricsVisible, metricsRef }) {
   return (
     <div className="about-metrics-grid" ref={metricsRef}>
-      {/* Established — counts from 2000 → 2005 */}
+      {/* Established — counts from 2010 → 2018 */}
       <div className="metric-box">
         <span className="metric-num">
           {metricsVisible
-            ? <CountingNumber from={2000} target={2005} transition={T_ESTABLISHED} />
-            : '2,005'}
+            ? <CountingNumber from={2010} target={2018} transition={T_ESTABLISHED} />
+            : '2018'}
         </span>
         <span className="metric-label">Established</span>
       </div>
 
-      {/* Attendees — counts from 0 → 761 */}
+      {/* Participants — counts from 0 → 1000 */}
       <div className="metric-box">
         <span className="metric-num">
           {metricsVisible
-            ? <><CountingNumber from={0} target={761} transition={T_ATTENDEES} />+</>
-            : '761+'}
+            ? <><CountingNumber from={0} target={1000} transition={T_ATTENDEES} />+</>
+            : '1000+'}
         </span>
-        <span className="metric-label">Attendees</span>
+        <span className="metric-label">Participants</span>
       </div>
 
-      {/* Global Speakers — counts from 0 → 13 */}
+      {/* Global Speakers — counts from 0 → 30 */}
       <div className="metric-box">
         <span className="metric-num">
           {metricsVisible
-            ? <><CountingNumber from={0} target={13} transition={T_SPEAKERS} />+</>
-            : '13+'}
+            ? <><CountingNumber from={0} target={30} transition={T_SPEAKERS} />+</>
+            : '30+'}
         </span>
         <span className="metric-label">Global Speakers</span>
       </div>
 
-      {/* Asia-Wide Impact — static text */}
+      {/* National Reach — static text */}
       <div className="metric-box">
-        <span className="metric-num">Asia-Wide</span>
-        <span className="metric-label">Impact</span>
+        <span className="metric-num">#1</span>
+        <span className="metric-label">AI Summit in Sri Lanka</span>
       </div>
     </div>
   );
@@ -120,21 +120,21 @@ export default function AboutSection() {
           </h2>
 
           <p className="about-description">
-            The <strong>SLASSCOM AI Asia Summit</strong> is Sri Lanka's premier platform for advancing the AI ecosystem, bringing together thought leaders, innovators, policymakers, researchers, startups, and technology professionals from across Asia and beyond. Established in 2018, the summit fosters collaboration, knowledge sharing, and enterprise innovation to accelerate AI adoption across key industries.
+            The <strong>SLASSCOM AI Asia Summit</strong> is more than an event; it's the engine driving Sri Lanka's AI transformation. We bring together a diverse ecosystem of thought leaders, innovators, and policy makers to not just talk about the future, but to actively build it. Our focus is on tangible outcomes:
           </p>
 
           <div className="about-pillars-list">
             <div className="about-pillar-item">
               <CheckCircle size={18} style={{ color: '#E8B84B', flexShrink: 0 }} />
-              <span>Fostering high-value collaboration to solve complex industry challenges</span>
+              <span>Fostering collaboration to solve complex challenges</span>
             </div>
             <div className="about-pillar-item">
               <CheckCircle size={18} style={{ color: '#E8B84B', flexShrink: 0 }} />
-              <span>Facilitating strategic partnerships that unlock new economic growth</span>
+              <span>Facilitating partnerships that unlock new growth</span>
             </div>
             <div className="about-pillar-item">
               <CheckCircle size={18} style={{ color: '#E8B84B', flexShrink: 0 }} />
-              <span>Driving AI adoption to enhance national competitiveness and global linkages</span>
+              <span>Driving AI adoption across key industries to enhance competitiveness and create new economic opportunities</span>
             </div>
           </div>
 
