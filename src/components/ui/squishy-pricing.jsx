@@ -78,7 +78,20 @@ export const SquishyPricing = () => {
           cta="Register"
           link="mailto:corpoffice@slasscom.lk?subject=..."
           background="squishy-bg-bundle-nm"
-          accentColor="#00e007ff"
+          accentColor="#0016e0ff"
+          BGComponent={BGComponent2}
+          featured={false}
+        />
+        <PricingCard
+          label="Special Offer Pricing"
+          currency="Rs"
+          period="1 Pass"
+          description="Special offer Pricing for SLASSCOM Members Startups Eco System partners"
+          taxNote="To avail these offers, write to us at :Email hasanthi.kahandawala@slasscom.lk"
+          cta="Register"
+          link="mailto:corpoffice@slasscom.lk?subject=..."
+          background="squishy-bg-bundle-nm"
+          accentColor="#e05200ff"
           BGComponent={BGComponent2}
           featured={false}
         />

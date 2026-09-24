@@ -1,56 +1,72 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Layers, Pin } from 'lucide-react';
+﻿import React from 'react';
+import {
+  Layers,
+  Cpu,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  Globe,
+  Zap,
+} from 'lucide-react';
 import ScrollFloat from './ScrollFloat';
-
-const TIMELINE_HEIGHT = 1700;
-
-const POSITIONS = [
-  { top: 0, side: 'left', inset: '12%', rotate: -4 },
-  { top: 190, side: 'right', inset: '12%', rotate: 4 },
-  { top: 640, side: 'left', inset: '12%', rotate: -4 },
-  { top: 830, side: 'right', inset: '8%', rotate: 4 },
-  { top: 1280, side: 'left', inset: '12%', rotate: -4 }
-];
-
-const PATH_D =
-  'M 280 150 C 480 150, 560 340, 720 340' +
-  ' C 880 340, 480 500, 280 790' +
-  ' C 280 940, 560 980, 760 980' +
-  ' C 980 980, 480 1250, 280 1430';
+import { FeaturesGrid } from './ui/features-grid';
 
 export default function FocusAreasSection() {
-  const pillars = [
+  const thematicPillars = [
     {
-      id: '01',
-      title: 'AI in Engineering',
-      desc: 'Deploying advanced machine intelligence across software engineering, automated systems, and enterprise infrastructure.',
-      color: '#E8B84B'
+      icon: Cpu,
+      pillar: "Pillar 01",
+      title: "AI in Engineering",
+      description:
+        "Deploying advanced machine intelligence across software engineering, automated testing pipelines, algorithmic architecture, and next-gen enterprise infrastructure.",
+      tags: ["MLOps & Pipelines", "Automated Infra", "Algorithmic Systems"],
+      track: "Technical & Systems Track",
     },
     {
-      id: '02',
-      title: 'Governance & Security of AI',
-      desc: 'Establishing ethical AI frameworks, data privacy compliance, risk management, and cybersecurity protocols.',
-      color: '#D4B05A'
+      icon: ShieldCheck,
+      pillar: "Pillar 02",
+      title: "Governance & Security of AI",
+      description:
+        "Establishing trustworthy ethical AI frameworks, sovereign data privacy compliance, autonomous risk management, and mission-critical cybersecurity defense.",
+      tags: ["Ethical AI", "Privacy & Risk", "Cyber Defense"],
+      track: "Policy & Governance Track",
     },
     {
-      id: '03',
-      title: 'Emerging AI Technologies',
-      desc: 'Exploring breakthrough developments in Generative AI, Large Language Models, agentic automation, and robotics.',
-      color: '#E8B84B'
+      icon: Sparkles,
+      pillar: "Pillar 03",
+      title: "Emerging AI Technologies",
+      description:
+        "Exploring breakthrough developments in frontier multimodal Generative AI, Large Language Models, self-directed agentic swarms, and cognitive robotics.",
+      tags: ["Multimodal GenAI", "Agentic Systems", "Cognitive Robotics"],
+      track: "Frontier Research Track",
     },
     {
-      id: '04',
-      title: 'Human-Centric AI',
-      desc: 'Designing intuitive, accessible, and transparent artificial intelligence that augments human capability.',
-      color: '#C9A155'
+      icon: Users,
+      pillar: "Pillar 04",
+      title: "Human-Centric AI",
+      description:
+        "Designing intuitive, accessible, and transparent artificial intelligence systems that augment human ingenuity, workforce potential, and strategic decision-making.",
+      tags: ["Human Augmentation", "Explainable AI", "Cognitive UX"],
+      track: "Human Systems Track",
     },
     {
-      id: '05',
-      title: 'AI for Economic & Societal Impact',
-      desc: 'Accelerating cross-industry digital transformation to enhance regional competitiveness and national prosperity.',
-      color: '#B8860B'
-    }
+      icon: Globe,
+      pillar: "Pillar 05",
+      title: "AI for Economic & Societal Impact",
+      description:
+        "Accelerating cross-industry digital transformation to elevate national economic resilience, regional competitiveness, and sustainable societal prosperity.",
+      tags: ["Macro-Economics", "Regional Strategy", "Societal Tech"],
+      track: "Socio-Economic Track",
+    },
+    {
+      icon: Zap,
+      pillar: "Pillar 06",
+      title: "Enterprise AI Transformation",
+      description:
+        "Scaling operational AI capabilities across enterprise business units, unlocking tangible ROI, automated workflows, and agile organizational readiness.",
+      tags: ["Enterprise ROI", "Workflow Automation", "Adoption Strategy"],
+      track: "Executive Leadership Track",
+    },
   ];
 
   return (
@@ -58,68 +74,23 @@ export default function FocusAreasSection() {
       <div className="focus-header">
         <div className="focus-badge">
           <Layers size={14} style={{ color: '#E8B84B' }} />
-          <span>2026 THEMATIC FOCUS AREAS</span>
+          <span>AI THE MULTIPLIER • 2026 SUMMIT AGENDA</span>
         </div>
         <ScrollFloat containerClassName="focus-main-title">
-          AI as a Multiplier
+          Thematic Focus Areas
         </ScrollFloat>
         <p className="focus-subtitle">
-          Making AI a standard part of how organizations innovate, operate, and create enterprise value.
+          Six strategic pillars exploring artificial intelligence as the catalyst for transformative economic, technological, and enterprise innovation across Asia.
         </p>
       </div>
 
-      <div className="focus-timeline" style={{ '--timeline-height': `${TIMELINE_HEIGHT}px` }}>
-        <svg
-          className="focus-path-svg"
-          viewBox={`0 0 1000 ${TIMELINE_HEIGHT}`}
-          preserveAspectRatio="none"
-        >
-          <motion.path
-            d={PATH_D}
-            stroke="currentColor"
-            className="focus-path-line"
-            strokeWidth="2"
-            strokeDasharray="8 6"
-            fill="none"
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-            initial={{ strokeDashoffset: 0 }}
-            animate={{ strokeDashoffset: -140 }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-          />
-        </svg>
-
-        {pillars.map((item, index) => {
-          const position = POSITIONS[index];
-          const cardStyle = {
-            '--r': `${position.rotate}deg`,
-            '--top': `${position.top}px`,
-            [position.side === 'left' ? '--left' : '--right']: position.inset
-          };
-
-          return (
-            <div key={item.id} className="pin-card" style={cardStyle}>
-              <div className="pin-card-shell">
-                <span
-                  className="pin-card-tack"
-                  style={{ background: item.color, boxShadow: `0 4px 14px ${item.color}66` }}
-                >
-                  <Pin size={16} />
-                </span>
-                <div
-                  className="pin-card-inner"
-                  style={{ background: `${item.color}14`, borderColor: `${item.color}45` }}
-                >
-                  <span className="pin-card-num" style={{ color: item.color }}>
-                    {item.id}
-                  </span>
-                  <h3 className="pin-card-title">{item.title}</h3>
-                  <p className="pin-card-desc">{item.desc}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      <div className="thematic-features-wrapper">
+        <FeaturesGrid
+          title=""
+          subtitle=""
+          features={thematicPillars}
+          className="py-2 px-0"
+        />
       </div>
     </section>
   );
