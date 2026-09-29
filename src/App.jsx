@@ -23,6 +23,7 @@ import EventCountdown from './components/EventCountdown';
 import AboutSection from './components/AboutSection';
 import EventHighlightsSection from './components/EventHighlightsSection';
 import FocusAreasSection from './components/FocusAreasSection';
+import SpeakersSection from './components/SpeakersSection';
 import AiRobotVisual from './components/AiRobotVisual';
 import TicketPricingSection from './components/TicketPricingSection';
 import SponsorsSection from './components/SponsorsSection';
@@ -209,8 +210,7 @@ export default function App() {
                 <ul className="nav-links">
                   <li><a href="#" className="nav-link active">Home</a></li>
                   <li><a href="#about" className="nav-link">About</a></li>
-                  <li><a href="#focus-areas" className="nav-link">Thematic Pillars</a></li>
-                  <li><a href="#highlights" className="nav-link">Event Archive</a></li>
+                  <li><a href="#speakers" className="nav-link">Speakers</a></li>
                   <li><a href="#tickets" className="nav-link">Tickets</a></li>
                   {SHOW_PARTNER_SECTION && <li><a href="#partner-section" className="nav-link">Partnership</a></li>}
                   <li><a href="#contact" className="nav-link">Contact</a></li>
@@ -254,8 +254,8 @@ export default function App() {
               <ul className="nav-mobile-links">
                 <li><a href="#" className="nav-link active" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
                 <li><a href="#about" className="nav-link" onClick={() => setMobileMenuOpen(false)}>About</a></li>
-                <li><a href="#focus-areas" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Thematic Pillars</a></li>
-                <li><a href="#partner-section" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Partnership</a></li>
+                <li><a href="#speakers" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Speakers</a></li>
+                <li><a href="#tickets" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Tickets</a></li>
                 <li><a href="#contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
               </ul>
             </div>
@@ -330,6 +330,9 @@ export default function App() {
 
         {/* 2026 THEMATIC FOCUS AREAS */}
         <FocusAreasSection />
+
+        {/* SPEAKERS SECTION */}
+        <SpeakersSection />
 
         {/* 2025 EVENT HIGHLIGHTS — SCROLL-DRIVEN IMAGE GALLERY */}
         <EventHighlightsSection />
