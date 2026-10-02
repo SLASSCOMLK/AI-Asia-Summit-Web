@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import {
   Layers,
   Cpu,
@@ -16,56 +16,56 @@ export default function FocusAreasSection() {
     {
       icon: Cpu,
       pillar: "Pillar 01",
-      title: "AI in Engineering",
+      title: "The Economics of AI in 2026",
       description:
-        "Deploying advanced machine intelligence across software engineering, automated testing pipelines, algorithmic architecture, and next-gen enterprise infrastructure.",
-      tags: ["MLOps & Pipelines", "Automated Infra", "Algorithmic Systems"],
-      track: "Technical & Systems Track",
+        "Achieving ROI through efficient AI infrastructure and Small Language Models (SLMs).",
+      tags: ["AI Infrastructure", "SLMs", "ROI"],
+      track: "Economic Strategy Track",
     },
     {
       icon: ShieldCheck,
       pillar: "Pillar 02",
-      title: "Governance & Security of AI",
+      title: "Beyond the Hype: Real ROI and Cost Governance",
       description:
-        "Establishing trustworthy ethical AI frameworks, sovereign data privacy compliance, autonomous risk management, and mission-critical cybersecurity defense.",
-      tags: ["Ethical AI", "Privacy & Risk", "Cyber Defense"],
-      track: "Policy & Governance Track",
+        "AI FinOps, implementation costs, governance, and sustainable AI adoption.",
+      tags: ["AI FinOps", "Governance", "Cost Management"],
+      track: "Governance Track",
     },
     {
       icon: Sparkles,
       pillar: "Pillar 03",
-      title: "Emerging AI Technologies",
+      title: "The Agentic Age",
       description:
-        "Exploring breakthrough developments in frontier multimodal Generative AI, Large Language Models, self-directed agentic swarms, and cognitive robotics.",
-      tags: ["Multimodal GenAI", "Agentic Systems", "Cognitive Robotics"],
-      track: "Frontier Research Track",
+        "The evolution from prompt-based interactions to autonomous AI agents and multi-agent systems.",
+      tags: ["Autonomous Agents", "Multi-Agent Systems", "Evolution"],
+      track: "Frontier Tech Track",
     },
     {
       icon: Users,
       pillar: "Pillar 04",
-      title: "Human-Centric AI",
+      title: "Building an AI-Ready Culture",
       description:
-        "Designing intuitive, accessible, and transparent artificial intelligence systems that augment human ingenuity, workforce potential, and strategic decision-making.",
-      tags: ["Human Augmentation", "Explainable AI", "Cognitive UX"],
+        "Workforce transformation, responsible AI, and human-AI collaboration.",
+      tags: ["Workforce Transformation", "Responsible AI", "Human-AI Collaboration"],
       track: "Human Systems Track",
     },
     {
       icon: Globe,
       pillar: "Pillar 05",
-      title: "AI for Economic & Societal Impact",
+      title: "The Next Frontier",
       description:
-        "Accelerating cross-industry digital transformation to elevate national economic resilience, regional competitiveness, and sustainable societal prosperity.",
-      tags: ["Macro-Economics", "Regional Strategy", "Societal Tech"],
-      track: "Socio-Economic Track",
+        "Emerging AI trends, digital sovereignty, and what organizations can expect in 2027 and beyond.",
+      tags: ["Emerging Trends", "Digital Sovereignty", "Future of AI"],
+      track: "Future Outlook Track",
     },
     {
       icon: Zap,
       pillar: "Pillar 06",
-      title: "Enterprise AI Transformation",
+      title: "Industry-Focused Breakout Sessions",
       description:
-        "Scaling operational AI capabilities across enterprise business units, unlocking tangible ROI, automated workflows, and agile organizational readiness.",
-      tags: ["Enterprise ROI", "Workflow Automation", "Adoption Strategy"],
-      track: "Executive Leadership Track",
+        "Covering Finance & Insurance, Healthcare & Life Sciences, and Manufacturing & Supply Chain.",
+      tags: ["Finance & Insurance", "Healthcare", "Manufacturing"],
+      track: "Industry Breakouts Track",
     },
   ];
 

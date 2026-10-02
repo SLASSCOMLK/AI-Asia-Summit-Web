@@ -29,6 +29,20 @@ const speakers = [
       "An active voice in the technology ecosystem, Dehan regularly shares his expertise at industry symposiums and panels, focusing on pragmatic AI adoption, digital manufacturing, and cultivating a high-impact, data-driven culture.",
     ],
   },
+  {
+    id: "moumita",
+    name: "Moumita Sarker",
+    designation: "Founder and CEO",
+    company: "Illuminati Consulting",
+    image: "/speaker-moumita.jpg",
+    linkedin: "https://www.linkedin.com/in/moumitasarkervp/",
+    bio: [
+      "Moumita Sarker is the Founder and CEO of Illuminati Consulting, an AI consulting firm that helps businesses unlock measurable value through practical, purpose-driven AI solutions. With over 21 years of experience, she has witnessed every major evolution in AI and analytics, from traditional statistical modelling and machine learning to today's Agentic AI, giving her a pragmatic, business-first perspective on technology adoption and value realization.",
+      "She has led transformative AI and analytics programs across banking, retail, QSR, hospitality, insurance, automotive, construction, and CPG, delivering solutions in sales acceleration, customer lifecycle management, end-to-end agentic transformation, dynamic pricing and promotions, predictive maintenance, forecasting, and AI for CFOs.",
+      "Prior to founding Illuminati Consulting, she headed the Agentic AI Centre of Excellence for Deloitte South Asia and was a founding member of Cartesian Consulting. Her earlier experience includes J.P. Morgan and HDFC Bank, where she began her analytics journey.",
+      "An alumna of the Indian Statistical Institute, Moumita combines deep expertise in Agentic AI, Generative AI, Machine Learning, business analytics, and statistical modelling with a strong focus on commercially viable outcomes. A firm believer in continuous learning, she is passionate about helping organizations translate AI into sustained business impact.",
+    ],
+  },
 ];
 
 const LinkedInIcon = ({ size = 16 }) => (
