@@ -75,7 +75,7 @@ function FeatureCard({
   track = "Core Thematic Session",
 }) {
   return (
-    <div className="group relative rounded-2xl border border-amber-400/25 bg-gradient-to-b from-[#1d1712]/95 via-[#15110d]/95 to-[#0f0c0a]/98 px-10 pt-10 pb-8 md:px-12 md:pt-12 md:pb-10 flex flex-col justify-between min-h-[420px] transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/60 hover:shadow-[0_20px_50px_rgba(232,184,75,0.18)] backdrop-blur-2xl">
+    <div className="group relative rounded-2xl border border-amber-400/25 bg-gradient-to-b from-[#1d1712]/95 via-[#15110d]/95 to-[#0f0c0a]/98 p-6 md:p-8 flex flex-col justify-between min-h-[320px] transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/60 hover:shadow-[0_20px_50px_rgba(232,184,75,0.18)] backdrop-blur-2xl">
       {/* Subtle top corner ambient glow */}
       <div className="pointer-events-none absolute -top-12 -right-12 size-36 rounded-full bg-amber-400/8 blur-3xl transition-opacity duration-300 group-hover:bg-amber-400/20" />
 
@@ -95,12 +95,12 @@ function FeatureCard({
         </div>
 
         {/* Title */}
-        <h3 className="mb-5 text-2xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#F5C842]">
+        <h3 className="mb-4 text-xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#F5C842]">
           {title}
         </h3>
 
         {/* Description: spacious, comfortable line-height and typography */}
-        <p className="text-[1.05rem] leading-[1.9] text-slate-300/90 font-normal mb-9">
+        <p className="text-[0.95rem] leading-[1.6] text-slate-300/90 font-normal mb-6">
           {description}
         </p>
 

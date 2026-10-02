@@ -76,7 +76,7 @@ export const SquishyPricing = () => {
           description="Please register using the official company email address. This helps verify organizational affiliation and lets the team correctly identify registrants"
           taxNote="*VAT 18% applicable at check-out"
           cta="Register"
-          link="mailto:corpoffice@slasscom.lk?subject=..."
+          link="https://slasscom.glueup.com/event/ai-asia-summit-2026-193153/"
           background="squishy-bg-bundle-nm"
           accentColor="#0016e0ff"
           BGComponent={BGComponent2}
@@ -86,12 +86,27 @@ export const SquishyPricing = () => {
           label="Special Offer Pricing"
           currency="Rs"
           period="1 Pass"
-          description="Special offer Pricing for SLASSCOM Members Startups Eco System partners"
+          description="Special offer Pricing for SLASSCOM Member Startups, Eco System partners"
           taxNote="To avail these offers, write to us at :Email hasanthi.kahandawala@slasscom.lk"
           cta="Register"
-          link="mailto:corpoffice@slasscom.lk?subject=..."
+          link="corpoffice@slasscom.lk"
           background="squishy-bg-bundle-nm"
           accentColor="#e05200ff"
+          BGComponent={BGComponent2}
+          featured={false}
+        />
+
+        <PricingCard
+          label="International Participants"
+          currency="USD"
+          price="140"
+          period="1 Pass"
+          description="Special Pricing for International Participants "
+          taxNote="VAT 18% applicable at check-out"
+          cta="Register"
+          link="https://slasscom.glueup.com/event/ai-asia-summit-2026-193153/"
+          background="squishy-bg-bundle-nm"
+          accentColor="#e000dcff"
           BGComponent={BGComponent2}
           featured={false}
         />
