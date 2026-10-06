@@ -1976,7 +1976,7 @@ body {
 
 .squishy-card {
   position: relative;
-  min-height: 480px;
+  height: 480px;
   overflow: hidden;
   border-radius: var(--radius-lg);
   padding: 2.25rem 1.85rem 5.5rem;

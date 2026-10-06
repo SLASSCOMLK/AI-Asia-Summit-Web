@@ -136,6 +136,92 @@ export default function SponsorsSection() {
           </motion.div>
         </div>
 
+        {/* ── Eco System Partners ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={fadeUp}
+          custom={2}
+          style={{
+            marginTop: '5rem',
+            textAlign: 'center'
+          }}
+        >
+          <p style={{
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: '#E8B84B',
+            marginBottom: '2rem'
+          }}>
+            Eco System Partners
+          </p>
+          
+          <div style={{
+            background: 'rgba(255,255,255,0.02)',
+            borderTop: '1px solid rgba(255,255,255,0.05)',
+            borderBottom: '1px solid rgba(255,255,255,0.05)',
+            padding: '3rem 0',
+            width: '100vw',
+            marginLeft: '50%',
+            transform: 'translateX(-50%)'
+          }} className="w-full">
+            <InfiniteSlider duration={40} gap={40}>
+              {[
+                { src: '/CA.jpeg', alt: 'CA Sri Lanka — The Institute of Chartered Accountants of Sri Lanka' },
+                { src: '/ECCSL.png', alt: 'ECCSL — The European Chamber of Commerce of Sri Lanka' },
+                { src: '/BCS.png', alt: 'BCS Sri Lanka Section — The Chartered Institute for IT' },
+                { src: '/AICPA_CIMA.png', alt: 'AICPA & CIMA' },
+                { src: '/ACCA.jpg', alt: 'ACCA' },
+                { src: '/National Chamber logo_page-0001.jpg', alt: 'National Chamber of Commerce Sri Lanka' },
+              ].map((partner, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '88px',
+                    width: '220px',
+                    flexShrink: 0,
+                    background: '#ffffff',
+                    borderRadius: '14px',
+                    padding: '1rem 1.75rem',
+                    border: '2px solid rgba(232,184,75,0)',
+                    boxShadow: '0 2px 12px rgba(0,0,0,0.25)',
+                    transition: 'all 0.3s ease',
+                    cursor: 'default',
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.border = '2px solid rgba(232,184,75,0.7)';
+                    e.currentTarget.style.boxShadow = '0 8px 28px rgba(232,184,75,0.2)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.border = '2px solid rgba(232,184,75,0)';
+                    e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.25)';
+                  }}
+                >
+                  <img
+                    src={partner.src}
+                    alt={partner.alt}
+                    style={{
+                      height: '52px',
+                      width: 'auto',
+                      maxWidth: '180px',
+                      objectFit: 'contain',
+                      display: 'block',
+                    }}
+                  />
+                </div>
+              ))}
+            </InfiniteSlider>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
