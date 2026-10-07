@@ -43,6 +43,20 @@ const speakers = [
       "An alumna of the Indian Statistical Institute, Moumita combines deep expertise in Agentic AI, Generative AI, Machine Learning, business analytics, and statistical modelling with a strong focus on commercially viable outcomes. A firm believer in continuous learning, she is passionate about helping organizations translate AI into sustained business impact.",
     ],
   },
+  {
+    id: "shanil",
+    name: "Shanil Fernando",
+    designation: "Co-Founder & Chief Technology and AI Officer",
+    company: "Cut+Dry",
+    image: "/Speaker- Shanil.jpeg",
+    linkedin: "https://www.linkedin.com/in/shanil-fernando-3376222/",
+    bio: [
+      "Shanil is a visionary technology leader with over two decades of global experience, known for his expertise in nurturing and expanding tech startups. His most recent ten years have been dedicated to the intersection of food, restaurants, and technology.",
+      "His career began as a founding software engineer at the IT consulting firm Virtusa (NASDAQ: VRTU), where he played a pivotal role in the company's growth, ultimately leading to its listing on the Nasdaq stock exchange. After his tenure at Virtusa, Shanil co-founded CAKE, alongside Mani and Jim.",
+      "At Sysco, Shanil spearheaded the establishment and expansion of Sysco Labs, the company's innovation arm that drives technological transformation throughout the organization. Notably, Shanil played a key role in establishing an offshore captive center for Sysco, which boasted a workforce of over 950 IT professionals.",
+      "In his current role at Cut+Dry, Shanil serves as the Chief Technology and AI Officer, leveraging his extensive experience and expertise to drive technological advancements within the food service industry.",
+    ],
+  },
 ];
 
 const LinkedInIcon = ({ size = 16 }) => (
@@ -55,7 +69,7 @@ const LinkedInIcon = ({ size = 16 }) => (
     </g>
     <defs>
       <clipPath id="clip-li-sp">
-        <rect width="16" height="16" fill="white" />
+        <rect width={16} height={16} fill="white" />
       </clipPath>
     </defs>
   </svg>
@@ -85,9 +99,9 @@ function SpeakerCard({ speaker, index, onOpen }) {
 
       <div className="speaker-card-info">
         <div className="speaker-card-text">
-          <h3 className="speaker-name">{speaker.name}</h3>
-          <p className="speaker-role">{speaker.designation}</p>
-          <span className="speaker-company">{speaker.company}</span>
+          <h3 className="speaker-name" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{speaker.name}</h3>
+          <p className="speaker-role" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{speaker.designation}</p>
+          <span className="speaker-company" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>{speaker.company}</span>
         </div>
         <a
           href={speaker.linkedin}
