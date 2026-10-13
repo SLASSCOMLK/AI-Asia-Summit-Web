@@ -26,41 +26,7 @@ export const SquishyPricing: React.FC = () => {
   return (
     <div className="squishy-pricing-wrapper">
       <div className="squishy-pricing-grid">
-        <PricingCard
-          badge="LIMITED TIME OFFER"
-          label="SLASSCOM Members"
-          price="24,933.33"
-          currency="Rs"
-          period="Per Ticket"
-          description="Exclusive Early Bird rate for verified SLASSCOM Member organizations. Must register with official corporate email."
-          availability="60 tickets available"
-          validity="Valid till 10th Oct 2026"
-          taxNote="*VAT 18% applicable at check-out"
-          cta="Register (Members)"
-          link={REGISTRATION_LINK}
-          background="squishy-bg-member"
-          accentColor="#2E63FF"
-          BGComponent={BGComponent1}
-          featured={false}
-        />
 
-        <PricingCard
-          badge="MOST POPULAR"
-          label="SLASSCOM Non-Members"
-          price="31,138.46"
-          currency="Rs"
-          period="Per Ticket"
-          description="Standard Early Bird full-day conference pass for non-members, international attendees, and AI professionals."
-          availability="10 tickets available"
-          validity="Valid till 17th Oct 2026"
-          taxNote="*VAT 18% applicable at check-out"
-          cta="Register (Non-Members)"
-          link={REGISTRATION_LINK}
-          background="squishy-bg-nonmember"
-          accentColor="#7C3AED"
-          BGComponent={BGComponent2}
-          featured={true}
-        />
 
         <PricingCard
           badge="CORPORATE PASSES"

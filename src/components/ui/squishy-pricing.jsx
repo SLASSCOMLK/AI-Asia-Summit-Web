@@ -9,43 +9,11 @@ export const SquishyPricing = () => {
     <div className="squishy-pricing-wrapper">
       <div className="squishy-pricing-grid">
         <PricingCard
-          label="Early Bird Offer -SLASSCOM Members"
-          price="24,960"
-          currency="Rs"
-          period="Per Ticket"
-          description="Exclusive Early Bird rate for verified SLASSCOM Member organizations. Must register with official corporate email."
-          validity="Valid till 10th Oct 2026"
-          taxNote="*VAT 18% applicable at check-out"
-          cta="Register"
-          link={REGISTRATION_LINK}
-          background="squishy-bg-member"
-          accentColor="#E8B84B"
-          BGComponent={BGComponent1}
-          featured={false}
-        />
-
-        <PricingCard
-          label="Early Bird Offer SLASSCOM Non-Members"
-          price="31,200"
-          currency="Rs"
-          period="Per Ticket"
-          description="Standard Early Bird full-day conference pass for non-members, international attendees, and AI professionals."
-          validity="Valid till 10th Oct 2026"
-          taxNote="*VAT 18% applicable at check-out"
-          cta="Register"
-          link={REGISTRATION_LINK}
-          background="squishy-bg-nonmember"
-          accentColor="#D4B05A"
-          BGComponent={BGComponent2}
-          featured={true}
-        />
-
-        <PricingCard
           label="Bundle Offer 8 seats - SLASSCOM Members "
           price="199,040"
           currency="Rs"
           period="8 Passes"
-          description="Exclusive Early Bird rate for verified SLASSCOM Member organizations. Must register with official corporate email."
+          description="Exclusive rate for verified SLASSCOM Member organizations. Must register with official corporate email."
           taxNote="*VAT 18% applicable at check-out"
           cta="Register"
           link="mailto:corpoffice@slasscom.lk?subject=AI%20Asia%20Summit%202026%20-%20Enterprise%20Delegation%20Inquiry"

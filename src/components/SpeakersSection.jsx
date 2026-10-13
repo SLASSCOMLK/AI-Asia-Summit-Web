@@ -57,6 +57,34 @@ const speakers = [
       "In his current role at Cut+Dry, Shanil serves as the Chief Technology and AI Officer, leveraging his extensive experience and expertise to drive technological advancements within the food service industry.",
     ],
   },
+  {
+    id: "rukshan",
+    name: "Dr. Rukshan Batuwita",
+    designation: "Staff Research Engineer",
+    company: "Google",
+    image: "/speaker-rukshan.jpg",
+    linkedin: "https://www.linkedin.com/in/rukshanbatuwita/",
+    bio: [
+      "Dr. Rukshan Batuwita is a Staff Research Engineer at Google and an internationally recognized machine learning researcher with deep expertise in frontier foundation models, real-world algorithm architecture, and AI safety.",
+      "Prior to Google, he served as Lead Data Scientist at Woolworths Group and held research and academic posts across prestigious Australian institutions, translating cutting-edge ML theory into mission-critical commercial deployments.",
+      "A frequent keynote speaker and advisory member at the SLASSCOM AI Asia Summit, Rukshan actively champions responsible AI deployment, scientific acceleration, and healthcare diagnostic systems across the Asia-Pacific region."
+    ],
+  },
+  {
+    id: "vajira",
+    name: "Vidya Jyothi Prof. Vajira H. W. Dissanayake MBBS, PhD, FNASSL, FIAHSI, FCMA, FRCP",
+    designation: "Chair and Senior Professor of Anatomy, Genetics and Biomedical Informatics",
+    company: "University of Colombo, Sri Lanka",
+    image: "/Prof Vajira.jpeg",
+    linkedin: "https://www.linkedin.com/in/vajirahwd/",
+    bio: [
+      "He served as Dean of the Faculty of Medicine from 2020 to 2026, during which he led major reforms in medical education, research, and international collaboration including the setting up of the Centre for Health Systems Policy and Innovation that is engaged in a technical collaboration with the World Health Organization Regional Office for South-East Asia (WHO SEARO) on leadership and capacity development for precision medicine, primary health care, and universal health coverage to which he provides leadership as its Founding Director. He is also Chairman of the Board of Management, Chairman of the Specialty Board in Biomedical Informatics, and Chairman of the Specialty Board in Clinical Genetics at the Postgraduate Institute of Medicine, University of Colombo.",
+      "Professor Dissanayake is an internationally recognised leader in the field of medicine. Over the past three decades, he has played a pivotal role in establishing and advancing the disciplines of genetics, genomics, digital health, biomedical informatics, precision medicine, and bioethics in Sri Lanka while contributing to their global development through leadership, research, education, and policy.",
+      "He has held numerous distinguished national and international leadership positions, including President of the Sri Lanka Medical Association, President of the Sri Lanka Medical Council, President of the Commonwealth Medical Association, Chairperson of the Commonwealth Health Professions and Partners Alliance, President of the Health Informatics Society of Sri Lanka, President of the Asia-Pacific Association for Medical Informatics, Vice President of the International Medical Informatics Association, Chairperson of the Global Genomic Medicine Collaborative, and Steering Committee Member of the Forum for Ethical Review Committees in Asia and the Western Pacific. He has served as an expert advisor to both the World Health Organization and the Commonwealth Secretariat.",
+      "He currently serves as Founding Chairman of the Commonwealth Centre for Digital Health (United Kingdom), Founding Trustee of the Global Genomics Network for Education and Training (United Kingdom), Member of the Global Existential Security Threats Board of the Interaction Council of Former Heads of State and Government, Member of the Health Expert Group of the Association of Commonwealth Universities, and Member of the International Advisory Board of The Lancet Digital Health. His work has significantly influenced national health policy, medical education, and the development of genomic medicine and digital health across low- and middle-income countries.",
+      "In recognition of his outstanding contributions to science and medicine, he was conferred the Sri Lankan national honour Vidya Jyothi in 2019 by His Excellency the President of Sri Lanka, the nation’s highest civilian honours for exceptional scientific achievement."
+    ],
+  },
 ];
 
 const LinkedInIcon = ({ size = 16 }) => (
@@ -99,21 +127,23 @@ function SpeakerCard({ speaker, index, onOpen }) {
 
       <div className="speaker-card-info">
         <div className="speaker-card-text">
-          <h3 className="speaker-name" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{speaker.name}</h3>
-          <p className="speaker-role" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{speaker.designation}</p>
-          <span className="speaker-company" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>{speaker.company}</span>
+          <h3 className="speaker-name" title={speaker.name}>{speaker.name}</h3>
+          <p className="speaker-role" title={speaker.designation}>{speaker.designation}</p>
         </div>
-        <a
-          href={speaker.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="speaker-linkedin-btn"
-          aria-label={speaker.name + " LinkedIn"}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <LinkedInIcon size={14} />
-          <span>LinkedIn</span>
-        </a>
+        <div className="speaker-card-footer">
+          <span className="speaker-company" title={speaker.company}>{speaker.company}</span>
+          <a
+            href={speaker.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="speaker-linkedin-btn"
+            aria-label={speaker.name + " LinkedIn"}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <LinkedInIcon size={13} />
+            <span>LinkedIn</span>
+          </a>
+        </div>
       </div>
     </motion.article>
   );

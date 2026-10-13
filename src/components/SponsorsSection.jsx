@@ -81,19 +81,11 @@ export default function SponsorsSection() {
             variants={fadeUp}
             custom={1}
             style={{
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '20px',
-              padding: '2.25rem 2.5rem',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '1.5rem',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
+              gap: '1.25rem',
               textAlign: 'center',
-              maxWidth: '380px',
               width: '100%',
               margin: '0 auto'
             }}
@@ -108,11 +100,6 @@ export default function SponsorsSection() {
             }}>
               Organised By
             </p>
-            <div style={{
-              width: '100%',
-              height: '1px',
-              background: 'rgba(232,184,75,0.25)'
-            }} />
             <a
               href="https://slasscom.lk"
               target="_blank"
@@ -124,9 +111,9 @@ export default function SponsorsSection() {
                 src="/slasscom-logo.png"
                 alt="SLASSCOM — The Knowledge and Innovation Chamber"
                 style={{
-                  height: '72px',
+                  height: '58px',
                   width: 'auto',
-                  opacity: 0.93,
+                  opacity: 0.95,
                   filter: 'brightness(1.05)',
                   transition: 'opacity 0.2s ease',
                   objectFit: 'contain'
@@ -136,7 +123,7 @@ export default function SponsorsSection() {
           </motion.div>
         </div>
 
-        {/* ── Eco System Partners ── */}
+        {/* ── Partners: Echelon & Zone 24x7 Side by Side ── */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -144,7 +131,151 @@ export default function SponsorsSection() {
           variants={fadeUp}
           custom={2}
           style={{
-            marginTop: '5rem',
+            marginTop: '3.5rem',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: '4.5rem',
+            flexWrap: 'wrap',
+            textAlign: 'center'
+          }}
+        >
+          {/* Print and Digital Media Partner - Echelon & EconomyNext */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: '0 0 1.5rem 0'
+            }}>
+              Print and Digital Media Partner
+            </p>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '1.25rem',
+              flexWrap: 'wrap'
+            }}>
+              <a
+                href="https://echelon.lk"
+                target="_blank"
+                rel="noreferrer"
+                title="Echelon"
+                style={{ display: 'inline-block', lineHeight: 0 }}
+              >
+                <img
+                  src="/ECHELON LOGO.jpg"
+                  alt="Echelon — Official Print and Digital Media Partner"
+                  style={{
+                    height: '50px',
+                    width: 'auto',
+                    maxWidth: '220px',
+                    borderRadius: '8px',
+                    objectFit: 'contain',
+                    opacity: 0.95,
+                    filter: 'brightness(1.05)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.opacity = '1';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.opacity = '0.95';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                />
+              </a>
+              <a
+                href="https://economynext.com"
+                target="_blank"
+                rel="noreferrer"
+                title="EconomyNext"
+                style={{ display: 'inline-block', lineHeight: 0 }}
+              >
+                <img
+                  src="/EconomyNext.jpg"
+                  alt="EconomyNext — Official Digital Media Partner"
+                  style={{
+                    height: '50px',
+                    width: 'auto',
+                    maxWidth: '220px',
+                    borderRadius: '8px',
+                    objectFit: 'contain',
+                    opacity: 0.95,
+                    filter: 'brightness(1.05)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.opacity = '1';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.opacity = '0.95';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* Gifting Partner - Zone 24x7 */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '220px' }}>
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: '0 0 1.5rem 0'
+            }}>
+              Gifting Partner
+            </p>
+            <a
+              href="https://zone24x7.com"
+              target="_blank"
+              rel="noreferrer"
+              title="Zone 24x7"
+              style={{ display: 'inline-block', lineHeight: 0 }}
+            >
+              <img
+                src="/zone24x7 logo.jpg"
+                alt="Zone 24x7 — Gifting Partner"
+                style={{
+                  height: '50px',
+                  width: 'auto',
+                  maxWidth: '240px',
+                  borderRadius: '8px',
+                  objectFit: 'contain',
+                  opacity: 0.95,
+                  filter: 'brightness(1.05)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.opacity = '0.95';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* ── Eco System Partners ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={fadeUp}
+          custom={3}
+          style={{
+            marginTop: '4.5rem',
             textAlign: 'center'
           }}
         >
@@ -176,6 +307,7 @@ export default function SponsorsSection() {
                 { src: '/AICPA_CIMA.png', alt: 'AICPA & CIMA' },
                 { src: '/ACCA.jpg', alt: 'ACCA' },
                 { src: '/National Chamber logo_page-0001.jpg', alt: 'National Chamber of Commerce Sri Lanka' },
+                { src: '/fitis-logo.png', alt: 'FITIS — Federation of Information Technology Industry Sri Lanka' },
               ].map((partner, idx) => (
                 <div
                   key={idx}
@@ -183,12 +315,12 @@ export default function SponsorsSection() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    width: '180px',
                     height: '88px',
-                    width: '220px',
                     flexShrink: 0,
                     background: '#ffffff',
                     borderRadius: '14px',
-                    padding: '1rem 1.75rem',
+                    padding: '1rem 1.5rem',
                     border: '2px solid rgba(232,184,75,0)',
                     boxShadow: '0 2px 12px rgba(0,0,0,0.25)',
                     transition: 'all 0.3s ease',
@@ -209,11 +341,14 @@ export default function SponsorsSection() {
                     src={partner.src}
                     alt={partner.alt}
                     style={{
+                      width: '140px',
                       height: '52px',
-                      width: 'auto',
-                      maxWidth: '180px',
                       objectFit: 'contain',
+                      objectPosition: 'center',
                       display: 'block',
+                      opacity: 0.85,
+                      filter: 'brightness(1.1) contrast(1.05)',
+                      transition: 'all 0.3s ease',
                     }}
                   />
                 </div>
