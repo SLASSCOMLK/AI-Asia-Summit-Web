@@ -32,9 +32,13 @@ import ScrollFloat from './components/ScrollFloat';
 import LogoOrb from './components/LogoOrb';
 import { LinkedInIcon, XIcon, FacebookIcon, InstagramIcon, YouTubeIcon } from './components/SocialIcons';
 import { Typewriter } from './components/ui/typewriter-text';
+import AgendaPage from './components/AgendaPage';
+import FAQSection from './components/FAQSection';
 
 // Temporarily hidden — re-enable by flipping this back to true when ready to launch partnerships
 const SHOW_PARTNER_SECTION = false;
+// Temporarily hidden — re-enable by flipping this back to true when agenda is confirmed
+const SHOW_AGENDA = false;
 const REGISTRATION_URL = 'https://slasscom.glueup.com/event/ai-asia-summit-2026-193153/';
 
 const MIN_LOADING_TIME = 4000;
@@ -49,6 +53,25 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    return (SHOW_AGENDA && window.location.hash === '#agenda') ? 'agenda' : 'home';
+  });
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (SHOW_AGENDA && window.location.hash === '#agenda') {
+        setCurrentView('agenda');
+      } else {
+        setCurrentView('home');
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    window.addEventListener('popstate', handleHash);
+    return () => {
+      window.removeEventListener('hashchange', handleHash);
+      window.removeEventListener('popstate', handleHash);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
@@ -190,77 +213,119 @@ export default function App() {
       {/* Precision Custom Pointer Cursor */}
       <CustomCursor />
 
-      <div className="page-wrapper">
-        {/* Full-Page Interactive Kinetic Grid Background */}
-        <KineticGridBackground />
+      {SHOW_AGENDA && currentView === 'agenda' ? (
+        <AgendaPage
+          onBackToHome={() => {
+            setCurrentView('home');
+            window.history.pushState(null, '', window.location.pathname);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        />
+      ) : (
+        <div className="page-wrapper">
+          {/* Full-Page Interactive Kinetic Grid Background */}
+          <KineticGridBackground />
 
-        {/* Top Executive Navbar Header */}
-        <header className="navbar">
-          <div className="container">
-            <div className="navbar-glass">
-              <div className="navbar-inner">
-                <a href="#" className="navbar-logo-link">
-                  <img
-                    src="/logo-white.png"
-                    alt="SLASSCOM AI ASIA SUMMIT 2026"
-                    className="navbar-transparent-logo"
-                  />
-                </a>
+          {/* Top Executive Navbar Header */}
+          <header className="navbar">
+            <div className="container">
+              <div className="navbar-glass">
+                <div className="navbar-inner">
+                  <a href="#" className="navbar-logo-link">
+                    <img
+                      src="/logo-white.png"
+                      alt="SLASSCOM AI ASIA SUMMIT 2026"
+                      className="navbar-transparent-logo"
+                    />
+                  </a>
 
-                <ul className="nav-links">
-                  <li><a href="#" className="nav-link active">Home</a></li>
-                  <li><a href="#about" className="nav-link">About</a></li>
-                  <li><a href="#speakers" className="nav-link">Speakers</a></li>
-                  <li><a href="#tickets" className="nav-link">Tickets</a></li>
-                  {SHOW_PARTNER_SECTION && <li><a href="#partner-section" className="nav-link">Partnership</a></li>}
-                  <li><a href="#contact" className="nav-link">Contact</a></li>
-                </ul>
+                  <ul className="nav-links">
+                    <li><a href="#" className="nav-link active">Home</a></li>
+                    <li><a href="#about" className="nav-link">About</a></li>
+                    {SHOW_AGENDA && (
+                      <li>
+                        <a
+                          href="#agenda"
+                          className="nav-link"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setCurrentView('agenda');
+                            window.history.pushState(null, '', '#agenda');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                        >
+                          Agenda
+                        </a>
+                      </li>
+                    )}
+                    <li><a href="#speakers" className="nav-link">Speakers</a></li>
+                    <li><a href="#tickets" className="nav-link">Tickets</a></li>
+                    {SHOW_PARTNER_SECTION && <li><a href="#partner-section" className="nav-link">Partnership</a></li>}
+                    <li><a href="#contact" className="nav-link">Contact</a></li>
+                  </ul>
 
-                <div className="nav-controls-group">
-                  {SHOW_PARTNER_SECTION && (
+                  <div className="nav-controls-group">
+                    {SHOW_PARTNER_SECTION && (
+                      <a
+                        href="/sponsorship-proposal.pdf"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-outline-pdf"
+                      >
+                        <FileText size={14} />
+                        <span>Sponsorship Proposal</span>
+                      </a>
+                    )}
+
                     <a
-                      href="/sponsorship-proposal.pdf"
+                      href={REGISTRATION_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-outline-pdf"
+                      className="btn-register-header"
                     >
-                      <FileText size={14} />
-                      <span>Sponsorship Proposal</span>
+                      <span>REGISTER NOW</span>
                     </a>
-                  )}
+                  </div>
 
-                  <a
-                    href={REGISTRATION_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-register-header"
+                  <button
+                    className="nav-menu-toggle"
+                    onClick={() => setMobileMenuOpen((prev) => !prev)}
+                    aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                    aria-expanded={mobileMenuOpen}
                   >
-                    <span>REGISTER NOW</span>
-                  </a>
+                    {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                  </button>
                 </div>
+              </div>
 
-                <button
-                  className="nav-menu-toggle"
-                  onClick={() => setMobileMenuOpen((prev) => !prev)}
-                  aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-                  aria-expanded={mobileMenuOpen}
-                >
-                  {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-                </button>
+              <div className={`nav-mobile-panel${mobileMenuOpen ? ' is-open' : ''}`}>
+                <ul className="nav-mobile-links">
+                  <li><a href="#" className="nav-link active" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
+                  <li><a href="#about" className="nav-link" onClick={() => setMobileMenuOpen(false)}>About</a></li>
+                  {SHOW_AGENDA && (
+                    <li>
+                      <a
+                        href="#agenda"
+                        className="nav-link"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setMobileMenuOpen(false);
+                          setCurrentView('agenda');
+                          window.history.pushState(null, '', '#agenda');
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                      >
+                        Agenda
+                      </a>
+                    </li>
+                  )}
+                  <li><a href="#speakers" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Speakers</a></li>
+                  <li><a href="#tickets" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Tickets</a></li>
+                  <li><a href="#contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
+                </ul>
               </div>
             </div>
-
-            <div className={`nav-mobile-panel${mobileMenuOpen ? ' is-open' : ''}`}>
-              <ul className="nav-mobile-links">
-                <li><a href="#" className="nav-link active" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
-                <li><a href="#about" className="nav-link" onClick={() => setMobileMenuOpen(false)}>About</a></li>
-                <li><a href="#speakers" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Speakers</a></li>
-                <li><a href="#tickets" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Tickets</a></li>
-                <li><a href="#contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </header>
+          </header>
 
         {/* Executive Hero Section */}
         <main className="hero-section container">
@@ -318,6 +383,29 @@ export default function App() {
                 <ArrowRight size={15} />
                 <span>EXPLORE PASSES</span>
               </a>
+
+              {SHOW_AGENDA && (
+                <button
+                  onClick={() => {
+                    setCurrentView('agenda');
+                    window.history.pushState(null, '', '#agenda');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="btn-outline-glass"
+                  style={{
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.6rem',
+                    cursor: 'pointer',
+                    borderColor: 'rgba(232, 184, 75, 0.4)',
+                    color: '#E8B84B'
+                  }}
+                >
+                  <Calendar size={15} />
+                  <span>VIEW AGENDA</span>
+                </button>
+              )}
             </div>
 
             {/* FROSTED GLASSMORPHISM COUNTDOWN TIMER */}
@@ -342,6 +430,9 @@ export default function App() {
 
         {/* SPONSORS & PARTNERS SECTION */}
         <SponsorsSection />
+
+        {/* FAQ SECTION */}
+        <FAQSection />
 
         {/* PARTNER WITH US SECTION */}
         {SHOW_PARTNER_SECTION && (
@@ -512,6 +603,21 @@ export default function App() {
                 <ul className="footer-links-list">
                   <li><a href="#">Home</a></li>
                   <li><a href="#about">About</a></li>
+                  {SHOW_AGENDA && (
+                    <li>
+                      <a
+                        href="#agenda"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setCurrentView('agenda');
+                          window.history.pushState(null, '', '#agenda');
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                      >
+                        Agenda
+                      </a>
+                    </li>
+                  )}
                   <li><a href="#focus-areas">Thematic Pillars</a></li>
                   <li><a href="#highlights">Event Archive</a></li>
                   <li><a href="#tickets">Tickets & Passes</a></li>
@@ -616,6 +722,7 @@ export default function App() {
           </div>
         </footer>
       </div>
+      )}
     </>
   );
 }

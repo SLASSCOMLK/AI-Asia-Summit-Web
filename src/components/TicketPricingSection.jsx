@@ -18,7 +18,6 @@ export default function TicketPricingSection() {
 
         <p className="focus-subtitle">
           Join Asia's premier AI gathering on 12th November 2026 at Cinnamon Grand, Colombo.
-          Early Bird rates are live for a limited time.
         </p>
       </div>
 
