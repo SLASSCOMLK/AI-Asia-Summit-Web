@@ -1,0 +1,310 @@
+/* ==========================================================================
+   AI ASIA SUMMIT 2026 - VIDEOS CAROUSEL SECTION
+   All classes scoped with the 'vc-' prefix to protect global styles.
+   ========================================================================== */
+
+.vc-section {
+  position: relative;
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+}
+
+.vc-header {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.vc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-nav, 'Space Grotesk', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-blue-cyan, #D4B05A);
+  background: rgba(232, 184, 75, 0.1);
+  border: 1px solid rgba(232, 184, 75, 0.3);
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-full, 9999px);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.vc-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.85rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.vc-subtitle {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  color: var(--color-text-muted, #CBD5E1);
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ─── Carousel Wrapper & Container ─── */
+.vc-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.vc-carousel {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding: 2.5rem calc(50% - min(40vw, 320px));
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.vc-carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Dragging active state */
+.vc-carousel.vc-is-dragging {
+  cursor: grabbing !important;
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+}
+
+.vc-carousel.vc-is-dragging * {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+/* ─── Video Card ─── */
+.vc-card {
+  flex: 0 0 clamp(280px, 80vw, 640px);
+  width: clamp(280px, 80vw, 640px);
+  aspect-ratio: 16 / 9;
+  position: relative;
+  scroll-snap-align: center;
+  border-radius: var(--radius-lg, 24px);
+  overflow: hidden;
+  background: var(--color-panel, rgba(20, 18, 14, 0.85));
+  border: 1px solid var(--color-panel-border, rgba(232, 184, 75, 0.22));
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Centered Card: Full size & opaque */
+.vc-card.vc-card-centered {
+  transform: scale(1);
+  opacity: 1;
+  border-color: rgba(232, 184, 75, 0.65);
+  box-shadow: 0 14px 45px -10px rgba(232, 184, 75, 0.3),
+              0 0 25px rgba(232, 184, 75, 0.15);
+  z-index: 2;
+}
+
+/* Side Card: Scaled down & dimmed */
+.vc-card.vc-card-side {
+  transform: scale(0.92);
+  opacity: 0.52;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.vc-card.vc-card-side:hover {
+  opacity: 0.78;
+  transform: scale(0.94);
+  border-color: rgba(232, 184, 75, 0.4);
+}
+
+/* ─── YouTube Player Container inside card ─── */
+.vc-player-frame-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  overflow: hidden;
+}
+
+.vc-player-frame-wrapper iframe,
+.vc-player-frame-wrapper > div {
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  display: block;
+}
+
+/* ─── Top-Right YouTube External Button ─── */
+.vc-youtube-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(12, 10, 8, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(232, 184, 75, 0.35);
+  border-radius: var(--radius-full, 9999px);
+  color: #FFFFFF;
+  font-family: var(--font-nav, 'Space Grotesk', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.vc-youtube-btn:hover {
+  background: rgba(232, 184, 75, 0.22);
+  border-color: var(--color-gold, #E8B84B);
+  color: var(--color-gold-bright, #F5C842);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 184, 75, 0.25);
+}
+
+.vc-youtube-icon {
+  width: 16px;
+  height: 16px;
+  color: #FF0000;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ─── Transparent Click Catcher Overlay for Side Cards ─── */
+.vc-card-click-catcher {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  background: rgba(12, 10, 8, 0.15);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Carousel Controls (Prev/Next Arrows & Dots) ─── */
+.vc-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+  padding: 0 1rem;
+}
+
+.vc-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full, 9999px);
+  background: rgba(20, 18, 14, 0.85);
+  border: 1px solid rgba(232, 184, 75, 0.25);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.vc-nav-btn:hover:not(:disabled) {
+  background: rgba(232, 184, 75, 0.2);
+  border-color: var(--color-gold, #E8B84B);
+  color: var(--color-gold, #E8B84B);
+  transform: scale(1.08);
+}
+
+.vc-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.vc-dots-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full, 9999px);
+  background: rgba(232, 184, 75, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vc-dot.vc-dot-active {
+  width: 26px;
+  background: var(--color-gold, #E8B84B);
+  box-shadow: 0 0 12px rgba(232, 184, 75, 0.5);
+}
+
+/* ─── Responsive Adjustments ─── */
+@media (max-width: 768px) {
+  .vc-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .vc-header {
+    margin-bottom: 2rem;
+  }
+
+  .vc-carousel {
+    gap: 1rem;
+    padding: 1.5rem calc(50% - 40vw);
+  }
+
+  .vc-card {
+    border-radius: var(--radius-md, 16px);
+  }
+
+  .vc-youtube-btn {
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .vc-youtube-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .vc-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+}

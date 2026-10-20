@@ -21,6 +21,7 @@ import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
 import EventCountdown from './components/EventCountdown';
 import AboutSection from './components/AboutSection';
+import VideosSection from './components/VideosSection';
 import EventHighlightsSection from './components/EventHighlightsSection';
 import FocusAreasSection from './components/FocusAreasSection';
 import SpeakersSection from './components/SpeakersSection';
@@ -415,6 +416,9 @@ export default function App() {
 
         {/* ABOUT SECTION */}
         <AboutSection />
+
+        {/* VIDEOS SECTION */}
+        <VideosSection />
 
         {/* 2026 THEMATIC FOCUS AREAS */}
         <FocusAreasSection />
