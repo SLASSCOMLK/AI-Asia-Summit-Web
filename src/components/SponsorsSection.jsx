@@ -68,8 +68,10 @@ export default function SponsorsSection() {
 
         <div style={{
           display: 'flex',
-          justifyContent: 'center',
-          maxWidth: '860px',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '2.5rem',
+          maxWidth: '1000px',
           margin: '0 auto'
         }}>
 
@@ -118,8 +120,227 @@ export default function SponsorsSection() {
                   transition: 'opacity 0.2s ease',
                   objectFit: 'contain'
                 }}
+                loading="lazy"
               />
             </a>
+          </motion.div>
+
+          {/* ── Regional, National & Industry Partners ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={fadeUp}
+            custom={1.5}
+            style={{
+              marginTop: '2.5rem',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              gap: '2.5rem',
+              textAlign: 'center',
+              width: '100%',
+              margin: '2.5rem auto 0'
+            }}
+          >
+            {/* Regional Partner: NASSCOM */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <p style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: '#E8B84B',
+                margin: '0 0 1.5rem 0'
+              }}>
+                Regional Partner
+              </p>
+              <a
+                href="https://nasscom.in"
+                target="_blank"
+                rel="noreferrer"
+                title="NASSCOM — Regional Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '8px 16px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/NASSCOM.jpg"
+                  alt="NASSCOM — Regional Partner"
+                  style={{
+                    maxHeight: '38px',
+                    maxWidth: '170px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+            {/* National Partner: BOI Sri Lanka */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <p style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: '#E8B84B',
+                margin: '0 0 1.5rem 0'
+              }}>
+                National Partner
+              </p>
+              <a
+                href="https://investsrilanka.com"
+                target="_blank"
+                rel="noreferrer"
+                title="Board of Investment of Sri Lanka — National Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 16px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/boi-logo.jpg"
+                  alt="BOI Sri Lanka — National Partner"
+                  style={{
+                    maxHeight: '44px',
+                    maxWidth: '160px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+            {/* Industry Partner: CIO Forum & TEA */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <p style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: '#E8B84B',
+                margin: '0 0 1.5rem 0'
+              }}>
+                Industry Partner
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <div
+                  title="CIO Forum — Industry Partner"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '56px',
+                    width: '200px',
+                    borderRadius: '8px',
+                    background: '#FFFFFF',
+                    padding: '6px 16px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    cursor: 'default'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <img
+                    src="/cio-forum.jpg"
+                    alt="CIO Forum — Industry Partner"
+                    style={{
+                      maxHeight: '46px',
+                      maxWidth: '170px',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }}
+                    loading="lazy"
+                  />
+                </div>
+
+                <a
+                  href="https://teasrilanka.org"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Tea Exporters Association Sri Lanka — Industry Partner"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '56px',
+                    width: '200px',
+                    borderRadius: '8px',
+                    background: '#FFFFFF',
+                    padding: '6px 16px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    textDecoration: 'none'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <img
+                    src="/tea-logo.jpg"
+                    alt="Tea Exporters Association — Industry Partner"
+                    style={{
+                      maxHeight: '46px',
+                      maxWidth: '170px',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }}
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
           </motion.div>
         </div>
 
@@ -164,29 +385,38 @@ export default function SponsorsSection() {
                 target="_blank"
                 rel="noreferrer"
                 title="Echelon"
-                style={{ display: 'inline-block', lineHeight: 0 }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 14px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
               >
                 <img
                   src="/ECHELON LOGO.jpg"
                   alt="Echelon — Official Print and Digital Media Partner"
                   style={{
-                    height: '50px',
+                    maxHeight: '42px',
+                    maxWidth: '170px',
                     width: 'auto',
-                    maxWidth: '220px',
-                    borderRadius: '8px',
+                    height: 'auto',
                     objectFit: 'contain',
-                    opacity: 0.95,
-                    filter: 'brightness(1.05)',
-                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    display: 'block'
                   }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.opacity = '0.95';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+                  loading="lazy"
                 />
               </a>
               <a
@@ -194,36 +424,45 @@ export default function SponsorsSection() {
                 target="_blank"
                 rel="noreferrer"
                 title="EconomyNext"
-                style={{ display: 'inline-block', lineHeight: 0 }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 14px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
               >
                 <img
                   src="/EconomyNext.jpg"
                   alt="EconomyNext — Official Digital Media Partner"
                   style={{
-                    height: '50px',
+                    maxHeight: '42px',
+                    maxWidth: '170px',
                     width: 'auto',
-                    maxWidth: '220px',
-                    borderRadius: '8px',
+                    height: 'auto',
                     objectFit: 'contain',
-                    opacity: 0.95,
-                    filter: 'brightness(1.05)',
-                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    display: 'block'
                   }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.opacity = '0.95';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+                  loading="lazy"
                 />
               </a>
             </div>
           </div>
 
-          {/* Gifting Partner - Zone 24x7 */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '220px' }}>
+          {/* Gifting Partner - Zone 24x7 & InfoConsulting */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <p style={{
               fontSize: '0.7rem',
               fontWeight: 700,
@@ -234,36 +473,94 @@ export default function SponsorsSection() {
             }}>
               Gifting Partner
             </p>
-            <a
-              href="https://zone24x7.com"
-              target="_blank"
-              rel="noreferrer"
-              title="Zone 24x7"
-              style={{ display: 'inline-block', lineHeight: 0 }}
-            >
-              <img
-                src="/zone24x7 logo.jpg"
-                alt="Zone 24x7 — Gifting Partner"
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '1.25rem',
+              flexWrap: 'wrap'
+            }}>
+              <a
+                href="https://zone24x7.com"
+                target="_blank"
+                rel="noreferrer"
+                title="Zone 24x7"
                 style={{
-                  height: '50px',
-                  width: 'auto',
-                  maxWidth: '240px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
                   borderRadius: '8px',
-                  objectFit: 'contain',
-                  opacity: 0.95,
-                  filter: 'brightness(1.05)',
+                  background: '#FFFFFF',
+                  padding: '6px 14px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
                   transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.opacity = '1';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.opacity = '0.95';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
-              />
-            </a>
+              >
+                <img
+                  src="/zone24x7 logo.jpg"
+                  alt="Zone 24x7 — Gifting Partner"
+                  style={{
+                    maxHeight: '42px',
+                    maxWidth: '170px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+
+              <a
+                href="https://infoconsulting.com"
+                target="_blank"
+                rel="noreferrer"
+                title="InfoConsulting — Gifting Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 14px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/InfoConsulting - Brand Logo.png"
+                  alt="InfoConsulting — Gifting Partner"
+                  style={{
+                    maxHeight: '38px',
+                    maxWidth: '170px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    borderRadius: '4px',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+            </div>
           </div>
         </motion.div>
 
@@ -350,6 +647,7 @@ export default function SponsorsSection() {
                       filter: 'brightness(1.1) contrast(1.05)',
                       transition: 'all 0.3s ease',
                     }}
+                    loading="lazy"
                   />
                 </div>
               ))}

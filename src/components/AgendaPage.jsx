@@ -11,21 +11,20 @@ export default function AgendaPage({ onBackToHome }) {
   const filteredMilestones = agendaSchedule.filter((item) => {
     if (filter === 'all') return true;
     if (filter === 'keynotes') return item.category === 'keynote';
-    if (filter === 'tracks') return item.category === 'track';
+    if (filter === 'breakout') return item.category === 'breakout';
     if (filter === 'masterclass') return item.category === 'masterclass' || item.category === 'panel';
-    if (filter === 'networking') return item.category === 'break';
     return true;
   });
 
   return (
     <div className="min-h-screen bg-[#0C0A08] text-white selection:bg-[#E8B84B] selection:text-black">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#0C0A08]/80 border-b border-[rgba(232,184,75,0.15)]">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#0C0A08]/85 border-b border-[rgba(232,184,75,0.15)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
               onClick={onBackToHome}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#E8B84B] bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#E8B84B]/40 transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-[#E8B84B] bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#E8B84B]/40 transition-all duration-200 cursor-pointer"
             >
               <ArrowLeft size={14} />
               <span>Back to Home</span>
@@ -52,7 +51,7 @@ export default function AgendaPage({ onBackToHome }) {
         style={{
           position: 'relative',
           paddingTop: '4rem',
-          paddingBottom: '3rem',
+          paddingBottom: '2.5rem',
           paddingLeft: '1.5rem',
           paddingRight: '1.5rem',
           overflow: 'hidden',
@@ -73,17 +72,16 @@ export default function AgendaPage({ onBackToHome }) {
           </h1>
 
           <p className="max-w-2xl mx-auto text-sm sm:text-base text-neutral-300 leading-relaxed mb-6">
-            A comprehensive, single-day immersive summit exploring real-world AI economics, frontier agentic systems, enterprise scale, biomedical AI, and governance across Asia.
+            Explore the keynotes, scientific breakthroughs, autonomous agent systems, concurrent breakout sessions, and executive masterclasses shaping AI across Asia.
           </p>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-10">
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
             {[
-              { id: 'all', label: 'All Sessions (17)' },
+              { id: 'all', label: 'All Topics (9)' },
               { id: 'keynotes', label: 'Keynotes' },
-              { id: 'tracks', label: 'Parallel Tracks' },
-              { id: 'masterclass', label: 'Masterclasses & Panels' },
-              { id: 'networking', label: 'Breaks & Networking' }
+              { id: 'breakout', label: 'Breakout Sessions' },
+              { id: 'masterclass', label: 'Masterclasses & Panels' }
             ].map((btn) => (
               <button
                 key={btn.id}
@@ -101,7 +99,7 @@ export default function AgendaPage({ onBackToHome }) {
         </div>
       </section>
 
-      {/* Interactive Scroll Timeline Section */}
+      {/* Interactive Alternating Scroll Timeline Section */}
       <section className="relative pb-24">
         <ScrollTimeline milestones={filteredMilestones} />
       </section>
@@ -135,8 +133,6 @@ export default function AgendaPage({ onBackToHome }) {
           </div>
         </div>
       </section>
-
-
     </div>
   );
 }

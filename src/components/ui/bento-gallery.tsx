@@ -236,6 +236,8 @@ const InteractiveImageBentoGallery: React.FC<
                   <img
                     src={item.url}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       position: 'absolute',
                       inset: 0,

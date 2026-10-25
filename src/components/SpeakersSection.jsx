@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink } from "lucide-react";
+import { X, ExternalLink, ChevronDown } from "lucide-react";
 
 const speakers = [
   {
@@ -85,6 +85,50 @@ const speakers = [
       "In recognition of his outstanding contributions to science and medicine, he was conferred the Sri Lankan national honour Vidya Jyothi in 2019 by His Excellency the President of Sri Lanka, the nation’s highest civilian honours for exceptional scientific achievement."
     ],
   },
+  {
+    id: "dhanushi",
+    name: "Dr. Dhanushi Hettiarachchi",
+    designation: "CEO and Co-founder",
+    company: "Ophtha Innovations",
+    image: "/Dr dhanuhsi.jpeg",
+    linkedin: "https://www.linkedin.com/in/dr-dhanushi-hettiarachchi/",
+    bio: [
+      "Dr. Dhanushi Hettiarachchi is a medical doctor, MedTech entrepreneur, and innovator working at the intersection of clinical medicine, technology, and health systems transformation. Her work advances preventive healthcare through accessible, technology driven solutions that address persistent gaps in early diagnosis, patient access, and healthcare delivery across Sri Lanka. She is the CEO and Co-Founder of Ophtha Innovations (Pvt) Ltd.",
+      "She holds an MBBS from the University of Peradeniya and an MBA from the University of Colombo and has completed specialised training in medical software and artificial intelligence at Yale Medical School. She is also a 2026 Chevening CRISP Fellow at University of Oxford. This multidisciplinary background enables her to bridge medicine, data science, and innovation strategy to develop solutions suited to both advanced and resource limited healthcare settings.",
+      "With experience spanning clinical practice, community health initiatives, and health technology development, she leads the design of scalable, device agnostic AI screening approaches that can be deployed through hospitals, optical networks, and community outreach programmes. Her work has supported large scale eye screening initiatives across multiple regions of Sri Lanka, enabling earlier referrals and improving access to preventive care.",
+      "She also initiated Sri Lanka’s first HealthTech AI and Innovation Programme, conducted under the guidance of professors from Yale Medical School and with the support of the American Center Colombo and the U.S. Embassy in Sri Lanka. Beyond her entrepreneurial work, she contributes to Sri Lanka’s innovation ecosystem as a mentor, judge, and speaker in national startup and technology programmes while advocating for women’s participation in STEM and the responsible use of emerging technologies."
+    ],
+  },
+  {
+    id: "ashwini",
+    name: "Ashwini Natesan",
+    designation: "Legal Consultant / Research Fellow",
+    company: "TMT Law",
+    image: "/Ahvini.jpeg",
+    linkedin: "https://www.linkedin.com/in/ashwini-natesan-b292b861/",
+    bio: [
+      "Ashwini Natesan is a legal consultant and research fellow specializing in Technology, Media & Telecommunications (TMT) law. As a Research Fellow at LIRNEasia, a tech policy think tank founded in Sri Lanka, she focuses on issues relating to data protection, data governance, online safety, AI ethics, and the use of data for public good. She is also a Consultant at Julius & Creasy for TMT law. Additionally, she undertakes independent projects related to online safety, data protection, AI governance, and the right to information. She has several publications to her credit and frequently presents at conferences nationally and regionally.",
+      "She is a Director on the Boards of LB Finance PLC and Associated Motor Finance. Previously, she was part of the Responsible AI sub-committee tasked with drafting Sri Lanka's National AI Strategy. She is a part of the Digital Trust Alliance Board.",
+      "She was selected to the Media Policy Institute at the University of Oxford in 2024 and is a former Fellow of the Internet Law and Policy Foundry. She was also selected as a regional expert for the Asia Pacific Consultation on Human Rights in the Digital Space by the International Commission of Jurists in 2025. She holds an LL.M. (Master of Laws) from the National University of Singapore and has completed various certifications, fellowships, and programmes, including in AI policy, AI Governance, and AI Safety Fundamentals."
+    ],
+  },
+  {
+    id: "mark",
+    name: "Mark Surgenor",
+    designation: "Chief Executive Officer",
+    company: "HSBC Sri Lanka",
+    image: "/Mark.jpeg",
+    linkedin: "https://www.linkedin.com/in/mark-surgenor-7112a728",
+    bio: [
+      "Mark is currently the CEO of HSBC Sri Lanka, Sri Lanka’s largest international bank with over 134 years of continuous operations in the country.",
+      "Prior to this, Mark was based in Hong Kong and was the HSBC Group Head of Wealth Management, serving clients across all 60+ HSBC markets around the world.",
+      "Within HSBC, Mark has undertaken leadership roles in Europe, in Latin America and across several countries in Asia.",
+      "Prior to HSBC, Mark was at the Lloyds Banking Group, based in the UK, the Middle East and in Asia.",
+      "A qualified pilot, and with over a decade as a reserve Air Training Corp Instructor, Mark has a keen interest in flying along with travel and all watersports.",
+      "Mark holds a Bachelors in Business & Finance, a Masters in International Marketing and the CIM Diploma.",
+      "Mark holds board appointments at LankaPay and HSBC Indonesia and is the immediate Past President of the Sri Lanka Council for Business with Britain."
+    ],
+  },
 ];
 
 const LinkedInIcon = ({ size = 16 }) => (
@@ -106,10 +150,11 @@ const LinkedInIcon = ({ size = 16 }) => (
 function SpeakerCard({ speaker, index, onOpen }) {
   return (
     <motion.article
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
+      layout
+      initial={{ y: 24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: 16, opacity: 0 }}
+      transition={{ duration: 0.45, delay: (index % 4) * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
       className="speaker-card"
       onClick={() => onOpen(speaker)}
       role="button"
@@ -118,7 +163,7 @@ function SpeakerCard({ speaker, index, onOpen }) {
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onOpen(speaker)}
     >
       <div className="speaker-card-img-wrap">
-        <img src={speaker.image} alt={speaker.name} className="speaker-card-img" loading="lazy" />
+        <img src={speaker.image} alt={speaker.name} className="speaker-card-img" loading="lazy" decoding="async" />
         <div className="speaker-card-hover-overlay">
           <span className="speaker-view-bio-label">View Bio</span>
         </div>
@@ -129,9 +174,16 @@ function SpeakerCard({ speaker, index, onOpen }) {
         <div className="speaker-card-text">
           <h3 className="speaker-name" title={speaker.name}>{speaker.name}</h3>
           <p className="speaker-role" title={speaker.designation}>{speaker.designation}</p>
+          <div className="speaker-company-pill" title={speaker.company}>
+            <span className="speaker-company-dot" />
+            <span className="speaker-company-name">{speaker.company}</span>
+          </div>
         </div>
+
         <div className="speaker-card-footer">
-          <span className="speaker-company" title={speaker.company}>{speaker.company}</span>
+          <span className="speaker-view-bio-cta">
+            View Bio <span className="speaker-cta-arrow">→</span>
+          </span>
           <a
             href={speaker.linkedin}
             target="_blank"
@@ -140,7 +192,7 @@ function SpeakerCard({ speaker, index, onOpen }) {
             aria-label={speaker.name + " LinkedIn"}
             onClick={(e) => e.stopPropagation()}
           >
-            <LinkedInIcon size={13} />
+            <LinkedInIcon size={12} />
             <span>LinkedIn</span>
           </a>
         </div>
@@ -205,8 +257,7 @@ function BioModal({ speaker, onClose }) {
             <h2 className="speaker-modal-name">{speaker.name}</h2>
             <div className="speaker-modal-meta">
               <span className="speaker-modal-designation">{speaker.designation}</span>
-              <span className="speaker-modal-sep">·</span>
-              <span className="speaker-modal-company">{speaker.company}</span>
+              <span className="speaker-modal-company-badge">{speaker.company}</span>
             </div>
             <div className="speaker-modal-divider" />
             <div className="speaker-modal-bio">
@@ -223,6 +274,10 @@ function BioModal({ speaker, onClose }) {
 
 export default function SpeakersSection() {
   const [activeSpeaker, setActiveSpeaker] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const INITIAL_COUNT = 4;
+
+  const visibleSpeakers = isExpanded ? speakers : speakers.slice(0, INITIAL_COUNT);
 
   return (
     <section id="speakers" className="speakers-section container">
@@ -245,10 +300,39 @@ export default function SpeakersSection() {
       </motion.div>
 
       <div className="speakers-grid">
-        {speakers.map((speaker, i) => (
-          <SpeakerCard key={speaker.id} speaker={speaker} index={i} onOpen={setActiveSpeaker} />
-        ))}
+        <AnimatePresence mode="popLayout">
+          {visibleSpeakers.map((speaker, i) => (
+            <SpeakerCard key={speaker.id} speaker={speaker} index={i} onOpen={setActiveSpeaker} />
+          ))}
+        </AnimatePresence>
       </div>
+
+      {speakers.length > INITIAL_COUNT && (
+        <div className="speakers-expand-container">
+          <button
+            type="button"
+            className="speakers-expand-btn"
+            onClick={() => {
+              if (isExpanded) {
+                const el = document.getElementById("speakers");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }
+              setIsExpanded((prev) => !prev);
+            }}
+            aria-expanded={isExpanded}
+          >
+            <span>
+              {isExpanded
+                ? "Show Fewer Speakers"
+                : `View All Speakers (${speakers.length})`}
+            </span>
+            <ChevronDown
+              size={18}
+              className={`speakers-expand-icon ${isExpanded ? "rotated" : ""}`}
+            />
+          </button>
+        </div>
+      )}
 
       <AnimatePresence>
         {activeSpeaker && (
