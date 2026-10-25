@@ -44,6 +44,7 @@ export default function KineticGridBackground() {
   const ripplesRef = useRef([]);
   const rafRef = useRef(0);
   const sizeRef = useRef({ w: 0, h: 0 });
+  const dotsCanvasRef = useRef(null);
 
   const getWarpedPoint = useCallback((gx, gy, col, row, mouse, ripples, cols, rows) => {
     const edgeMargin = 1.5;
@@ -105,13 +106,9 @@ export default function KineticGridBackground() {
     ctx.fillStyle = THEME.bg;
     ctx.fillRect(0, 0, W, H);
 
-    ctx.fillStyle = 'rgba(255,255,255,0.05)';
-    for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
-      for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
-        ctx.beginPath();
-        ctx.arc(x, y, 0.7, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    // Fast offscreen cached dots instead of thousands of per-frame draw calls
+    if (dotsCanvasRef.current) {
+      ctx.drawImage(dotsCanvasRef.current, 0, 0);
     }
 
     for (let i = ripples.length - 1; i >= 0; i--) {
@@ -122,8 +119,10 @@ export default function KineticGridBackground() {
       if (r.opacity <= 0) ripples.splice(i, 1);
     }
 
-    const cols = Math.max(2, Math.ceil(W / CELL_SIZE)) + 1;
-    const rows = Math.max(2, Math.ceil(H / CELL_SIZE)) + 1;
+    const isMobile = W < 768;
+    const effectiveCellSize = isMobile ? 80 : CELL_SIZE;
+    const cols = Math.max(2, Math.ceil(W / effectiveCellSize)) + 1;
+    const rows = Math.max(2, Math.ceil(H / effectiveCellSize)) + 1;
     const cellW = W / (cols - 1);
     const cellH = H / (rows - 1);
 
@@ -215,9 +214,27 @@ export default function KineticGridBackground() {
       const rect = canvas.getBoundingClientRect();
       const w = rect.width;
       const h = rect.height;
+      if (w === 0 || h === 0) return;
       canvas.width = w;
       canvas.height = h;
       sizeRef.current = { w, h };
+
+      // Pre-render static dot pattern to offscreen canvas
+      const offscreen = document.createElement('canvas');
+      offscreen.width = w;
+      offscreen.height = h;
+      const octx = offscreen.getContext('2d');
+      if (octx) {
+        octx.fillStyle = 'rgba(255,255,255,0.05)';
+        for (let x = DOT_SPACING / 2; x < w; x += DOT_SPACING) {
+          for (let y = DOT_SPACING / 2; y < h; y += DOT_SPACING) {
+            octx.beginPath();
+            octx.arc(x, y, 0.7, 0, Math.PI * 2);
+            octx.fill();
+          }
+        }
+      }
+      dotsCanvasRef.current = offscreen;
     };
 
     setSize();
@@ -237,14 +254,24 @@ export default function KineticGridBackground() {
       ripplesRef.current.push({ x, y, radius: 0, opacity: 1, born: performance.now() });
     };
 
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      } else {
+        rafRef.current = requestAnimationFrame(animate);
+      }
+    };
+
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('click', onClick);
+    document.addEventListener('visibilitychange', onVisibilityChange);
     rafRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('resize', setSize);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('click', onClick);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
       }

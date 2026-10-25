@@ -1,0 +1,472 @@
+/* ==========================================================================
+   AI ASIA SUMMIT 2026 - VIDEOS CAROUSEL & SHOWCASE SECTION
+   All classes scoped with the 'vc-' prefix to protect global styles.
+   ========================================================================== */
+
+.vc-section {
+  position: relative;
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+}
+
+.vc-header {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.vc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-nav, 'Space Grotesk', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-blue-cyan, #D4B05A);
+  background: rgba(232, 184, 75, 0.1);
+  border: 1px solid rgba(232, 184, 75, 0.3);
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-full, 9999px);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.vc-title {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.85rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.vc-subtitle {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  color: var(--color-text-muted, #CBD5E1);
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ─── Showcase Wrapper: Full Width Responsive Container ─── */
+.vc-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Desktop: 3-column layout utilizing the full width without blank side gaps */
+.vc-carousel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  width: 100%;
+  padding: 1rem 0 2rem;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ─── Video Card ─── */
+.vc-card {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  border-radius: var(--radius-lg, 24px);
+  overflow: hidden;
+  background: var(--color-panel, rgba(20, 18, 14, 0.95));
+  border: 1px solid rgba(232, 184, 75, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.75);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+/* Active / Centered Card */
+.vc-card.vc-card-centered {
+  opacity: 1;
+  border-color: rgba(232, 184, 75, 0.85);
+  box-shadow: 0 16px 45px -10px rgba(232, 184, 75, 0.35),
+              0 0 25px rgba(232, 184, 75, 0.2);
+  transform: translateY(-4px);
+  z-index: 2;
+}
+
+/* Side Card: High visibility with interactive hover lift */
+.vc-card.vc-card-side {
+  opacity: 0.88;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.vc-card.vc-card-side:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+  border-color: rgba(232, 184, 75, 0.55);
+  box-shadow: 0 14px 35px -8px rgba(232, 184, 75, 0.25);
+}
+
+/* ─── YouTube Player Container inside card ─── */
+.vc-player-frame-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  overflow: hidden;
+}
+
+.vc-player-frame-wrapper iframe,
+.vc-player-frame-wrapper > div {
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  display: block;
+}
+
+/* ─── Top-Left Session Pill Badge ─── */
+.vc-session-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  background: rgba(12, 10, 8, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(232, 184, 75, 0.35);
+  border-radius: var(--radius-full, 9999px);
+  color: #E8B84B;
+  font-family: var(--font-nav, 'Space Grotesk', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.vc-session-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E8B84B;
+  box-shadow: 0 0 8px #E8B84B;
+}
+
+/* ─── Top-Right YouTube External Button ─── */
+.vc-youtube-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(12, 10, 8, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(232, 184, 75, 0.35);
+  border-radius: var(--radius-full, 9999px);
+  color: #FFFFFF;
+  font-family: var(--font-nav, 'Space Grotesk', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.vc-youtube-btn:hover {
+  background: rgba(232, 184, 75, 0.22);
+  border-color: var(--color-gold, #E8B84B);
+  color: var(--color-gold-bright, #F5C842);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 184, 75, 0.25);
+}
+
+.vc-youtube-icon {
+  width: 16px;
+  height: 16px;
+  color: #FF0000;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ─── Interactive Click Catcher Overlay for Non-Active Cards ─── */
+.vc-card-click-catcher {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hover play indicator prompt */
+.vc-play-hover-indicator {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(12, 10, 8, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.vc-card:hover .vc-play-hover-indicator {
+  opacity: 1;
+}
+
+.vc-play-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(232, 184, 75, 0.95);
+  color: #0C0A08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(232, 184, 75, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.25s ease;
+}
+
+.vc-card:hover .vc-play-icon-circle {
+  transform: scale(1);
+}
+
+.vc-play-hover-text {
+  font-family: var(--font-nav, 'Space Grotesk', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* ─── Bottom Overlay Session Information ─── */
+.vc-card-overlay-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 12;
+  padding: 2.5rem 1.25rem 1.1rem;
+  background: linear-gradient(to top, rgba(12, 10, 8, 0.94) 0%, rgba(12, 10, 8, 0.6) 65%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+/* Fades cleanly when active so player controls remain unobstructed */
+.vc-card.vc-card-centered .vc-card-overlay-info {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vc-card-speaker-label {
+  font-family: var(--font-nav, 'Space Grotesk', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #D4B05A;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.vc-card-title-label {
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ─── Navigation Controls Bar (Prev/Next Arrows & Indicator Dots) ─── */
+.vc-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.vc-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full, 9999px);
+  background: rgba(20, 18, 14, 0.85);
+  border: 1px solid rgba(232, 184, 75, 0.25);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.vc-nav-btn:hover:not(:disabled) {
+  background: rgba(232, 184, 75, 0.2);
+  border-color: var(--color-gold, #E8B84B);
+  color: var(--color-gold, #E8B84B);
+  transform: scale(1.08);
+}
+
+.vc-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.vc-dots-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full, 9999px);
+  background: rgba(232, 184, 75, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vc-dot.vc-dot-active {
+  width: 26px;
+  background: var(--color-gold, #E8B84B);
+  box-shadow: 0 0 12px rgba(232, 184, 75, 0.5);
+}
+
+/* ─── Responsive Carousel on Tablets & Mobile Devices ─── */
+@media (max-width: 1023px) {
+  .vc-carousel-wrapper {
+    padding: 0;
+  }
+
+  .vc-carousel {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding: 1.5rem 1.25rem 2rem;
+    cursor: grab;
+    scrollbar-width: none;
+  }
+
+  .vc-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vc-carousel.vc-is-dragging {
+    cursor: grabbing !important;
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .vc-carousel.vc-is-dragging * {
+    pointer-events: none !important;
+    user-select: none !important;
+  }
+
+  .vc-card {
+    flex: 0 0 clamp(280px, 85vw, 560px);
+    width: clamp(280px, 85vw, 560px);
+    scroll-snap-align: center;
+  }
+
+  .vc-card.vc-card-side {
+    transform: scale(0.96);
+    opacity: 0.65;
+  }
+
+  .vc-card.vc-card-centered {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .vc-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .vc-header {
+    margin-bottom: 2rem;
+  }
+
+  .vc-card {
+    border-radius: var(--radius-md, 16px);
+  }
+
+  .vc-session-badge {
+    top: 10px;
+    left: 10px;
+    padding: 4px 9px;
+    font-size: 0.68rem;
+  }
+
+  .vc-youtube-btn {
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .vc-youtube-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .vc-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .vc-card-overlay-info {
+    padding: 2rem 1rem 0.9rem;
+  }
+
+  .vc-card-title-label {
+    font-size: 0.88rem;
+  }
+}

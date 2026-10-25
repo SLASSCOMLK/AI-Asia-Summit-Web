@@ -213,7 +213,7 @@ export default function LogoOrb({ className = '', hue = 0 }) {
 
       const resize = () => {
         if (!container || !rendererInstance || !glContext) return;
-        const dpr = window.devicePixelRatio || 1;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
         const width = container.clientWidth;
         const height = container.clientHeight;
         if (width === 0 || height === 0) return;
@@ -233,9 +233,15 @@ export default function LogoOrb({ className = '', hue = 0 }) {
       window.addEventListener('resize', resize);
       resize();
 
+      let isVisible = true;
+      const observer = new IntersectionObserver(([entry]) => {
+        isVisible = entry.isIntersecting;
+      }, { threshold: 0.05 });
+      observer.observe(container);
+
       const update = (t) => {
         rafId = requestAnimationFrame(update);
-        if (!program) return;
+        if (!isVisible || !program) return;
 
         program.uniforms.iTime.value = t * 0.001;
         program.uniforms.hue.value = hue;
@@ -249,6 +255,7 @@ export default function LogoOrb({ className = '', hue = 0 }) {
 
       return () => {
         cancelAnimationFrame(rafId);
+        observer.disconnect();
         window.removeEventListener('resize', resize);
 
         if (container && glContext && glContext.canvas) {

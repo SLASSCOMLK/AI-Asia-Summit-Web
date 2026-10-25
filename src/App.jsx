@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import {
   Calendar,
   MapPin,
@@ -17,32 +17,34 @@ import {
   X
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
 import EventCountdown from './components/EventCountdown';
 import AboutSection from './components/AboutSection';
-import EventHighlightsSection from './components/EventHighlightsSection';
+import VideosSection from './components/VideosSection';
 import FocusAreasSection from './components/FocusAreasSection';
 import SpeakersSection from './components/SpeakersSection';
-import AiRobotVisual from './components/AiRobotVisual';
-import TicketPricingSection from './components/TicketPricingSection';
-import SponsorsSection from './components/SponsorsSection';
 import KineticGridBackground from './components/KineticGridBackground';
 import ScrollFloat from './components/ScrollFloat';
-import LogoOrb from './components/LogoOrb';
 import { LinkedInIcon, XIcon, FacebookIcon, InstagramIcon, YouTubeIcon } from './components/SocialIcons';
 import { Typewriter } from './components/ui/typewriter-text';
-import AgendaPage from './components/AgendaPage';
-import FAQSection from './components/FAQSection';
+
+// ─── Lazy-loaded components (below the fold / heavy) ──────────────────────────
+const CustomCursor = lazy(() => import('./components/CustomCursor'));
+const LogoOrb = lazy(() => import('./components/LogoOrb'));
+const EventHighlightsSection = lazy(() => import('./components/EventHighlightsSection'));
+const TicketPricingSection = lazy(() => import('./components/TicketPricingSection'));
+const SponsorsSection = lazy(() => import('./components/SponsorsSection'));
+const FAQSection = lazy(() => import('./components/FAQSection'));
+const AgendaPage = lazy(() => import('./components/AgendaPage'));
 
 // Temporarily hidden — re-enable by flipping this back to true when ready to launch partnerships
 const SHOW_PARTNER_SECTION = false;
-// Temporarily hidden — re-enable by flipping this back to true when agenda is confirmed
-const SHOW_AGENDA = false;
+// Agenda enabled as requested
+const SHOW_AGENDA = true;
 const REGISTRATION_URL = 'https://slasscom.glueup.com/event/ai-asia-summit-2026-193153/';
 
-const MIN_LOADING_TIME = 4000;
-const LOADING_FADE_DURATION = 600;
+const MIN_LOADING_TIME = 1500;
+const LOADING_FADE_DURATION = 400;
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -210,17 +212,21 @@ export default function App() {
       {/* Loading Screen — shown for a minimum of 4s while the site loads */}
       {isLoading && <LoadingScreen fadeOut={isFadingOut} />}
 
-      {/* Precision Custom Pointer Cursor */}
-      <CustomCursor />
+      {/* Precision Custom Pointer Cursor — lazy loaded, hidden on touch devices */}
+      <Suspense fallback={null}>
+        <CustomCursor />
+      </Suspense>
 
       {SHOW_AGENDA && currentView === 'agenda' ? (
-        <AgendaPage
-          onBackToHome={() => {
-            setCurrentView('home');
-            window.history.pushState(null, '', window.location.pathname);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-        />
+        <Suspense fallback={<div style={{ minHeight: '100vh', background: '#000' }} />}>
+          <AgendaPage
+            onBackToHome={() => {
+              setCurrentView('home');
+              window.history.pushState(null, '', window.location.pathname);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        </Suspense>
       ) : (
         <div className="page-wrapper">
           {/* Full-Page Interactive Kinetic Grid Background */}
@@ -334,7 +340,9 @@ export default function App() {
             {/* Official White Logo */}
             <div className="hero-logo-transparent-wrapper">
               <div className="hero-logo-orb" aria-hidden="true">
-                <LogoOrb hue={0} />
+                <Suspense fallback={null}>
+                  <LogoOrb hue={0} />
+                </Suspense>
               </div>
               <img
                 src="/logo-white.png"
@@ -416,23 +424,29 @@ export default function App() {
         {/* ABOUT SECTION */}
         <AboutSection />
 
+        {/* VIDEOS SECTION */}
+        <VideosSection />
+
         {/* 2026 THEMATIC FOCUS AREAS */}
         <FocusAreasSection />
 
         {/* SPEAKERS SECTION */}
         <SpeakersSection />
 
-        {/* 2025 EVENT HIGHLIGHTS — SCROLL-DRIVEN IMAGE GALLERY */}
-        <EventHighlightsSection />
+        {/* BELOW-FOLD SECTIONS — Lazy loaded for performance */}
+        <Suspense fallback={<div style={{ minHeight: '400px' }} />}>
+          {/* 2025 EVENT HIGHLIGHTS — SCROLL-DRIVEN IMAGE GALLERY */}
+          <EventHighlightsSection />
 
-        {/* TICKET PRICING SECTION — SQUISHY PRICING CARDS */}
-        <TicketPricingSection />
+          {/* TICKET PRICING SECTION — SQUISHY PRICING CARDS */}
+          <TicketPricingSection />
 
-        {/* SPONSORS & PARTNERS SECTION */}
-        <SponsorsSection />
+          {/* SPONSORS & PARTNERS SECTION */}
+          <SponsorsSection />
 
-        {/* FAQ SECTION */}
-        <FAQSection />
+          {/* FAQ SECTION */}
+          <FAQSection />
+        </Suspense>
 
         {/* PARTNER WITH US SECTION */}
         {SHOW_PARTNER_SECTION && (
@@ -574,6 +588,7 @@ export default function App() {
                   src="/logo-white.png"
                   alt="AI ASIA SUMMIT 2026 SLASSCOM Logo"
                   className="footer-logo"
+                  loading="lazy"
                 />
                 <p className="footer-tagline" style={{ marginTop: '0.75rem' }}>
                   Asia's flagship artificial intelligence conference, uniting leaders,
@@ -678,6 +693,7 @@ export default function App() {
                         display: 'block',
                         transition: 'transform 0.25s ease'
                       }}
+                      loading="lazy"
                     />
                   </a>
                   <p style={{ fontSize: '0.84rem', color: '#94A3B8', lineHeight: '1.6', marginBottom: '16px' }}>
