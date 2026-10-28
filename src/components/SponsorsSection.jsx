@@ -197,7 +197,7 @@ export default function SponsorsSection() {
               </a>
             </div>
 
-            {/* National Partner: BOI Sri Lanka */}
+            {/* National Partner: BOI Sri Lanka & Ministry of Digital Economy */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <p style={{
                 fontSize: '0.7rem',
@@ -209,48 +209,90 @@ export default function SponsorsSection() {
               }}>
                 National Partner
               </p>
-              <a
-                href="https://investsrilanka.com"
-                target="_blank"
-                rel="noreferrer"
-                title="Board of Investment of Sri Lanka — National Partner"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '56px',
-                  width: '200px',
-                  borderRadius: '8px',
-                  background: '#FFFFFF',
-                  padding: '6px 16px',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                  transition: 'opacity 0.2s ease, transform 0.2s ease',
-                  textDecoration: 'none'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <img
-                  src="/boi-logo.jpg"
-                  alt="BOI Sri Lanka — National Partner"
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a
+                  href="https://investsrilanka.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Board of Investment of Sri Lanka — National Partner"
                   style={{
-                    maxHeight: '44px',
-                    maxWidth: '160px',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    display: 'block'
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '56px',
+                    width: '200px',
+                    borderRadius: '8px',
+                    background: '#FFFFFF',
+                    padding: '6px 16px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    textDecoration: 'none'
                   }}
-                  loading="lazy"
-                />
-              </a>
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <img
+                    src="/boi-logo.jpg"
+                    alt="BOI Sri Lanka — National Partner"
+                    style={{
+                      maxHeight: '44px',
+                      maxWidth: '160px',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }}
+                    loading="lazy"
+                  />
+                </a>
+
+                <a
+                  href="https://mode.gov.lk"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Ministry of Digital Economy — National Partner"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '56px',
+                    width: '200px',
+                    borderRadius: '8px',
+                    background: '#FFFFFF',
+                    padding: '6px 14px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    textDecoration: 'none'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <img
+                    src="/ministry-of-digital-economy.png"
+                    alt="Ministry of Digital Economy — National Partner"
+                    style={{
+                      maxHeight: '44px',
+                      maxWidth: '172px',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }}
+                    loading="lazy"
+                  />
+                </a>
+              </div>
             </div>
 
-            {/* Industry Partner: CIO Forum & TEA */}
+            {/* Industry Partner: CIO Forum, TEA & SLBA */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <p style={{
                 fontSize: '0.7rem',
@@ -331,6 +373,46 @@ export default function SponsorsSection() {
                     style={{
                       maxHeight: '46px',
                       maxWidth: '170px',
+                      width: 'auto',
+                      height: 'auto',
+                      objectFit: 'contain',
+                      display: 'block'
+                    }}
+                    loading="lazy"
+                  />
+                </a>
+
+                <a
+                  href="https://slba.lk"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Sri Lanka Banks' Association — Industry Partner"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '56px',
+                    width: '200px',
+                    borderRadius: '8px',
+                    background: '#FFFFFF',
+                    padding: '6px 14px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                    textDecoration: 'none'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <img
+                    src="/slba-logo.png"
+                    alt="Sri Lanka Banks' Association (SLBA) — Industry Partner"
+                    style={{
+                      maxHeight: '42px',
+                      maxWidth: '172px',
                       width: 'auto',
                       height: 'auto',
                       objectFit: 'contain',
