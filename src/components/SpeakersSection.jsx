@@ -129,6 +129,35 @@ const speakers = [
       "Mark holds board appointments at LankaPay and HSBC Indonesia and is the immediate Past President of the Sri Lanka Council for Business with Britain."
     ],
   },
+  {
+    id: "biswajit",
+    name: "Biswajit Das",
+    designation: "Head - Specialist Sales & AI GTM India and South Asia",
+    company: "Amazon Web Services",
+    image: "/biswajit.jpeg",
+    linkedin: "https://www.linkedin.com/in/biswajit-das-india/",
+    bio: [
+      "Biswajit leads the Specialist Organization and drives the Go-to-Market Strategy for AWS's AI & Data business across India & South Asia—one of the fastest-growing technology markets in the world.",
+      "Since joining AWS in 2022, he has built and scaled a high-performing specialist team that partners with enterprises and digital-native companies to unlock transformative value from data, analytics, and AI—leveraging the full breadth of AWS's cloud-native capabilities.",
+      "With 20+ years of experience as a practitioner, strategic advisor, and business builder, Biswajit has led large-scale transformations spanning AI/ML, Cloud Infrastructure, Advanced Analytics, and Customer & Marketing Technology across Telecom, Consumer & Retail, Financial Services, and Technology sectors."
+    ],
+  },
+  {
+    id: "sithira",
+    name: "Sithira Wanniarachchi",
+    designation: "Group Chief Information Security Officer",
+    company: "Janashakthi Group",
+    image: "/Sithira.jpeg",
+    linkedin: "https://www.linkedin.com/in/sithira/",
+    bio: [
+      "Mr. Sithira Wanniarachchi is a distinguished cybersecurity, digital trust, governance, risk, and compliance executive with extensive experience leading enterprise security transformation across the freight and logistics, technology, telecommunications, food manufacturing, and financial services sectors.",
+      "He currently serves as the Group Chief Information Security Officer (CISO) of JXG (Janashakthi Group), where he is responsible for driving the organization's cybersecurity strategy, digital resilience, governance, risk management, regulatory compliance, and information security maturity across the Group. Throughout his career, he has held several senior leadership positions, at Dialog Axiata PLC, Expolanka Holdings PLC and ITX360 (Pvt) Ltd.",
+      "Combining deep technical expertise with strong governance and business leadership capabilities, Mr. Wanniarachchi has successfully led initiatives that enhance cybersecurity maturity, strengthen regulatory readiness, improve privacy and compliance frameworks, and build resilient digital ecosystems within complex enterprise environments. His experience spans the development and implementation of security strategies, risk management programs, cyber governance frameworks, privacy initiatives, and organizational resilience capabilities aligned with international standards and industry best practices.",
+      "Beyond his corporate leadership responsibilities, Mr. Wanniarachchi actively contributes to the advancement of Sri Lanka's technology and cybersecurity landscape. He currently serves as Chair of the Cyber Security Centre of Excellence of SLASSCOM and Director of the Digital Trust Alliance. He is also the Past President of ISACA Sri Lanka Chapter and the Founding Chair of the IAPP KnowledgeNet Sri Lanka Chapter, while previously serving as a Board Member of the Federation of Information Technology Industry Sri Lanka (FITIS).",
+      "Through his leadership across industry associations and professional bodies, he is committed to strengthening Sri Lanka's cybersecurity ecosystem by fostering industry collaboration, developing future cyber talent, raising awareness of emerging cyber risks, and promoting the practical adoption of internationally recognized cybersecurity, privacy, digital trust, and governance best practices.",
+      "Mr. Wanniarachchi is widely recognized as a thought leader and advocate for building secure, trustworthy, and resilient digital enterprises, helping organizations navigate the evolving challenges of cybersecurity, regulatory compliance, and digital transformation."
+    ],
+  },
 ];
 
 const LinkedInIcon = ({ size = 16 }) => (

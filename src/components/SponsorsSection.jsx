@@ -125,42 +125,105 @@ export default function SponsorsSection() {
             </a>
           </motion.div>
 
-          {/* ── Regional, National & Industry Partners ── */}
+          {/* ── Regional Partner ── */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
             variants={fadeUp}
-            custom={1.5}
+            custom={1.3}
             style={{
-              marginTop: '2.5rem',
               display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              gap: '2.5rem',
+              flexDirection: 'column',
+              alignItems: 'center',
               textAlign: 'center',
               width: '100%',
-              margin: '2.5rem auto 0'
+              margin: '0 auto'
             }}
           >
-            {/* Regional Partner: NASSCOM */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <p style={{
-                fontSize: '0.7rem',
-                fontWeight: 700,
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: '#E8B84B',
-                margin: '0 0 1.5rem 0'
-              }}>
-                Regional Partner
-              </p>
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: '0 0 1.25rem 0'
+            }}>
+              Regional Partner
+            </p>
+            <a
+              href="https://nasscom.in"
+              target="_blank"
+              rel="noreferrer"
+              title="NASSCOM — Regional Partner"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '56px',
+                width: '200px',
+                borderRadius: '8px',
+                background: '#FFFFFF',
+                padding: '8px 16px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                transition: 'opacity 0.2s ease, transform 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <img
+                src="/NASSCOM.jpg"
+                alt="NASSCOM — Regional Partner"
+                style={{
+                  maxHeight: '38px',
+                  maxWidth: '170px',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+                loading="lazy"
+              />
+            </a>
+          </motion.div>
+
+          {/* ── National Partner ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={fadeUp}
+            custom={1.6}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              width: '100%',
+              margin: '0 auto'
+            }}
+          >
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: '0 0 1.25rem 0'
+            }}>
+              National Partner
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <a
-                href="https://nasscom.in"
+                href="https://investsrilanka.com"
                 target="_blank"
                 rel="noreferrer"
-                title="NASSCOM — Regional Partner"
+                title="Board of Investment of Sri Lanka — National Partner"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -169,7 +232,7 @@ export default function SponsorsSection() {
                   width: '200px',
                   borderRadius: '8px',
                   background: '#FFFFFF',
-                  padding: '8px 16px',
+                  padding: '6px 16px',
                   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
                   transition: 'opacity 0.2s ease, transform 0.2s ease',
                   textDecoration: 'none'
@@ -182,11 +245,51 @@ export default function SponsorsSection() {
                 }}
               >
                 <img
-                  src="/NASSCOM.jpg"
-                  alt="NASSCOM — Regional Partner"
+                  src="/boi-logo.jpg"
+                  alt="BOI Sri Lanka — National Partner"
                   style={{
-                    maxHeight: '38px',
-                    maxWidth: '170px',
+                    maxHeight: '44px',
+                    maxWidth: '160px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+
+              <a
+                href="https://mode.gov.lk"
+                target="_blank"
+                rel="noreferrer"
+                title="Ministry of Digital Economy — National Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 14px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/ministry-of-digital-economy.png"
+                  alt="Ministry of Digital Economy — National Partner"
+                  style={{
+                    maxHeight: '44px',
+                    maxWidth: '172px',
                     width: 'auto',
                     height: 'auto',
                     objectFit: 'contain',
@@ -196,232 +299,151 @@ export default function SponsorsSection() {
                 />
               </a>
             </div>
+          </motion.div>
 
-            {/* National Partner: BOI Sri Lanka & Ministry of Digital Economy */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <p style={{
-                fontSize: '0.7rem',
-                fontWeight: 700,
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: '#E8B84B',
-                margin: '0 0 1.5rem 0'
-              }}>
-                National Partner
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a
-                  href="https://investsrilanka.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Board of Investment of Sri Lanka — National Partner"
+          {/* ── Industry Partner ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={fadeUp}
+            custom={1.9}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              width: '100%',
+              margin: '0 auto'
+            }}
+          >
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: '0 0 1.25rem 0'
+            }}>
+              Industry Partner
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <div
+                title="CIO Forum — Industry Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 16px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  cursor: 'default'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/cio-forum.jpg"
+                  alt="CIO Forum — Industry Partner"
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '56px',
-                    width: '200px',
-                    borderRadius: '8px',
-                    background: '#FFFFFF',
-                    padding: '6px 16px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                    transition: 'opacity 0.2s ease, transform 0.2s ease',
-                    textDecoration: 'none'
+                    maxHeight: '46px',
+                    maxWidth: '170px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
                   }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <img
-                    src="/boi-logo.jpg"
-                    alt="BOI Sri Lanka — National Partner"
-                    style={{
-                      maxHeight: '44px',
-                      maxWidth: '160px',
-                      width: 'auto',
-                      height: 'auto',
-                      objectFit: 'contain',
-                      display: 'block'
-                    }}
-                    loading="lazy"
-                  />
-                </a>
-
-                <a
-                  href="https://mode.gov.lk"
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Ministry of Digital Economy — National Partner"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '56px',
-                    width: '200px',
-                    borderRadius: '8px',
-                    background: '#FFFFFF',
-                    padding: '6px 14px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                    transition: 'opacity 0.2s ease, transform 0.2s ease',
-                    textDecoration: 'none'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <img
-                    src="/ministry-of-digital-economy.png"
-                    alt="Ministry of Digital Economy — National Partner"
-                    style={{
-                      maxHeight: '44px',
-                      maxWidth: '172px',
-                      width: 'auto',
-                      height: 'auto',
-                      objectFit: 'contain',
-                      display: 'block'
-                    }}
-                    loading="lazy"
-                  />
-                </a>
+                  loading="lazy"
+                />
               </div>
-            </div>
 
-            {/* Industry Partner: CIO Forum, TEA & SLBA */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <p style={{
-                fontSize: '0.7rem',
-                fontWeight: 700,
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: '#E8B84B',
-                margin: '0 0 1.5rem 0'
-              }}>
-                Industry Partner
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <div
-                  title="CIO Forum — Industry Partner"
+              <a
+                href="https://teasrilanka.org"
+                target="_blank"
+                rel="noreferrer"
+                title="Tea Exporters Association Sri Lanka — Industry Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 16px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/tea-logo.jpg"
+                  alt="Tea Exporters Association — Industry Partner"
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '56px',
-                    width: '200px',
-                    borderRadius: '8px',
-                    background: '#FFFFFF',
-                    padding: '6px 16px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                    transition: 'opacity 0.2s ease, transform 0.2s ease',
-                    cursor: 'default'
+                    maxHeight: '46px',
+                    maxWidth: '170px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
                   }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <img
-                    src="/cio-forum.jpg"
-                    alt="CIO Forum — Industry Partner"
-                    style={{
-                      maxHeight: '46px',
-                      maxWidth: '170px',
-                      width: 'auto',
-                      height: 'auto',
-                      objectFit: 'contain',
-                      display: 'block'
-                    }}
-                    loading="lazy"
-                  />
-                </div>
+                  loading="lazy"
+                />
+              </a>
 
-                <a
-                  href="https://teasrilanka.org"
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Tea Exporters Association Sri Lanka — Industry Partner"
+              <a
+                href="https://slba.lk"
+                target="_blank"
+                rel="noreferrer"
+                title="Sri Lanka Banks' Association — Industry Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 14px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/slba-logo.png"
+                  alt="Sri Lanka Banks' Association (SLBA) — Industry Partner"
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '56px',
-                    width: '200px',
-                    borderRadius: '8px',
-                    background: '#FFFFFF',
-                    padding: '6px 16px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                    transition: 'opacity 0.2s ease, transform 0.2s ease',
-                    textDecoration: 'none'
+                    maxHeight: '42px',
+                    maxWidth: '172px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
                   }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <img
-                    src="/tea-logo.jpg"
-                    alt="Tea Exporters Association — Industry Partner"
-                    style={{
-                      maxHeight: '46px',
-                      maxWidth: '170px',
-                      width: 'auto',
-                      height: 'auto',
-                      objectFit: 'contain',
-                      display: 'block'
-                    }}
-                    loading="lazy"
-                  />
-                </a>
-
-                <a
-                  href="https://slba.lk"
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Sri Lanka Banks' Association — Industry Partner"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '56px',
-                    width: '200px',
-                    borderRadius: '8px',
-                    background: '#FFFFFF',
-                    padding: '6px 14px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                    transition: 'opacity 0.2s ease, transform 0.2s ease',
-                    textDecoration: 'none'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <img
-                    src="/slba-logo.png"
-                    alt="Sri Lanka Banks' Association (SLBA) — Industry Partner"
-                    style={{
-                      maxHeight: '42px',
-                      maxWidth: '172px',
-                      width: 'auto',
-                      height: 'auto',
-                      objectFit: 'contain',
-                      display: 'block'
-                    }}
-                    loading="lazy"
-                  />
-                </a>
-              </div>
+                  loading="lazy"
+                />
+              </a>
             </div>
           </motion.div>
         </div>
