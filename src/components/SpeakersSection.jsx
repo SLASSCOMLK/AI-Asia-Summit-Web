@@ -158,6 +158,19 @@ const speakers = [
       "Mr. Wanniarachchi is widely recognized as a thought leader and advocate for building secure, trustworthy, and resilient digital enterprises, helping organizations navigate the evolving challenges of cybersecurity, regulatory compliance, and digital transformation."
     ],
   },
+  {
+    id: "sanjiva",
+    name: "Dr. Sanjiva Weerawarana",
+    designation: "Founder & Chairman of Lanka Software Foundation, Founder & Former CEO of WSO2",
+    company: "Lanka Software Foundation / WSO2",
+    image: "/sanjiva.jpeg",
+    linkedin: "https://www.linkedin.com/in/sanjivaweerawarana/",
+    bio: [
+      "Dr. Sanjiva Weerawarana received a Ph.D. in Computer Science from Purdue University, USA in 1994. He is the founder of WSO2 and serves as its former CEO and Chief Product Officer.",
+      "He is also the Founder and Chairman of the Lanka Software Foundation, the Lanka Data Foundation and the Avinya Foundation. He is a Fellow of the National Academy of Sciences of Sri Lanka.",
+      "Previously he was a Board Member of Sampath Bank and several research institutions and university councils in Sri Lanka and served as a Direct Enlisted Volunteer Officer of the Sri Lanka Army as its IT Advisor."
+    ],
+  },
 ];
 
 const LinkedInIcon = ({ size = 16 }) => (

@@ -216,7 +216,7 @@ export default function SponsorsSection() {
               color: '#E8B84B',
               margin: '0 0 1.25rem 0'
             }}>
-              National Partner
+              National Partners
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <a
@@ -298,118 +298,12 @@ export default function SponsorsSection() {
                   loading="lazy"
                 />
               </a>
-            </div>
-          </motion.div>
-
-          {/* ── Industry Partner ── */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
-            variants={fadeUp}
-            custom={1.9}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              textAlign: 'center',
-              width: '100%',
-              margin: '0 auto'
-            }}
-          >
-            <p style={{
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: '#E8B84B',
-              margin: '0 0 1.25rem 0'
-            }}>
-              Industry Partner
-            </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <div
-                title="CIO Forum — Industry Partner"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '56px',
-                  width: '200px',
-                  borderRadius: '8px',
-                  background: '#FFFFFF',
-                  padding: '6px 16px',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                  transition: 'opacity 0.2s ease, transform 0.2s ease',
-                  cursor: 'default'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <img
-                  src="/cio-forum.jpg"
-                  alt="CIO Forum — Industry Partner"
-                  style={{
-                    maxHeight: '46px',
-                    maxWidth: '170px',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    display: 'block'
-                  }}
-                  loading="lazy"
-                />
-              </div>
 
               <a
-                href="https://teasrilanka.org"
+                href="https://www.srilankabusiness.com"
                 target="_blank"
                 rel="noreferrer"
-                title="Tea Exporters Association Sri Lanka — Industry Partner"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '56px',
-                  width: '200px',
-                  borderRadius: '8px',
-                  background: '#FFFFFF',
-                  padding: '6px 16px',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                  transition: 'opacity 0.2s ease, transform 0.2s ease',
-                  textDecoration: 'none'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <img
-                  src="/tea-logo.jpg"
-                  alt="Tea Exporters Association — Industry Partner"
-                  style={{
-                    maxHeight: '46px',
-                    maxWidth: '170px',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    display: 'block'
-                  }}
-                  loading="lazy"
-                />
-              </a>
-
-              <a
-                href="https://slba.lk"
-                target="_blank"
-                rel="noreferrer"
-                title="Sri Lanka Banks' Association — Industry Partner"
+                title="Sri Lanka Export Development Board (EDB) — National Partner"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -431,11 +325,11 @@ export default function SponsorsSection() {
                 }}
               >
                 <img
-                  src="/slba-logo.png"
-                  alt="Sri Lanka Banks' Association (SLBA) — Industry Partner"
+                  src="/EDB.jpeg"
+                  alt="Sri Lanka Export Development Board (EDB) — National Partner"
                   style={{
-                    maxHeight: '42px',
-                    maxWidth: '172px',
+                    maxHeight: '44px',
+                    maxWidth: '160px',
                     width: 'auto',
                     height: 'auto',
                     objectFit: 'contain',
@@ -565,7 +459,7 @@ export default function SponsorsSection() {
             </div>
           </div>
 
-          {/* Gifting Partner - Zone 24x7 & InfoConsulting */}
+          {/* Gifting Partners - Zone 24x7 & InfoConsulting */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <p style={{
               fontSize: '0.7rem',
@@ -575,7 +469,7 @@ export default function SponsorsSection() {
               color: '#E8B84B',
               margin: '0 0 1.5rem 0'
             }}>
-              Gifting Partner
+              Gifting Partners
             </p>
             <div style={{
               display: 'flex',
@@ -665,6 +559,200 @@ export default function SponsorsSection() {
                 />
               </a>
             </div>
+          </div>
+        </motion.div>
+
+        {/* ── Industry Partners ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={fadeUp}
+          custom={2.5}
+          style={{
+            marginTop: '3.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            width: '100%',
+            margin: '3.5rem auto 0'
+          }}
+        >
+          <p style={{
+            fontSize: '0.7rem',
+            fontWeight: 700,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#E8B84B',
+            margin: '0 0 1.5rem 0'
+          }}>
+            Industry Partners
+          </p>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            maxWidth: '1000px'
+          }}>
+            <div
+              title="CIO Forum — Industry Partner"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '56px',
+                width: '200px',
+                borderRadius: '8px',
+                background: '#FFFFFF',
+                padding: '6px 16px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                transition: 'opacity 0.2s ease, transform 0.2s ease',
+                cursor: 'default'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <img
+                src="/cio-forum.jpg"
+                alt="CIO Forum — Industry Partner"
+                style={{
+                  maxHeight: '46px',
+                  maxWidth: '170px',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+                loading="lazy"
+              />
+            </div>
+
+            <a
+              href="https://teasrilanka.org"
+              target="_blank"
+              rel="noreferrer"
+              title="Tea Exporters Association Sri Lanka — Industry Partner"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '56px',
+                width: '200px',
+                borderRadius: '8px',
+                background: '#FFFFFF',
+                padding: '6px 16px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                transition: 'opacity 0.2s ease, transform 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <img
+                src="/tea-logo.jpg"
+                alt="Tea Exporters Association — Industry Partner"
+                style={{
+                  maxHeight: '46px',
+                  maxWidth: '170px',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+                loading="lazy"
+              />
+            </a>
+
+            <a
+              href="https://slba.lk"
+              target="_blank"
+              rel="noreferrer"
+              title="Sri Lanka Banks' Association — Industry Partner"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '56px',
+                width: '200px',
+                borderRadius: '8px',
+                background: '#FFFFFF',
+                padding: '6px 14px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                transition: 'opacity 0.2s ease, transform 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <img
+                src="/slba-logo.png"
+                alt="Sri Lanka Banks' Association (SLBA) — Industry Partner"
+                style={{
+                  maxHeight: '42px',
+                  maxWidth: '172px',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+                loading="lazy"
+              />
+            </a>
+
+            <a
+              href="https://jaafsl.com"
+              target="_blank"
+              rel="noreferrer"
+              title="Joint Apparel Association Forum (JAAF) — Industry Partner"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '56px',
+                width: '200px',
+                borderRadius: '8px',
+                background: '#FFFFFF',
+                padding: '6px 14px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                transition: 'opacity 0.2s ease, transform 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <img
+                src="/JAAF.png"
+                alt="Joint Apparel Association Forum (JAAF) — Industry Partner"
+                style={{
+                  maxHeight: '42px',
+                  maxWidth: '172px',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+                loading="lazy"
+              />
+            </a>
           </div>
         </motion.div>
 
