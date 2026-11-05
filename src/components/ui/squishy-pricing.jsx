@@ -51,6 +51,20 @@ export const SquishyPricing = () => {
           featured={false}
         />
         <PricingCard
+          label="Non-Members Individual"
+          price="34,560"
+          currency="Rs"
+          period="1 Pass"
+          description="Individual pass for non-SLASSCOM members. Please register using the official company email address."
+          taxNote="*VAT 18% applicable at check-out"
+          cta="Register"
+          link="https://slasscom.glueup.com/event/ai-asia-summit-2026-193153/"
+          background="squishy-bg-bundle-nm"
+          accentColor="#7C3AED"
+          BGComponent={BGComponent2}
+          featured={false}
+        />
+        <PricingCard
           label="Special Offer Pricing"
           currency="Rs"
           period="1 Pass"

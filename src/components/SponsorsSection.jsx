@@ -125,6 +125,77 @@ export default function SponsorsSection() {
             </a>
           </motion.div>
 
+          {/* ── Corporate Sponsor ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={fadeUp}
+            custom={1.15}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              width: '100%',
+              margin: '0 auto'
+            }}
+          >
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: '0 0 1.25rem 0'
+            }}>
+              Corporate Sponsor
+            </p>
+            <a
+              href="https://www.nationstrust.com"
+              target="_blank"
+              rel="noreferrer"
+              title="Nations Trust Bank — Corporate Sponsor"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '58px',
+                width: '210px',
+                borderRadius: '8px',
+                background: '#FFFFFF',
+                padding: '8px 16px',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                transition: 'opacity 0.2s ease, transform 0.2s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <img
+                src="/ntb_logo.png"
+                alt="Nations Trust Bank — Corporate Sponsor"
+                style={{
+                  maxHeight: '44px',
+                  maxWidth: '180px',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = '/nations-trust-bank.png';
+                }}
+                loading="lazy"
+              />
+            </a>
+          </motion.div>
+
           {/* ── Regional Partner ── */}
           <motion.div
             initial="hidden"
@@ -797,6 +868,7 @@ export default function SponsorsSection() {
                 { src: '/ACCA.jpg', alt: 'ACCA' },
                 { src: '/National Chamber logo_page-0001.jpg', alt: 'National Chamber of Commerce Sri Lanka' },
                 { src: '/fitis-logo.png', alt: 'FITIS — Federation of Information Technology Industry Sri Lanka' },
+                { src: '/fasl.png', alt: 'FinTech Association of Sri Lanka (FASL) — Eco System Partner' },
               ].map((partner, idx) => (
                 <div
                   key={idx}
