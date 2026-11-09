@@ -113,9 +113,9 @@ export const agendaSchedule = [
           },
           {
             name: "Mahesha Amarasuriya",
-            designation: "Country Head",
+            designation: "Country Manager",
             company: "Mastercard Sri Lanka",
-            image: null
+            image: "/Mahesha.jpeg"
           },
           {
             name: "Harshan Senadheera",

@@ -125,6 +125,100 @@ export default function SponsorsSection() {
             </a>
           </motion.div>
 
+                    {/* ── Principal Sponsor ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={fadeUp}
+            custom={1.05}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              width: '100%',
+              margin: '0 auto'
+            }}
+          >
+            <p style={{
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#E8B84B',
+              margin: '0 0 1.25rem 0'
+            }}>
+              Principal Sponsor
+            </p>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0',
+                height: '72px',
+                borderRadius: '12px',
+                background: '#FFFFFF',
+                padding: '12px 32px',
+                boxShadow: '0 4px 24px rgba(0, 0, 0, 0.45)',
+                transition: 'opacity 0.2s ease, transform 0.2s ease',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <a
+                href="https://aws.amazon.com"
+                target="_blank"
+                rel="noreferrer"
+                title="Amazon Web Services — Principal Sponsor"
+                style={{ display: 'flex', alignItems: 'center', lineHeight: 0, textDecoration: 'none' }}
+              >
+                <img
+                  src="/aws-logo.svg"
+                  alt="Amazon Web Services (AWS)"
+                  style={{
+                    height: '40px',
+                    width: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+              <div style={{
+                width: '1.5px',
+                height: '36px',
+                background: '#D1D5DB',
+                margin: '0 24px',
+                flexShrink: 0
+              }} />
+              <a
+                href="https://www.redingtongroup.com"
+                target="_blank"
+                rel="noreferrer"
+                title="Redington — Principal Sponsor"
+                style={{ display: 'flex', alignItems: 'center', lineHeight: 0, textDecoration: 'none' }}
+              >
+                <img
+                  src="/Redington logo.png"
+                  alt="Redington"
+                  style={{
+                    height: '38px',
+                    width: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </motion.div>
+
           {/* ── Corporate Sponsor ── */}
           <motion.div
             initial="hidden"

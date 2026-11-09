@@ -159,6 +159,21 @@ const speakers = [
     ],
   },
   {
+    id: "mahesha",
+    name: "Mahesha Amarasuriya",
+    designation: "Country Manager",
+    company: "Mastercard Sri Lanka",
+    image: "/Mahesha.jpeg",
+    linkedin: "https://www.linkedin.com/in/mahesha-amarasuriya/",
+    bio: [
+      "Mahesha is the Country Manager for Mastercard Sri Lanka and was previously Director Account Management for over four years in the area of International Markets. Prior to that she was the Assistant General Manager Card Services and a member of the Corporate Management at Cargills Bank. She has over 23 years of experience in Corporate Banking, Retail and Private Banking, Cards and Electronic Payments.",
+      "She is a Fellow Member of the Chartered Institute of Management Accountants (CIMA-UK), is Chartered Global Management Accountant (CGMA) and a Fellow Member of the Association of Chartered Certified Accountants (FCCA-UK). She holds a BA(Hons) Degree, from the University of Colombo and a MBA from the Postgraduate Institute of Management University of Sri Jayewardenepura. She was the first in her batch and the valedictorian.",
+      "Mahesha was a Member of CIMA Global Council representing South Asia (2022-2025) and is presently a Member of the Global Membership Committee for CIMA. She was the Chairperson of the CIMA Sri Lanka Country Network Panel (2018) and Vice Chairperson CIMA Sri Lanka Board (2016). She was also on the regional advisory panel for the MESANA region for CIMA and AICPA (2020-2022).",
+      "She was the winner of the 'Career Role Model of the Year' awarded by Women in Management, Women Top Professional and Career Women Global Awards 2025, a winner of 'Global CEO Top Businesswomen Awards 2025' awarded by Global CEO Magazine and a winner of '45 Under 45 Leadership Excellence Platinum Awards 2026' awarded by Global CEO Magazine. She has been awarded the Young CIMA Star of the Year Gold Award in 2006 which was awarded to the most outstanding CIMA Member/Past Finalist in Sri Lanka below the age of 30.",
+      "She is presently serving as the President of the Postgraduate Institute of Management Alumni Association (PIMA)."
+    ],
+  },
+  {
     id: "sanjiva",
     name: "Dr. Sanjiva Weerawarana",
     designation: "Founder & Chairman of Lanka Software Foundation, Founder & Former CEO of WSO2",
