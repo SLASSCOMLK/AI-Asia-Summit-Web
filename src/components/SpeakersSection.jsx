@@ -174,6 +174,33 @@ const speakers = [
     ],
   },
   {
+    id: "dumindu",
+    name: "Dumindu Tennakoon",
+    designation: "Country Manager",
+    company: "Redington Sri Lanka & Maldives",
+    image: "/Dumindu.png",
+    linkedin: "https://www.linkedin.com/in/dumindut/",
+    bio: [
+      "Dumindu Tennakoon is the Country Manager for Redington Sri Lanka & Maldives, leading strategic technology distribution and cloud solutions across the region.",
+      "With extensive leadership experience in the technology sector, he spearheads initiatives that connect global tech innovators with regional enterprises, driving digital acceleration and AI readiness."
+    ],
+  },
+  {
+    id: "jayantha",
+    name: "Jayantha Fernando",
+    designation: "Senior Consultant Tech Law, Privacy, AI, Digital Policy & TMT Partner",
+    company: "Heritage Partners (Attorneys at Law)",
+    image: "/jayantha.png",
+    linkedin: "https://www.linkedin.com/in/jayantha-fernando-3b6076a/",
+    bio: [
+      "With over twenty-five years of experience, Jayantha Fernando is a veteran Technology and Digital Law expert and the head of the Firm's Technology, Media and Telecommunications (TMT) practice. Equipped with extensive techno-legal expertise, Jayantha specializes in a wide spectrum of tech-law related practice areas – including, ICT Contract Negotiation & Management, Digital Transactions and E-Commerce, Data Protection and Privacy, Cyber Security, Cybercrime, Electronic Evidence, Intellectual Property, Internet Governance and Regulation.",
+      "As an internationally recognized consultant, he has extensive experience in advising and representing numerous international organizations – including, the Council of Europe, the European Union, the World Bank and the United Nations Commission on International Trade Law (UNCITRAL). As the Country Representative to the Cybercrime Convention Committee of the Council of Europe, Jayantha became the first South Asian to be elected to its nine-member global bureau. He was also a delegate to UNCITRAL, where he was instrumental in negotiating the UN Electronic Communications Convention, and also served as the Vice Chair of the ICANN Government Advisory Committee.",
+      "Jayantha has held a number of positions within the public and private sectors in Sri Lanka– including, as the Chairman of both Sri Lanka CERT and the LK Domain Registry, Co-Chair of the Virtual Currency Task Force of the Central Bank of Sri Lanka, Co-Chair of the National Task Force for Digital Signatures, and as the former General Counsel to the Information and Communication Technology Agency of Sri Lanka (ICTA). He was also a Director of Transparency International Sri Lanka, former Commissioner of the Securities and Exchange Commission, and is currently a Director of the Colombo Stock Exchange as well as Sri Lanka CERT.",
+      "During his tenure within the public service, Jayantha was also instrumental in driving many of Sri Lanka's tech-law related reform initiatives – including, Sri Lanka's entry to the Budapest Cybercrime Convention and its ratification of the United Nations Electronic Communications Convention. In addition to spearheading the Electronic Transactions Act, Computer Crimes Act and other legislation, he also chaired the drafting process of Sri Lanka's Personal Data Protection Act, No. 09 of 2022 – the first legislation of its kind in South Asia. He also developed the legal standards for the Information System Contracts on behalf of ICTA. As a part of the negotiating committee appointed by the Government of Sri Lanka, Jayantha negotiated numerous contracts with global vendors and also led the negotiation of the E-Commerce Chapter of the Singapore-Sri Lanka Free Trade Agreement – making it one of the first FTAs to incorporate a provision of such nature.",
+      "Jayantha took oaths as an Attorney-at-Law of the Supreme Court of Sri Lanka in 1995 and completed his Master of Law Degree (LL.M) specializing in Information Technology and Communications Law at the Queen Mary University of London, as a Chevening Scholar. He was also an Eisenhower Fellow (2012) and is a Professional Member of the Computer Society of Sri Lanka."
+    ],
+  },
+  {
     id: "sanjiva",
     name: "Dr. Sanjiva Weerawarana",
     designation: "Founder & Chairman of Lanka Software Foundation, Founder & Former CEO of WSO2",

@@ -82,8 +82,9 @@ export const agendaSchedule = [
       },
       {
         name: "Jayantha Fernando",
-        designation: "Legal & Policy Expert",
-        image: null
+        designation: "Senior Consultant Tech Law, Privacy, AI & TMT",
+        company: "Heritage Partners",
+        image: "/jayantha.png"
       }
     ]
   },
@@ -101,9 +102,9 @@ export const agendaSchedule = [
         speakers: [
           {
             name: "Dumindu Tennakoon",
-            designation: "Country Manager - Sri Lanka",
-            company: "Redington",
-            image: null
+            designation: "Country Manager",
+            company: "Redington Sri Lanka & Maldives",
+            image: "/Dumindu.png"
           },
           {
             name: "Mark Surgenor",
