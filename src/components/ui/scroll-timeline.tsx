@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Mic, Zap, Scale, BookOpen, Users, Sparkles, Award } from "lucide-react";
+import { Mic, Zap, Scale, BookOpen, Users, Sparkles, Award, Clock, Coffee } from "lucide-react";
 
 export interface Speaker {
   name: string;
@@ -21,6 +21,7 @@ export interface BreakoutSubSession {
 export interface Milestone {
   id: string;
   number?: string;
+  time?: string;
   title: string;
   track?: string;
   category?: 'keynote' | 'break' | 'track' | 'panel' | 'masterclass' | 'breakout' | 'general';
@@ -77,11 +78,11 @@ const CATEGORY_META = {
     border: "rgba(232, 184, 75, 0.3)",
   },
   break: {
-    label: "Break",
-    icon: Sparkles,
-    color: "#94A3B8",
-    bg: "rgba(255, 255, 255, 0.05)",
-    border: "rgba(255, 255, 255, 0.1)",
+    label: "Networking & Break",
+    icon: Coffee,
+    color: "#F59E0B",
+    bg: "rgba(245, 158, 11, 0.14)",
+    border: "rgba(245, 158, 11, 0.4)",
   },
 };
 
@@ -422,7 +423,29 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                         paddingBottom: '1rem',
                         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                       }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                          {milestone.time && (
+                            <span
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '5px',
+                                fontSize: '0.75rem',
+                                fontFamily: "var(--font-mono, 'Space Mono', monospace)",
+                                fontWeight: 700,
+                                letterSpacing: '0.04em',
+                                background: 'rgba(232, 184, 75, 0.16)',
+                                color: '#E8B84B',
+                                padding: '4px 12px',
+                                borderRadius: '9999px',
+                                border: '1px solid rgba(232, 184, 75, 0.45)',
+                                boxShadow: '0 0 10px rgba(232, 184, 75, 0.15)',
+                              }}
+                            >
+                              <Clock size={13} style={{ color: '#E8B84B' }} />
+                              {milestone.time}
+                            </span>
+                          )}
                           <span
                             style={{
                               display: 'inline-flex',
@@ -650,8 +673,30 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                       transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
                     }}
                   >
-                    {/* Badge row: Number + Category + Track */}
+                    {/* Badge row: Time + Number + Category + Track */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '0.85rem' }}>
+                      {milestone.time && (
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                            fontSize: '0.72rem',
+                            fontFamily: "var(--font-mono, 'Space Mono', monospace)",
+                            fontWeight: 700,
+                            letterSpacing: '0.04em',
+                            background: 'rgba(232, 184, 75, 0.16)',
+                            color: '#E8B84B',
+                            padding: '3px 10px',
+                            borderRadius: '9999px',
+                            border: '1px solid rgba(232, 184, 75, 0.45)',
+                            boxShadow: '0 0 10px rgba(232, 184, 75, 0.15)',
+                          }}
+                        >
+                          <Clock size={12} style={{ color: '#E8B84B' }} />
+                          {milestone.time}
+                        </span>
+                      )}
                       {milestone.number && (
                         <span
                           style={{

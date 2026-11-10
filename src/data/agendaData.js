@@ -1,9 +1,24 @@
-// AI Asia Summit 2026 - Official Schedule & Agenda Data with Assigned Speakers
+// AI Asia Summit 2026 - Official Schedule & Agenda Data with Assigned Speakers and Timings
 
 export const agendaSchedule = [
   {
+    id: "registration",
+    time: "8:00 AM",
+    title: "Registration & Welcome",
+    category: "break",
+    track: "Registration Desk & Foyer"
+  },
+  {
+    id: "opening-remarks",
+    time: "9:00 AM",
+    title: "Opening Remarks by Chairperson, SLASSCOM",
+    category: "keynote",
+    track: "Main Plenary Hall"
+  },
+  {
     id: "1",
     number: "01",
+    time: "9:10 AM",
     title: "Opening Keynote: The Economics of AI in 2026 – Real ROI and Cost Governance",
     category: "keynote",
     track: "Main Plenary Hall",
@@ -19,6 +34,7 @@ export const agendaSchedule = [
   {
     id: "2",
     number: "02",
+    time: "9:40 AM",
     title: "Building on Sri Lanka’s Digital Assets",
     category: "keynote",
     track: "Main Plenary Hall",
@@ -34,6 +50,7 @@ export const agendaSchedule = [
   {
     id: "3",
     number: "03",
+    time: "10:02 AM",
     title: "AI in Scientific Acceleration",
     category: "track",
     track: "Frontier Science",
@@ -47,8 +64,16 @@ export const agendaSchedule = [
     ]
   },
   {
+    id: "tea-break",
+    time: "10:30 AM",
+    title: "Connections that Multiply: Tea/Coffee & Networking",
+    category: "break",
+    track: "Networking Lounge"
+  },
+  {
     id: "4",
     number: "04",
+    time: "11:00 AM",
     title: "The Agentic Age: From Prompting to Autonomous Systems",
     category: "keynote",
     track: "Main Plenary Hall",
@@ -64,6 +89,7 @@ export const agendaSchedule = [
   {
     id: "5",
     number: "05",
+    time: "11:40 AM",
     title: "AI Governance and Policy",
     category: "panel",
     track: "Policy & Sovereign AI",
@@ -89,8 +115,16 @@ export const agendaSchedule = [
     ]
   },
   {
+    id: "lunch-break",
+    time: "12:15 PM",
+    title: "Ideas that Multiply | Lunch",
+    category: "break",
+    track: "Dining & Networking Hall"
+  },
+  {
     id: "6",
     number: "06",
+    time: "1:30 PM",
     title: "Breakout Sessions (Happening Simultaneously)",
     category: "breakout",
     isBreakout: true,
@@ -196,13 +230,15 @@ export const agendaSchedule = [
   {
     id: "7",
     number: "07",
-    title: "Rapid Fire Round",
+    time: "2:55 PM",
+    title: "AI the Multiplier Challenge",
     category: "track",
     track: "Main Stage"
   },
   {
     id: "8",
     number: "08",
+    time: "3:30 PM",
     title: "Masterclass: Building an AI-Ready Culture",
     category: "masterclass",
     track: "Executive Masterclass Stage",
@@ -218,6 +254,7 @@ export const agendaSchedule = [
   {
     id: "9",
     number: "09",
+    time: "4:20 PM",
     title: "Closing Keynote: The Next Frontier – What to Expect in 2027",
     category: "keynote",
     track: "Main Plenary Hall",
@@ -229,5 +266,19 @@ export const agendaSchedule = [
         image: "/sanjiva.jpeg"
       }
     ]
+  },
+  {
+    id: "closing-remarks",
+    time: "4:50 PM",
+    title: "Closing Remarks",
+    category: "keynote",
+    track: "Main Plenary Hall"
+  },
+  {
+    id: "beyond-summit",
+    time: "5:00 PM",
+    title: "Beyond the Summit: Networking Session",
+    category: "break",
+    track: "Networking Lounge & Terrace"
   }
 ];
