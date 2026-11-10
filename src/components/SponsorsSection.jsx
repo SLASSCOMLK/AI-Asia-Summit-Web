@@ -727,6 +727,74 @@ export default function SponsorsSection() {
           </div>
         </motion.div>
 
+                {/* ── Venue Partner ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={fadeUp}
+          custom={2.3}
+          style={{
+            marginTop: '3.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            width: '100%',
+            margin: '3.5rem auto 0'
+          }}
+        >
+          <p style={{
+            fontSize: '0.7rem',
+            fontWeight: 700,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#E8B84B',
+            margin: '0 0 1.5rem 0'
+          }}>
+            Venue Partner
+          </p>
+          <a
+            href="https://www.cinnamonhotels.com/cinnamongrandcolombo"
+            target="_blank"
+            rel="noreferrer"
+            title="Cinnamon Grand Colombo — Official Venue Partner"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '58px',
+              width: '210px',
+              borderRadius: '8px',
+              background: '#FFFFFF',
+              padding: '6px 18px',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+              transition: 'opacity 0.2s ease, transform 0.2s ease',
+              textDecoration: 'none'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <img
+              src="/Cinnamon grand.png"
+              alt="Cinnamon Grand Colombo — Official Venue Partner"
+              style={{
+                maxHeight: '44px',
+                maxWidth: '180px',
+                width: 'auto',
+                height: 'auto',
+                objectFit: 'contain',
+                display: 'block'
+              }}
+              loading="lazy"
+            />
+          </a>
+        </motion.div>
+
         {/* ── Industry Partners ── */}
         <motion.div
           initial="hidden"

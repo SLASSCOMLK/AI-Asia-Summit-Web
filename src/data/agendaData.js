@@ -111,6 +111,13 @@ export const agendaSchedule = [
         designation: "Senior Consultant Tech Law, Privacy, AI & TMT",
         company: "Heritage Partners",
         image: "/jayantha.png"
+      },
+      {
+        name: "Asela Waidyalankara",
+        designation: "Managing Director",
+        company: "Talos Consulting",
+        isModerator: true,
+        image: "/Asela.png"
       }
     ]
   },
@@ -157,7 +164,7 @@ export const agendaSchedule = [
             designation: "Chief Manager Organizational Transformation",
             company: "Sampath Bank PLC",
             isModerator: true,
-            image: null
+            image: "/Harshan.png"
           }
         ]
       },
@@ -189,7 +196,7 @@ export const agendaSchedule = [
             designation: "Senior Researcher",
             company: "Moderator",
             isModerator: true,
-            image: null
+            image: "/ruwan.png"
           }
         ]
       },

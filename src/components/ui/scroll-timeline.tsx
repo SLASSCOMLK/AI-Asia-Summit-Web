@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Mic, Zap, Scale, BookOpen, Users, Sparkles, Award, Clock, Coffee } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mic, Zap, Scale, BookOpen, Users, Sparkles, Award, Clock, Coffee, X, ExternalLink, ArrowRight } from "lucide-react";
+import { speakers as globalSpeakers } from "../SpeakersSection";
 
 export interface Speaker {
   name: string;
@@ -87,18 +89,169 @@ const CATEGORY_META = {
 };
 
 /**
+ * Match a timeline speaker to the global rich speakers array
+ */
+function getFullSpeakerData(speaker: Speaker) {
+  const norm = (s: string) => (s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const target = norm(speaker.name);
+  
+  const found = (globalSpeakers || []).find((s: any) => {
+    const sNorm = norm(s.name);
+    return sNorm === target || sNorm.includes(target) || target.includes(sNorm);
+  });
+
+  if (found) {
+    return {
+      ...found,
+      isModerator: speaker.isModerator,
+      image: speaker.image || found.image,
+      designation: speaker.designation || found.designation,
+      company: speaker.company || found.company,
+    };
+  }
+
+  return {
+    id: target,
+    name: speaker.name,
+    designation: speaker.designation || '',
+    company: speaker.company || '',
+    image: speaker.image || null,
+    isModerator: speaker.isModerator,
+    linkedin: null,
+    bio: [
+      `${speaker.name} is ${speaker.isModerator ? 'the session moderator' : 'a featured speaker'} at AI Asia Summit 2026, leading initiatives as ${speaker.designation || 'Specialist'}${speaker.company ? ' at ' + speaker.company : ''}.`
+    ]
+  };
+}
+
+/**
+ * SpeakerBioModal
+ * High-end pop-up modal when a speaker card is clicked anywhere in the timeline
+ */
+function SpeakerBioModal({ speaker, onClose }: { speaker: any; onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
+
+  const initials = (speaker.name || '')
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((n: string) => n[0])
+    .join('');
+
+  return (
+    <>
+      <motion.div
+        className="speaker-modal-backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        style={{ zIndex: 9999 }}
+      />
+      <motion.div
+        className="speaker-modal-panel"
+        initial={{ opacity: 0, y: 35, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 30, scale: 0.97 }}
+        transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+        role="dialog"
+        aria-modal="true"
+        aria-label={speaker.name + " biography"}
+        style={{ zIndex: 10000 }}
+      >
+        <button className="speaker-modal-close" onClick={onClose} aria-label="Close">
+          <X size={18} />
+        </button>
+        <div className="speaker-modal-inner">
+          <div className="speaker-modal-left">
+            <div className="speaker-modal-img-wrap">
+              {speaker.image ? (
+                <img src={speaker.image} alt={speaker.name} className="speaker-modal-img" />
+              ) : (
+                <div
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    minHeight: '260px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '3rem',
+                    fontWeight: 800,
+                    color: speaker.isModerator ? '#0C0A08' : '#E8B84B',
+                    background: speaker.isModerator
+                      ? 'linear-gradient(135deg, #E8B84B 0%, #B8860B 100%)'
+                      : 'linear-gradient(135deg, rgba(232, 184, 75, 0.35) 0%, rgba(20, 18, 14, 0.9) 100%)',
+                  }}
+                >
+                  {initials}
+                </div>
+              )}
+              <div className="speaker-modal-img-glow" />
+            </div>
+            {speaker.linkedin && (
+              <a
+                href={speaker.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="speaker-modal-linkedin-btn"
+              >
+                <span>View LinkedIn Profile</span>
+                <ExternalLink size={13} />
+              </a>
+            )}
+          </div>
+          <div className="speaker-modal-right">
+            <div className="speaker-modal-tag">
+              {speaker.isModerator ? 'Session Moderator · AI Asia Summit 2026' : 'Speaker · AI Asia Summit 2026'}
+            </div>
+            <h2 className="speaker-modal-name">{speaker.name}</h2>
+            <div className="speaker-modal-meta">
+              <span className="speaker-modal-designation">{speaker.designation}</span>
+              {speaker.company && (
+                <span className="speaker-modal-company-badge">{speaker.company}</span>
+              )}
+            </div>
+            <div className="speaker-modal-divider" />
+            <div className="speaker-modal-bio">
+              {Array.isArray(speaker.bio) ? (
+                speaker.bio.map((para: string, i: number) => (
+                  <p key={i}>{para}</p>
+                ))
+              ) : (
+                <p>{speaker.bio}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </>
+  );
+}
+
+/**
  * SpeakerProfileCard
- * A prominent, executive speaker showcase component with large photo portrait,
- * full name, designation/role, and company badge.
+ * Clickable speaker showcase card with photo, role, company, moderator pill, and bio trigger.
  */
 function SpeakerProfileCard({
   speaker,
   isLead = false,
-  compact = false
+  compact = false,
+  onSelect
 }: {
   speaker: Speaker;
   isLead?: boolean;
   compact?: boolean;
+  onSelect?: (speaker: Speaker) => void;
 }) {
   const initials = speaker.name
     .split(' ')
@@ -111,6 +264,11 @@ function SpeakerProfileCard({
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      onClick={() => onSelect && onSelect(speaker)}
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelect && onSelect(speaker)}
+      title="Click to view speaker biography"
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -118,29 +276,30 @@ function SpeakerProfileCard({
         padding: compact ? '8px 12px' : isLead ? '12px 16px' : '10px 14px',
         borderRadius: '14px',
         background: speaker.isModerator
-          ? 'linear-gradient(135deg, rgba(232, 184, 75, 0.14) 0%, rgba(20, 18, 14, 0.8) 100%)'
-          : 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(18, 16, 13, 0.7) 100%)',
+          ? 'linear-gradient(135deg, rgba(232, 184, 75, 0.16) 0%, rgba(20, 18, 14, 0.85) 100%)'
+          : 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(18, 16, 13, 0.75) 100%)',
         border: speaker.isModerator
-          ? '1px solid rgba(232, 184, 75, 0.45)'
-          : '1px solid rgba(255, 255, 255, 0.12)',
+          ? '1.5px solid rgba(232, 184, 75, 0.55)'
+          : '1px solid rgba(255, 255, 255, 0.14)',
         boxShadow: '0 4px 16px rgba(0, 0, 0, 0.35)',
         backdropFilter: 'blur(12px)',
         transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
         width: '100%',
         boxSizing: 'border-box',
+        cursor: 'pointer',
       }}
       onMouseOver={(e) => {
-        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.transform = 'translateY(-3px)';
         e.currentTarget.style.borderColor = speaker.isModerator
-          ? 'rgba(232, 184, 75, 0.75)'
-          : 'rgba(232, 184, 75, 0.5)';
-        e.currentTarget.style.boxShadow = '0 8px 24px rgba(232, 184, 75, 0.15)';
+          ? 'rgba(232, 184, 75, 0.9)'
+          : 'rgba(232, 184, 75, 0.7)';
+        e.currentTarget.style.boxShadow = '0 10px 28px rgba(232, 184, 75, 0.22)';
       }}
       onMouseOut={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.borderColor = speaker.isModerator
-          ? 'rgba(232, 184, 75, 0.45)'
-          : 'rgba(255, 255, 255, 0.12)';
+          ? 'rgba(232, 184, 75, 0.55)'
+          : 'rgba(255, 255, 255, 0.14)';
         e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.35)';
       }}
     >
@@ -242,34 +401,52 @@ function SpeakerProfileCard({
           </p>
         )}
 
-        {/* Company Badge with Dot */}
-        {speaker.company && (
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '2px' }}>
-            <span
-              style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: '#E8B84B',
-                boxShadow: '0 0 6px #E8B84B',
-                flexShrink: 0,
-              }}
-            />
-            <span
-              style={{
-                fontSize: compact ? '0.7rem' : '0.75rem',
-                fontWeight: 600,
-                color: '#E8B84B',
-                letterSpacing: '0.02em',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {speaker.company}
-            </span>
-          </div>
-        )}
+        {/* Company Badge with Dot + Click to view bio prompt */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', marginTop: '3px' }}>
+          {speaker.company && (
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', minWidth: 0 }}>
+              <span
+                style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#E8B84B',
+                  boxShadow: '0 0 6px #E8B84B',
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontSize: compact ? '0.7rem' : '0.75rem',
+                  fontWeight: 600,
+                  color: '#E8B84B',
+                  letterSpacing: '0.02em',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {speaker.company}
+              </span>
+            </div>
+          )}
+          <span
+            style={{
+              fontSize: '0.62rem',
+              fontWeight: 700,
+              color: '#FCD34D',
+              opacity: 0.8,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '2px',
+              marginLeft: 'auto',
+              flexShrink: 0,
+              letterSpacing: '0.02em',
+            }}
+          >
+            View Bio <ArrowRight size={9} />
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -278,6 +455,12 @@ function SpeakerProfileCard({
 export default function ScrollTimeline({ milestones }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSpeaker, setActiveSpeaker] = useState<any>(null);
+
+  const handleSpeakerSelect = (speaker: Speaker) => {
+    const fullData = getFullSpeakerData(speaker);
+    setActiveSpeaker(fullData);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -424,25 +607,26 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                          {/* Prominently Highlighted Timing Pill */}
                           {milestone.time && (
                             <span
                               style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
-                                gap: '5px',
-                                fontSize: '0.75rem',
+                                gap: '6px',
+                                fontSize: '0.82rem',
                                 fontFamily: "var(--font-mono, 'Space Mono', monospace)",
-                                fontWeight: 700,
+                                fontWeight: 800,
                                 letterSpacing: '0.04em',
-                                background: 'rgba(232, 184, 75, 0.16)',
-                                color: '#E8B84B',
+                                background: 'linear-gradient(135deg, rgba(232, 184, 75, 0.28) 0%, rgba(200, 145, 30, 0.16) 100%)',
+                                color: '#FCD34D',
                                 padding: '4px 12px',
-                                borderRadius: '9999px',
-                                border: '1px solid rgba(232, 184, 75, 0.45)',
-                                boxShadow: '0 0 10px rgba(232, 184, 75, 0.15)',
+                                borderRadius: '8px',
+                                border: '1.5px solid rgba(232, 184, 75, 0.65)',
+                                boxShadow: '0 0 14px rgba(232, 184, 75, 0.28), inset 0 0 8px rgba(232, 184, 75, 0.12)',
                               }}
                             >
-                              <Clock size={13} style={{ color: '#E8B84B' }} />
+                              <Clock size={13} style={{ color: '#FCD34D' }} />
                               {milestone.time}
                             </span>
                           )}
@@ -572,7 +756,7 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                               </h4>
                             </div>
 
-                            {/* Breakout Session Speakers (Visible & Detailed) */}
+                            {/* Breakout Session Speakers (Clickable with Profile Modal) */}
                             {sess.speakers && sess.speakers.length > 0 && (
                               <div
                                 style={{
@@ -594,11 +778,16 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                                     marginBottom: '2px',
                                   }}
                                 >
-                                  Track Speakers &amp; Panel
+                                  Track Speakers &amp; Panel · Click to view bio
                                 </span>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                   {sess.speakers.map((spk, spkIdx) => (
-                                    <SpeakerProfileCard key={spkIdx} speaker={spk} compact={true} />
+                                    <SpeakerProfileCard 
+                                      key={spkIdx} 
+                                      speaker={spk} 
+                                      compact={true} 
+                                      onSelect={handleSpeakerSelect}
+                                    />
                                   ))}
                                 </div>
                               </div>
@@ -612,7 +801,7 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
               );
             }
 
-            // Standard alternating milestone card (Keynotes, Panels, Masterclasses)
+            // Standard alternating milestone card (Keynotes, Panels, Masterclasses, Breaks)
             return (
               <div 
                 key={milestone.id} 
@@ -673,30 +862,31 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                       transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
                     }}
                   >
-                    {/* Badge row: Time + Number + Category + Track */}
+                    {/* Badge row: Highlighted Time + Number + Category + Track */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '0.85rem' }}>
                       {milestone.time && (
                         <span
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '5px',
-                            fontSize: '0.72rem',
+                            gap: '6px',
+                            fontSize: '0.8rem',
                             fontFamily: "var(--font-mono, 'Space Mono', monospace)",
-                            fontWeight: 700,
+                            fontWeight: 800,
                             letterSpacing: '0.04em',
-                            background: 'rgba(232, 184, 75, 0.16)',
-                            color: '#E8B84B',
-                            padding: '3px 10px',
-                            borderRadius: '9999px',
-                            border: '1px solid rgba(232, 184, 75, 0.45)',
-                            boxShadow: '0 0 10px rgba(232, 184, 75, 0.15)',
+                            background: 'linear-gradient(135deg, rgba(232, 184, 75, 0.28) 0%, rgba(200, 145, 30, 0.16) 100%)',
+                            color: '#FCD34D',
+                            padding: '4px 12px',
+                            borderRadius: '8px',
+                            border: '1.5px solid rgba(232, 184, 75, 0.65)',
+                            boxShadow: '0 0 14px rgba(232, 184, 75, 0.28), inset 0 0 8px rgba(232, 184, 75, 0.12)',
                           }}
                         >
-                          <Clock size={12} style={{ color: '#E8B84B' }} />
+                          <Clock size={13} style={{ color: '#FCD34D' }} />
                           {milestone.time}
                         </span>
                       )}
+
                       {milestone.number && (
                         <span
                           style={{
@@ -772,7 +962,7 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                       {milestone.title}
                     </h3>
 
-                    {/* Highly Visible Speaker Profile Section */}
+                    {/* Highly Visible Speaker Profile Section (Clickable) */}
                     {milestone.speakers && milestone.speakers.length > 0 && (
                       <div
                         style={{
@@ -801,10 +991,18 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                             {milestone.category === 'keynote'
                               ? 'Keynote Speaker'
                               : milestone.category === 'panel'
-                              ? 'Panel Speakers'
+                              ? 'Panel Speakers & Moderator'
                               : milestone.category === 'masterclass'
                               ? 'Masterclass Instructor'
                               : 'Featured Speaker'}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: '0.65rem',
+                              color: 'rgba(255, 255, 255, 0.5)',
+                            }}
+                          >
+                            Click speaker for bio
                           </span>
                         </div>
 
@@ -822,6 +1020,7 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
                               speaker={spk}
                               isLead={milestone.speakers?.length === 1}
                               compact={milestone.speakers && milestone.speakers.length > 2}
+                              onSelect={handleSpeakerSelect}
                             />
                           ))}
                         </div>
@@ -834,6 +1033,16 @@ export default function ScrollTimeline({ milestones }: TimelineProps) {
           })}
         </div>
       </div>
+
+      {/* Interactive Speaker Pop-up Modal */}
+      <AnimatePresence>
+        {activeSpeaker && (
+          <SpeakerBioModal 
+            speaker={activeSpeaker} 
+            onClose={() => setActiveSpeaker(null)} 
+          />
+        )}
+      </AnimatePresence>
 
       {/* Embedded CSS for responsive positioning */}
       <style>{`

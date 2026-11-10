@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, ChevronDown } from "lucide-react";
 
-const speakers = [
+export const speakers = [
   {
     id: "malith",
     name: "Dr. Malith Jayasinghe",
@@ -198,6 +198,18 @@ const speakers = [
       "Jayantha has held a number of positions within the public and private sectors in Sri Lanka– including, as the Chairman of both Sri Lanka CERT and the LK Domain Registry, Co-Chair of the Virtual Currency Task Force of the Central Bank of Sri Lanka, Co-Chair of the National Task Force for Digital Signatures, and as the former General Counsel to the Information and Communication Technology Agency of Sri Lanka (ICTA). He was also a Director of Transparency International Sri Lanka, former Commissioner of the Securities and Exchange Commission, and is currently a Director of the Colombo Stock Exchange as well as Sri Lanka CERT.",
       "During his tenure within the public service, Jayantha was also instrumental in driving many of Sri Lanka's tech-law related reform initiatives – including, Sri Lanka's entry to the Budapest Cybercrime Convention and its ratification of the United Nations Electronic Communications Convention. In addition to spearheading the Electronic Transactions Act, Computer Crimes Act and other legislation, he also chaired the drafting process of Sri Lanka's Personal Data Protection Act, No. 09 of 2022 – the first legislation of its kind in South Asia. He also developed the legal standards for the Information System Contracts on behalf of ICTA. As a part of the negotiating committee appointed by the Government of Sri Lanka, Jayantha negotiated numerous contracts with global vendors and also led the negotiation of the E-Commerce Chapter of the Singapore-Sri Lanka Free Trade Agreement – making it one of the first FTAs to incorporate a provision of such nature.",
       "Jayantha took oaths as an Attorney-at-Law of the Supreme Court of Sri Lanka in 1995 and completed his Master of Law Degree (LL.M) specializing in Information Technology and Communications Law at the Queen Mary University of London, as a Chevening Scholar. He was also an Eisenhower Fellow (2012) and is a Professional Member of the Computer Society of Sri Lanka."
+    ],
+  },
+  {
+    id: "asela",
+    name: "Asela Waidyalankara",
+    designation: "Managing Director",
+    company: "Talos Consulting",
+    image: "/Asela.png",
+    linkedin: "https://www.linkedin.com/in/aselaw/",
+    bio: [
+      "Asela Waidyalankara is the Managing Director of Talos Consulting and an acclaimed digital policy, cybersecurity, and emerging technology consultant.",
+      "A prominent thought leader in South Asia's technology ecosystem, he advises leading financial institutions, telecommunications providers, and state bodies on artificial intelligence governance, cyber resilience, cross-border digital regulations, and ethical AI deployment."
     ],
   },
   {
