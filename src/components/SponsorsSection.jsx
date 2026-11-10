@@ -385,46 +385,6 @@ export default function SponsorsSection() {
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <a
-                href="https://investsrilanka.com"
-                target="_blank"
-                rel="noreferrer"
-                title="Board of Investment of Sri Lanka — National Partner"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '56px',
-                  width: '200px',
-                  borderRadius: '8px',
-                  background: '#FFFFFF',
-                  padding: '6px 16px',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
-                  transition: 'opacity 0.2s ease, transform 0.2s ease',
-                  textDecoration: 'none'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <img
-                  src="/boi-logo.jpg"
-                  alt="BOI Sri Lanka — National Partner"
-                  style={{
-                    maxHeight: '44px',
-                    maxWidth: '160px',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    display: 'block'
-                  }}
-                  loading="lazy"
-                />
-              </a>
-
-              <a
                 href="https://mode.gov.lk"
                 target="_blank"
                 rel="noreferrer"
@@ -492,6 +452,46 @@ export default function SponsorsSection() {
                 <img
                   src="/EDB.jpeg"
                   alt="Sri Lanka Export Development Board (EDB) — National Partner"
+                  style={{
+                    maxHeight: '44px',
+                    maxWidth: '160px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                  loading="lazy"
+                />
+              </a>
+
+              <a
+                href="https://investsrilanka.com"
+                target="_blank"
+                rel="noreferrer"
+                title="Board of Investment of Sri Lanka — National Partner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '56px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  padding: '6px 16px',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  textDecoration: 'none'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <img
+                  src="/boi-logo.jpg"
+                  alt="BOI Sri Lanka — National Partner"
                   style={{
                     maxHeight: '44px',
                     maxWidth: '160px',
@@ -963,6 +963,8 @@ export default function SponsorsSection() {
                 { src: '/National Chamber logo_page-0001.jpg', alt: 'National Chamber of Commerce Sri Lanka' },
                 { src: '/fitis-logo.png', alt: 'FITIS — Federation of Information Technology Industry Sri Lanka' },
                 { src: '/fasl.png', alt: 'FinTech Association of Sri Lanka (FASL) — Eco System Partner' },
+                { src: '/CFA Society Sri Lanka.png', alt: 'CFA Society Sri Lanka' },
+                { src: '/CSSL_Logo.png', alt: 'CSSL — Computer Society of Sri Lanka' },
               ].map((partner, idx) => (
                 <div
                   key={idx}
