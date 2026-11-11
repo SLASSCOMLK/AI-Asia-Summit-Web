@@ -172,17 +172,17 @@ export default function SponsorsSection() {
               }}
             >
               <a
-                href="https://aws.amazon.com"
+                href="https://www.redingtongroup.com"
                 target="_blank"
                 rel="noreferrer"
-                title="Amazon Web Services — Principal Sponsor"
+                title="Redington — Principal Sponsor"
                 style={{ display: 'flex', alignItems: 'center', lineHeight: 0, textDecoration: 'none' }}
               >
                 <img
-                  src="/aws-logo.svg"
-                  alt="Amazon Web Services (AWS)"
+                  src="/Redington logo.png"
+                  alt="Redington"
                   style={{
-                    height: '40px',
+                    height: '38px',
                     width: 'auto',
                     objectFit: 'contain',
                     display: 'block'
@@ -198,17 +198,17 @@ export default function SponsorsSection() {
                 flexShrink: 0
               }} />
               <a
-                href="https://www.redingtongroup.com"
+                href="https://aws.amazon.com"
                 target="_blank"
                 rel="noreferrer"
-                title="Redington — Principal Sponsor"
+                title="Amazon Web Services — Principal Sponsor"
                 style={{ display: 'flex', alignItems: 'center', lineHeight: 0, textDecoration: 'none' }}
               >
                 <img
-                  src="/Redington logo.png"
-                  alt="Redington"
+                  src="/aws-logo.svg"
+                  alt="Amazon Web Services (AWS)"
                   style={{
-                    height: '38px',
+                    height: '40px',
                     width: 'auto',
                     objectFit: 'contain',
                     display: 'block'
