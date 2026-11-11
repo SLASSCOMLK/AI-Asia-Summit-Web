@@ -193,7 +193,7 @@ export default function SponsorsSection() {
               <div style={{
                 width: '1.5px',
                 height: '36px',
-                background: '#D1D5DB',
+                background: '#232F3E',
                 margin: '0 24px',
                 flexShrink: 0
               }} />
